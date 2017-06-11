@@ -1,3 +1,5 @@
+<?php
+/*
 <!--Night mode :)-->
 
 <head>
@@ -10,7 +12,7 @@
     </style>
 </head>
 
-<?php
+*/
 require __DIR__ . '/Vendor/System/App.php';
 require __DIR__ . '/Vendor/System/File.php';
 use System\File;

@@ -4,12 +4,13 @@ use System\App;
 
 $app    = App::getInstance();
 
-// Login
-$app->route->add('/','Home');
-$app->route->add(':text/:id', 'Posts/Post');
-$app->route->add('/admin/login', 'Admin/Login');
+$app->route->add('/','Home', 'POST');
+$app->route->add('/posts/:text/:id', 'Posts/Post');
 
+// Admin Login
+$app->route->add('/admin/login', 'Admin/Login');
 $app->route->add('/admin/login/submit', 'Admin/Login@submit', 'POST');
+
 // Dashboard
 $app->route->add('/admin', 'Admin/Dashboard');
 $app->route->add('/admin/dashboard', 'Admin/Dashboard');
@@ -51,6 +52,11 @@ $app->route->add('/admin/categories/submit', 'Admin/Categories@submit', 'POST');
 $app->route->add('/admin/categories/edit/:id', 'Admin/Categories@edit');
 $app->route->add('/admin/categories/save/:id', 'Admin/Categories@save', 'POST');
 $app->route->add('/admin/categories/delete/:id', 'Admin/Categories@delete');
+
+// Share admin layout
+$app->share('adminLayout', function ($app){
+    return $app->load->controller('Admin/Common/Layout');
+});
 
 // Settings
 $app->route->add('/admin/settings', 'Admin/Settings');
