@@ -57,7 +57,7 @@ abstract class Model
      */
     public function all()
     {
-        return $this->fetchAll($this->table);
+        return $this->db->fetchAll($this->table);
     }
     
     /**
@@ -68,6 +68,40 @@ abstract class Model
      */
     public function get($id)
     {
-        return $this->where('id = ?', $id)->fetch($this->table);
+        return $this->db->where('id = ?', $id)->fetch($this->table);
+    }
+    
+    /**
+     * Determine if the given value of the key exists in table
+     * 
+     * @param mixed $value
+     * @param string $key
+     * @return bool
+     */
+    public function exists($value, $key = 'id')
+    {
+        return (bool) $this->db->select($key)->where($key . ' = ?', $value)->fetch($this->table);
+    }
+    
+    /**
+     * Deleting a record
+     * 
+     * @param int $id
+     * @return void
+     */
+    public function delete($id)
+    {
+        $this->db->where('id = ?', $id)->delete($this->table);
     }
 }
+
+
+
+
+
+
+
+
+
+
+

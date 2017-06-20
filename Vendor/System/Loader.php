@@ -42,10 +42,10 @@ class Loader
      * @param array $arguments
      * @return mixed
      */
-    public function action($controller, $method, $arguments)
+    public function action($controller, $method, array $arguments)
     {
         $object = $this->controller($controller);
-        return  call_user_func([$object, $method], $arguments);
+        return  call_user_func_array([$object, $method], $arguments);
     }
     
     /**
