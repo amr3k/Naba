@@ -12,9 +12,9 @@ class AccessController extends Controller{
      */
     public function index()
     {
-        $loginModel   = $this->load->model('Login');
-        if (! $loginModel->isLogged()){
-            return $this->url->redirect('/admin/login');
-        }
+//        $loginModel   = $this->load->model('Login');
+//        if (! $loginModel->isLogged()){
+//            return $this->url->redirect('/admin/login');
+//        }
     }
 }

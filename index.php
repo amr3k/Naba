@@ -6,8 +6,8 @@
     <title>Z</title>
     <style>
         body{
-            background-color: #222;
-            color: #ccc;
+            background-color: #221;
+            color: #cfc;
         }
     </style>
 </head>
