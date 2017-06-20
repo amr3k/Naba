@@ -1,6 +1,8 @@
 <?php
 namespace System;
 
+//use Closure;
+
 class App
 {
     /**
@@ -123,6 +125,9 @@ class App
      */
     public function share($key, $value)
     {
+        if ($value instanceof \Closure){
+            $value  = call_user_func($value, $this);
+        }
         $this->container[$key]  =   $value;
     }
     
@@ -171,14 +176,16 @@ class App
         return [
             'request'       =>  'System\\Http\\Request',
             'response'      =>  'System\\Http\\Response',
-            'session'       =>  'System\\Session',
+//            'upload'        =>  'System\\Http\\UploadedFiles',
             'route'         =>  'System\\Route',
-            'cookie'        =>  'System\\Cookie',
             'load'          =>  'System\\Loader',
+            'session'       =>  'System\\Session',
+            'cookie'        =>  'System\\Cookie',
             'html'          =>  'System\\Html',
             'db'            =>  'System\\Database',
             'view'          =>  'System\\View\\ViewFactory',
-            'url'           =>  'System\\Url'
+            'url'           =>  'System\\Url',
+            'validator'     =>  'System\\Validation',
         ];
     }
     
