@@ -6,7 +6,7 @@ $app    = App::getInstance();
 
 // Initialising Middlwares
 if (strpos($app->request->url(), '/admin') === 0){
-    $app->load->controller('Admin/Middleware');
+    $app->load->controller('Admin/Access')->index();
 }
 
 // Share admin layout
@@ -83,7 +83,7 @@ $app->route->add('/admin/ads/save/:id', 'Admin/Ads@save', 'POST');
 $app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete');
 
 // Logout
-$app->route->add('/logout', 'Logout');
+$app->route->add('/admin/logout', 'Admin/Logout');
 
 // Not found routes
 $app->route->add('/404', 'NotFound');

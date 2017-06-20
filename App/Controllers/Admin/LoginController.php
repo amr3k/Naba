@@ -12,9 +12,11 @@ class LoginController extends Controller{
      */
     public function index()
     {
+        pre($this->session->all());
+        pre($this->cookie->all());
         $loginModel   = $this->load->model('Login');
         if ($loginModel->isLogged()){
-            return $this->url->redirect('/admin');
+//            return $this->url->redirect('/admin');
         }
         $data['errors'] = $this->errors;
         return $this->view->render('admin/users/login', $data);

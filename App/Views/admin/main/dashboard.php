@@ -4,6 +4,9 @@
         <title>Dashboard</title>
     </head>
     <body>
+        <a href="<?php echo url('admin/login'); ?>">Login</a>
+        <a href="<?php echo url('admin/categories'); ?>">Categories</a>
+        <a href="<?php echo url('admin/logout'); ?>">Logout</a>
         <form action="<?php echo url('/admin/submit/'); ?>">
             <table>
                 <tr>
