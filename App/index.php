@@ -4,7 +4,18 @@ use System\App;
 
 $app    = App::getInstance();
 
-$app->route->add('/','Home', 'POST');
+// Initialising Middlwares
+if (strpos($app->request->url(), '/admin') === 0){
+    $app->load->controller('Admin/Middleware');
+}
+
+// Share admin layout
+$app->share('adminLayout', function ($app){
+    return $app->load->controller('Admin/Common/Layout');
+});
+
+// Home
+$app->route->add('/','Home');
 $app->route->add('/posts/:text/:id', 'Posts/Post');
 
 // Admin Login
@@ -14,6 +25,7 @@ $app->route->add('/admin/login/submit', 'Admin/Login@submit', 'POST');
 // Dashboard
 $app->route->add('/admin', 'Admin/Dashboard');
 $app->route->add('/admin/dashboard', 'Admin/Dashboard');
+$app->route->add('/admin/submit', 'Admin/Dashboard@submit', 'POST');
 
 // Users
 $app->route->add('/admin/users', 'Admin/Users');
@@ -47,16 +59,11 @@ $app->route->add('/admin/posts/:id/comments/delete', 'Admin/Comments@delete');
 
 // Categories
 $app->route->add('/admin/categories', 'Admin/Categories');
-$app->route->add('/admin/categories/add', 'Admin/Categories@add');
+$app->route->add('/admin/categories/add', 'Admin/Categories@add', 'POST');
 $app->route->add('/admin/categories/submit', 'Admin/Categories@submit', 'POST');
-$app->route->add('/admin/categories/edit/:id', 'Admin/Categories@edit');
+$app->route->add('/admin/categories/edit/:id', 'Admin/Categories@edit', 'POST');
 $app->route->add('/admin/categories/save/:id', 'Admin/Categories@save', 'POST');
-$app->route->add('/admin/categories/delete/:id', 'Admin/Categories@delete');
-
-// Share admin layout
-$app->share('adminLayout', function ($app){
-    return $app->load->controller('Admin/Common/Layout');
-});
+$app->route->add('/admin/categories/delete/:id', 'Admin/Categories@delete', 'POST');
 
 // Settings
 $app->route->add('/admin/settings', 'Admin/Settings');
@@ -71,7 +78,7 @@ $app->route->add('/admin/contact/send/:id', 'Admin/Contact@send', 'POST');
 $app->route->add('/admin/ads', 'Admin/Ads');
 $app->route->add('/admin/ads/add', 'Admin/Ads@add');
 $app->route->add('/admin/ads/submit', 'Admin/Ads@submit', 'POST');
-$app->route->add('/admin/ads/edit/:id', 'Admin/Ads@edit');
+$app->route->add('/admin/ads/edit/:id', 'Admin/Ads@edit', 'POST');
 $app->route->add('/admin/ads/save/:id', 'Admin/Ads@save', 'POST');
 $app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete');
 

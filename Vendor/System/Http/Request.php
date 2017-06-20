@@ -1,8 +1,8 @@
 <?php
 namespace System\Http;
+use System\App;
 
 class Request {
-    
     /**
      * URL
      * 
@@ -18,6 +18,13 @@ class Request {
     private $baseURL;
     
     /**
+     * Uploaded files container
+     * 
+     * @var array
+     */
+    private $files  =   [];
+
+    /**
      * Prepare URL
      * 
      * @return void
@@ -31,6 +38,9 @@ class Request {
             list($requestURI, $queryString) = explode('?', $requestURI);
         }
         $this->url      = rtrim(preg_replace('~^' . $script . '~', '', $requestURI), '/');
+        if (! $this->url){
+            $this->url  =   '/';
+        }
         $this->baseURL  = $this->server('REQUEST_SCHEME') . '://' . $this->server('HTTP_HOST') . $script . '/';
     }
     
@@ -59,6 +69,22 @@ class Request {
     }
     
     /**
+     * Get the uploaded file object for the given input
+     * 
+     * @param string $input
+     * @return \System\Http\UploadedFiles
+     */
+    public function file($input)
+    {
+        if (isset($this->files[$input])){
+            return $this->files[$input];
+        }
+        $uploadedFile   =   new UploadedFiles($input);
+        $this->files[$input]    =   $uploadedFile;
+        return $this->files[$input];
+    }
+
+        /**
      * Get value from $_SERVER with the given key
      * 
      * @param string $key
