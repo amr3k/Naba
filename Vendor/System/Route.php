@@ -29,7 +29,8 @@ class Route
      * 
      * @param \System\App $app
      */
-    public function __construct(App $app) {
+    public function __construct(App $app)
+    {
         $this->app  =   $app;
     }
     
@@ -72,7 +73,7 @@ class Route
     {
         foreach ($this->routes as $route)
         {
-            if ($this->isMatching($route['pattern']))
+            if ($this->isMatching($route['pattern']) && $this->isMatchingRequestMethod($route['method']))
             {
                 $arguments  = $this->getArgumentsFrom($route['pattern']);
                 
@@ -95,6 +96,18 @@ class Route
         return preg_match($pattern, $this->app->request->url());
     }
     
+    /**
+     * Determine if the current request method matches 
+     * the given route method
+     * 
+     * @param string $routeMethod
+     * @return bool
+     */
+    private function isMatchingRequestMethod($routeMethod)
+    {
+        return $routeMethod == $this->app->request->method();
+    }
+
     /**
      * Get Arguments from the current request URL based on the given pattern
      * 

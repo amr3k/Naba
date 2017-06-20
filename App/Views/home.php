@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title><?php echo $title; ?></title>
+        <style>
+            body{
+                background-color: #666;
+                color: #fff;
+            }
+        </style>
     </head>
     <body>
-        <h1>Welcome home</h1>
-        <h3 style="color: green">My name is <span style="color: grey"><?php echo isset($name) ? $name : 'Amr';?></span></h3>
+        <h1 style="text-align: center">Welcome home</h1>
     </body>
 </html>

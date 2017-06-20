@@ -128,7 +128,6 @@ class Database
     {
         $con_data    =   $this->app->file->call('config.php');
         extract($con_data);
-//        $option =   array(PDO::MYSQL_ATTR_INIT_COMMAND    =>  'SET NAMES utf8');
         try {
             static::$con    =   new PDO('mysql:host=' . $server . ';dbname=' . $dbname, $user,$pass);
             static::$con->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -180,14 +179,7 @@ class Database
      */
     public function where(...$bindings)
     {
-        // I had to deal with error message "Array to string conversion"
-        // by making an `if` condition checking if the first element of bindings container is array or string
-        // I have no idea why that first element would become an array !!!
-        if (is_array($bindings[0])){
-            $sql    =   array_shift($bindings[0]);
-        }else{
             $sql    = array_shift($bindings);
-        }
         $this->addToBindings($bindings);
         $this->where[]    =   $sql;
         return $this;
@@ -260,6 +252,9 @@ class Database
      */
     public function select($select)
     {
+        if(is_array($select)){
+            $select =   $select[0];
+        }
         $this->selects[] =   $select;
         return $this;
     }
@@ -312,32 +307,18 @@ class Database
     {
         $sql    =   'SELECT ';
         if ($this->selects){
-            $sql    .= implode(',', $this->selects);
+                $sql    .= implode(',', $this->selects);
         } else {
             $sql    .=  '*';
         }
-        
-        // I had to deal with error message "Array to string conversion"
-        // by making an `if` condition checking if the table is array or string
-        // I have no idea why the table would become an array !!!
-        if (is_array($this->table)){
-            $sql    .=  ' FROM ' . implode(' ', $this->table) . ' ';
-        } else{
             $sql    .=  ' FROM ' . $this->table . ' ';
-        }
+//        }
         if ($this->joins){
             $sql    .=  implode(' ', $this->joins);
         }
         if ($this->where){
             
-            // I had to deal with error message "Array to string conversion"
-            // by making an if condition checking if the table is array or string
-            // I have no idea why the table would become an array !!!
-            if (is_array($this->where[0])){
-                $sql    .=  ' WHERE '   . implode(' ', array_slice($this->where[0], 1));
-            } else{
                 $sql    .=  ' WHERE '   . implode(' ', $this->where);
-            }
         }
         if ($this->limit){
             $sql    .=  ' LIMIT ' . $this->limit;
@@ -371,7 +352,7 @@ class Database
             $query->execute();
             return $query;
         } catch (PDOException $e) {
-            echo $sql;
+            echo '<b>' . $sql . '</b>';
             pre($this->bindings);
             die($e->getMessage());
         }

@@ -2,8 +2,9 @@
 use System\App;
 
 if (! function_exists('pre')){
+    
     /**
-     * Visualize the given variable in browser
+     * visualise the given variable in browser
      * 
      * @param type $var
      * @return void
@@ -15,6 +16,7 @@ if (! function_exists('pre')){
     }
 }
 if (! function_exists('array_get')){
+    
     /**
      * Get the value from the given array for the given key if found, Otherwise get the default value
      * 
@@ -28,6 +30,7 @@ if (! function_exists('array_get')){
     }
 }
 if (! function_exists('_e')){
+    
     /**
      * Escape the given value
      * 
@@ -35,15 +38,11 @@ if (! function_exists('_e')){
      * @return string
      */
     function _e($value){
-        // Once again I created this if condition beacause of that f***g error "array to string conversion"
-        if (is_array($value)){
-            return htmlspecialchars($value[0]);
-        }else{
             return htmlspecialchars($value);
-        }
     }
 }
 if (! function_exists('assets')){
+    
     /**
      * Generate full path for the given URL in public directory
      * 
@@ -56,6 +55,7 @@ if (! function_exists('assets')){
     }
 }
 if (! function_exists('url')){
+    
     /**
      * Generate full path for the given URL
      * 
