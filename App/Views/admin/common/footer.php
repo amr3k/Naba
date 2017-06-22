@@ -66,7 +66,7 @@
     });
     
     // Displaying a form to edit an existing category
-    $('.edit-category').on('click', function () {
+    $('.edit-ug').on('click', function () {
     btn =   $(this);
     url =   btn.data('target');
     modalTarget =   btn.data('modal-target');
@@ -89,9 +89,6 @@
         btn     =   $(this);
         e.preventDefault();
         form    =   btn.parents('.form');
-//        name    =   $('#cat-name').val();
-//        oldUrl     =   form.attr('action');
-//        newAction   =   form.attr('action', oldUrl+'/'+name);
         url = form.attr('action');
         data    =   new FormData(form[0]);
         formResults =   form.find('#form-results');
@@ -101,10 +98,11 @@
             type:   'POST',
             dataType: 'json',
             beforeSend: function () {
-                $('.cancel').remove();
+                $('.cancel').hide();
                 formResults.removeClass().addClass('alert alert-info').html('Please wait');
             },
             success: function (r) {
+                $('.cancel').show();
                 if (r.errors){
                     formResults.removeClass().addClass('alert alert-danger').html(r.errors);
                 } else if (r.success){
@@ -125,9 +123,6 @@
         btn     =   $(this);
         e.preventDefault();
         form    =   btn.parents('.form');
-//        name    =   $('#cat-name').val();
-//        oldUrl     =   form.attr('action');
-//        newAction   =   form.attr('action', oldUrl+'/'+name);
         url = form.attr('action');
         data    =   new FormData(form[0]);
         formResults =   form.find('#form-results');
@@ -137,10 +132,11 @@
             type:   'POST',
             dataType: 'json',
             beforeSend: function () {
-                $('.cancel').remove();
+                $('.cancel').hide();
                 formResults.removeClass().addClass('alert alert-info').html('Please wait');
             },
             success: function (r) {
+                $('.cancel').show();
                 if (r.errors){
                     formResults.removeClass().addClass('alert alert-danger').html(r.errors);
                 } else if (r.success){
