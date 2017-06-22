@@ -8,6 +8,7 @@
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>Amr</word>
             <word>Middleware</word>
+            <word>nbproject</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

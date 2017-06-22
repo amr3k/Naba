@@ -1,0 +1,78 @@
+<?php
+namespace App\Models;
+
+use System\Model;
+
+class UsersGroupsModel extends Model
+{
+    /**
+     * Table name
+     * @var string
+     */
+    protected $table    =   'ug';
+    
+    /**
+     * Create a new Users group record
+     * 
+     * @return void
+     */
+    public function create()
+    {
+        $ugid    =   $this->db->data('name', $this->request->post('name'))->insert($this->table)->lastId();
+        $pages  =    array_filter($this->app->request->post('pages'));
+        foreach ($pages as $page){
+            $this->db->data('ugid', $ugid)
+                    ->data('page', $page)
+                    ->insert('ugp');
+        }
+    }
+    
+    /**
+     * Update an existing users group
+     * 
+     * @param int $id
+     * @return void
+     */
+    public function update($id)
+    {
+        $ugid   =   $this->db
+                    ->data('name', $this->request->post('name'))
+                    ->where('id = ?', $id)
+                    ->update($this->table);
+        $pages  =   array_filter($this->app->request->post('pages'));
+        foreach ($pages as $page){
+            $this->db->data('ugid', $ugid)
+                    ->data('page', $page)
+                    ->insert('ugp');
+        }
+    }
+    
+    /**
+     * Get User group permissions
+     * 
+     * @return mixed
+     */
+    public function get($id) {
+        $ug    =   parent::get($id);
+        if ($ug){
+            $pages  = $this->db->select('page')->where('ugid = ?', $ug->id)->fetchAll('ugp');
+            $ug->page  =   [];
+            if ($pages){
+                foreach ($pages as $page){
+                    $ug->page[] =   $page->page;
+                }
+            }
+        }
+        return $ug;
+    }
+}
+
+
+
+
+
+
+
+
+
+
