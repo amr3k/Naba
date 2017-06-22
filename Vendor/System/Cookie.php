@@ -29,7 +29,7 @@ class Cookie
      */
     public function set($key, $value, $durationInDays = 30)
     {
-        setcookie($key, $value, time() + $durationInDays * 3600 * 24, '', '', FALSE, TRUE);
+        setcookie($key, $value, time() + $durationInDays * 3600 * 24, '', '', FALSE, FALSE);
     }
     
     /**

@@ -65,6 +65,16 @@ class Route
     }
     
     /**
+     * Get all routes
+     * 
+     * @return array
+     */
+    public function routes()
+    {
+        return $this->routes;
+    }
+
+    /**
      * Get proper route
      * 
      * @return array

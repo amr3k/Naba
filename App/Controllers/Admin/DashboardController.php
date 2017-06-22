@@ -7,8 +7,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        pre($this->session->all());
-        pre($this->cookie->all());
         return $this->view->render('admin/main/dashboard');
     }
     
