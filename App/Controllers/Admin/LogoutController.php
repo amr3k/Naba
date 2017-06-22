@@ -12,7 +12,6 @@ class LogoutController extends Controller{
      */
     public function index()
     {
-//        $this->app->load->controller('Admin/Login')->destroy();
         $this->app->session->destroy();
         $this->app->cookie->destroy();
         return $this->url->redirect('/admin/login');

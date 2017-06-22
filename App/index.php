@@ -37,11 +37,11 @@ $app->route->add('/admin/users/delete/:id', 'Admin/Users@delete');
 
 // Users Groups
 $app->route->add('/admin/users-groups', 'Admin/UsersGroups');
-$app->route->add('/admin/users-groups/add', 'Admin/UsersGroups@add');
+$app->route->add('/admin/users-groups/add', 'Admin/UsersGroups@add', 'POST');
 $app->route->add('/admin/users-groups/submit', 'Admin/UsersGroups@submit', 'POST');
-$app->route->add('/admin/users-groups/edit/:id', 'Admin/UsersGroups@edit');
+$app->route->add('/admin/users-groups/edit/:id', 'Admin/UsersGroups@edit', 'POST');
 $app->route->add('/admin/users-groups/save/:id', 'Admin/UsersGroups@save', 'POST');
-$app->route->add('/admin/users-groups/delete/:id', 'Admin/UsersGroups@delete');
+$app->route->add('/admin/users-groups/delete/:id', 'Admin/UsersGroups@delete', 'POST');
 
 // Posts
 $app->route->add('/admin/posts', 'Admin/Posts');
@@ -84,7 +84,7 @@ $app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete');
 
 // Logout
 $app->route->add('/admin/logout', 'Admin/Logout');
-
+$app->route->add('/logout', 'Admin/Logout');
 // Not found routes
 $app->route->add('/404', 'NotFound');
 $app->route->notFound('/404');

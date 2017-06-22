@@ -52,12 +52,12 @@ class LoginModel extends Model
      */
     public function isLogged()
     {
-        if ($this->cookie->has('login')){
-            $code   = $this->cookie->get('login');
-        } elseif($this->session->has('login')){
-            $code   = $this->session->get('login');
+        if ($this->app->cookie->has('login')){
+            $code   = $this->app->cookie->get('login');
+        } elseif($this->app->session->has('login')){
+            $code   = $this->app->session->get('login');
         } else {
-            $code   =   '';
+            $code   =   NULL;
         }
         $user   = $this->db->where('code = ?', $code)->fetch($this->table);
         if (! $user){

@@ -15,6 +15,21 @@ if (! function_exists('pre')){
         echo "</pre>";
     }
 }
+if (! function_exists('pred')){
+    
+    /**
+     * visualise the given variable in browser and kill the rest of the script
+     * 
+     * @param type $var
+     * @return void
+     */
+    function pred ($var){
+        echo "<pre>";
+        print_r($var);
+        echo "</pre>";
+        die();
+    }
+}
 if (! function_exists('array_get')){
     
     /**

@@ -3,7 +3,8 @@ namespace App\Controllers\Admin;
 
 use System\Controller;
 
-class CategoriesController extends Controller{
+class CategoriesController extends Controller
+{
     
     /**
      * Display Categories list
@@ -38,13 +39,15 @@ class CategoriesController extends Controller{
     {
         if ($this->isValid()){
             $catModel   =   $this->load->model('Categories');
-//            if ($catModel->exists($name)){
-//                $json['errors']    =    'This name already exists';
-//            } else {
+            $newName    =   trim($this->request->post('name'));
+            // Checking if the provided name already exists in DataBase ..
+            if ($catModel->exists($newName, 'name')){
+                $json['errors']    =    'This name already exists';
+            } else {
                 $catModel->create();
-                $json['success']    =   '<b>' . $this->request->post('name') . ' </b> was Created Successfully';
+                $json['success']    =   '<b>' . $newName . ' </b> was Created Successfully';
                 $json['redirect']   =   $this->url->link('/admin/categories');
-//            }
+            }
         }else {
             $json['errors']    =    $this->validator->flatMsg();
         }
@@ -80,18 +83,19 @@ class CategoriesController extends Controller{
     {
         if ($this->isValid()){
             $catModel   =   $this->load->model('Categories');
-//            if ($catModel->exists($name)){
-//                $json['errors']    =    'This name already exists';
-//            } else {
+            $catNewName =   trim($this->request->post('name'));
             $catOldName =   $catModel->get($id)->name;
-            $catModel->update($id);
-            if ($catOldName !== $this->request->post('name')){
-                $json['success']    =   '<b>'.$catOldName.'</b> has been successfully changed to <b>' . $this->request->post('name') . '</b>';
-            }else{
-                $json['success']    =   '<b>'.$catOldName.'</b> has been updated successfully';
+            if ($catNewName !== $catOldName && $catModel->exists($catNewName, 'name')){
+                $json['errors']    =    'The new name already exists';
+            } else {
+                if ($catOldName !== $catNewName){
+                $json['success']    =   '<b>'.$catOldName.'</b> has been successfully changed to <b>' . $catNewName . '</b>';
+                }else{
+                    $json['success']    =   '<b>'.$catOldName.'</b> has been updated successfully';
+                }
+                $catModel->update($id);
+                $json['redirect']   =   $this->url->link('/admin/categories');
             }
-            $json['redirect']   =   $this->url->link('/admin/categories');
-//            }
         }else {
             $json['errors']    =    $this->validator->flatMsg();
         }
