@@ -43,7 +43,7 @@
                         <td><?php echo $category->name; ?></td>
                         <td><?php echo ucfirst($category->status); ?></td>
                         <td>
-                            <button type="button" class="btn btn-info edit-category" 
+                            <button type="button" class="btn btn-info edit-form" 
                                     data-modal-target="#edit-category-form"
                                     data-target="<?php echo url('/admin/categories/edit/') . '/' .$category->id; ?>" >
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
