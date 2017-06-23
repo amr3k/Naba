@@ -143,6 +143,3 @@ class UsersController extends Controller
         return $permissions;
     }
 }
-
-
-

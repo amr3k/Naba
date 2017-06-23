@@ -1,4 +1,4 @@
-<div class="modal fade" id="add-ug-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="add-user-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -6,15 +6,16 @@
           <h4 class="modal-title" id="myModalLabel">Add A New User</h4>
         </div>
         <div class="modal-body">
-            <form action="<?php echo $action; ?>" class="form-modal form" >
+            <form action="<?php echo $action; ?>" class="form-modal form" method="POST">
                 <div id="form-results"></div>
-                <div class="form-group col-sm-12">
-                  <label for="ug-name">Username</label>
-                  <input type="text" name="name" class="form-control" id="ug-name" placeholder="Username">
+                <div class="form-group col-sm-6">
+                  <label for="username">Username</label>
+                  <input type="text" name="name" class="form-control" id="username" placeholder="Username">
                 </div>
-                <div class="form-group col-sm-12">
+                
+                <div class="form-group col-sm-6">
                     <label for="pages">Permissions</label>
-                    <select id="pages" name="pages[]" class="form-control" multiple="multiple">
+                    <select id="pages" name="pages[]" class="form-control">
                         <?php foreach ($pages as $page){ ?>
                         <option value="<?php echo $page; ?>"><?php echo $page; ?></option>
                         <?php } ?>

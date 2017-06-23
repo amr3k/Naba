@@ -40,7 +40,7 @@ class UsersGroupsController extends Controller
         if ($this->isValid()){
             $ugModel    =   $this->load->model('UsersGroups');
             $newName    =   $this->request->post('name');
-            if ($ugModel->exists($newName)){
+            if ($ugModel->exists($newName, 'name')){
                 $json['errors']    =    'This name already exists';
             } else {
                 $ugModel->create();

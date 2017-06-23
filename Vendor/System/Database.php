@@ -247,15 +247,11 @@ class Database
     /**
      * Set select clause
      * 
-     * @param string $select
      * @return $this
      */
-    public function select($select)
+    public function select(...$selects)
     {
-        if(is_array($select)){
-            $select =   $select[0];
-        }
-        $this->selects[] =   $select;
+        $this->selects = array_merge($this->selects, $selects);
         return $this;
     }
     

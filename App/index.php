@@ -29,11 +29,11 @@ $app->route->add('/admin/submit', 'Admin/Dashboard@submit', 'POST');
 
 // Users
 $app->route->add('/admin/users', 'Admin/Users');
-$app->route->add('/admin/users/add', 'Admin/Users@add');
+$app->route->add('/admin/users/add', 'Admin/Users@add', 'POST');
 $app->route->add('/admin/users/submit', 'Admin/Users@submit', 'POST');
-$app->route->add('/admin/users/edit/:id', 'Admin/Users@edit');
+$app->route->add('/admin/users/edit/:id', 'Admin/Users@edit', 'POST');
 $app->route->add('/admin/users/save/:id', 'Admin/Users@save', 'POST');
-$app->route->add('/admin/users/delete/:id', 'Admin/Users@delete');
+$app->route->add('/admin/users/delete/:id', 'Admin/Users@delete', 'POST');
 
 // Users Groups
 $app->route->add('/admin/users-groups', 'Admin/UsersGroups');
