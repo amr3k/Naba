@@ -46,7 +46,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo assets('admin/dist/js/demo.js'); ?>"></script>
 <script>
-    // Displaying a form to add a new category
+    // Displaying a form to add a new item
     $('.popup').on('click', function () {
         btn =   $(this);
         url =   btn.data('target');
@@ -65,8 +65,8 @@
         }
     });
     
-    // Displaying a form to edit an existing category
-    $('.edit-ug').on('click', function () {
+    // Displaying a form to edit an existing item
+    $('.edit-form').on('click', function () {
     btn =   $(this);
     url =   btn.data('target');
     modalTarget =   btn.data('modal-target');
@@ -84,7 +84,7 @@
     });
     });
     
-    // Adding a new category
+    // Adding a new item
     $(document).on('click', '#submit-btn', function (e) {
         btn     =   $(this);
         e.preventDefault();
@@ -118,7 +118,7 @@
         });
     });
     
-    // Editing an existing category
+    // Editing an existing item
     $(document).on('click', '.save', function (e) {
         btn     =   $(this);
         e.preventDefault();
@@ -151,7 +151,7 @@
             contentType: false
         });
     });
-    // Deleting
+    // Deleting item
     $('.delete').on('click', function(e){
         e.preventDefault();
         btn = $(this);
