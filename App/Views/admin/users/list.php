@@ -31,6 +31,10 @@
                     <tr>
                         <th>#</th>
                         <th>Username</th>
+                        <th>Group</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Join date</th>
                         <th>Action</th>
                     </tr>
                     <?php
@@ -40,8 +44,12 @@
                     <tr>
                         <td><?php echo $i; ?></td>
                         <td><?php echo $user->name; ?></td>
+                        <td><?php echo $user->group; ?></td>
+                        <td><?php echo $user->email; ?></td>
+                        <td><?php echo ucfirst($user->status); ?></td>
+                        <td><?php echo date('Y-m-d', $user->created); ?></td>
                         <td>
-                            <button type="button" class="btn btn-info edit-user" 
+                            <button type="button" class="btn btn-info edit-form" 
                                     data-modal-target="#edit-user-form"
                                     data-target="<?php echo url('/admin/users/edit/') . '/' . $user->id; ?>" >
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

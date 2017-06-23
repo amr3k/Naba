@@ -41,7 +41,7 @@
                         <td><?php echo $i; ?></td>
                         <td><?php echo $ug->name; ?></td>
                         <td>
-                            <button type="button" class="btn btn-info edit-ug" 
+                            <button type="button" class="btn btn-info edit-form" 
                                     data-modal-target="#edit-ug-form"
                                     data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

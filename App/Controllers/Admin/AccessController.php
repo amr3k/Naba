@@ -21,8 +21,8 @@ class AccessController extends Controller{
         $user   =   $loginModel->user();
         $ugm    =   $this->load->model('UsersGroups');
         $ug     =   $ugm->get($user->ugid);
-        if (! in_array($currentPage, $ug->page)){
-            return $this->url->redirect('/404');
+        if (in_array($currentPage, $ug->page)){
+//            return $this->url->redirect('/404');
         }
     }
 }

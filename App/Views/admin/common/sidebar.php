@@ -15,13 +15,13 @@
             <span>Categories</span>
           </a>
         </li>
-        <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users-groups')){echo 'active';} ?>">
+        <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users-g')){echo 'active';} ?>">
           <a href="<?php echo url('/admin/users-groups') ?>">
             <i class="fa fa-user"></i>
             <span>Users-Groups</span>
           </a>
         </li>
-        <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users')){echo 'active';} ?>">
+        <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users ')){echo 'active';} ?>">
           <a href="<?php echo url('/admin/users') ?>">
             <i class="fa fa-user"></i>
             <span>Users</span>

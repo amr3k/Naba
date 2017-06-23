@@ -8,14 +8,14 @@
         <div class="modal-body">
             <form action="<?php echo $action; ?>" class="form-modal form" method="POST" enctype="multipart/form-data">
                 <div id="form-results"></div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
                   <label for="username">Username</label>
                   <input type="text" name="name" class="form-control" id="username" placeholder="Username" 
                          value="<?php echo $name; ?>">
                 </div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-6">
                     <label for="pages">Permissions</label>
-                    <select id="pages" name="pages[]" class="form-control" multiple="">
+                    <select id="pages" name="pages[]" class="form-control">
                         <?php foreach ($pages as $page){ ?>
                         <option value="<?php echo $page; ?>" <?php if (in_array($page, $selected)){echo 'selected=""'; } ?> ><?php echo $page; ?></option>
                         <?php } ?>
