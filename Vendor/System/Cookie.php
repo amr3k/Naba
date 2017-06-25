@@ -1,14 +1,17 @@
 <?php
+
 namespace System;
-class Cookie 
+
+class Cookie
 {
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     private $app;
-    
+
     /**
      * Constructor
      * 
@@ -16,9 +19,9 @@ class Cookie
      */
     public function __construct(App $app)
     {
-        $this->app  =   $app;
+        $this->app = $app;
     }
-    
+
     /**
      * Set a new value to cookie
      * 
@@ -31,7 +34,7 @@ class Cookie
     {
         setcookie($key, $value, time() + $durationInDays * 3600 * 24, '', '', FALSE, FALSE);
     }
-    
+
     /**
      * Get value from cookie by the given key
      * 
@@ -39,11 +42,11 @@ class Cookie
      * @param mixed $default
      * @return mixed
      */
-    public function get($key, $default  =   NULL)
+    public function get($key, $default = NULL)
     {
         return array_get($_COOKIE, $key, $default);
     }
-    
+
     /**
      * Determine if the cookie has the given key
      * 
@@ -54,7 +57,7 @@ class Cookie
     {
         return array_key_exists($key, $_COOKIE);
     }
-    
+
     /**
      * Remove the given key from cookie
      * 
@@ -66,7 +69,7 @@ class Cookie
         setcookie($key, NULL, -1);
         unset($_COOKIE[$key]);
     }
-    
+
     /**
      * Get all cookies data
      * 
@@ -76,7 +79,7 @@ class Cookie
     {
         return $_COOKIE;
     }
-    
+
     /**
      * Destroy cookie
      * 
@@ -84,10 +87,11 @@ class Cookie
      */
     public function destroy()
     {
-        foreach (array_keys($this->all()) as $key){
+        foreach (array_keys($this->all()) as $key) {
             $this->remove($key);
         }
-        $_COOKIE   =   [];
+        $_COOKIE = [];
         unset($_COOKIE);
     }
+
 }

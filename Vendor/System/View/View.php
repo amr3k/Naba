@@ -1,38 +1,40 @@
 <?php
+
 namespace System\View;
 
 use System\File;
 
-class View implements ViewInterface 
+class View implements ViewInterface
 {
+
     /**
      * File object
      * 
      * @var \System\File
      */
     private $file;
-    
+
     /**
      * View path
      * 
      * @var string
      */
     private $viewPath;
-    
+
     /**
      * Passed data "variables" to the view path
      * 
      * @var array
      */
-    private $data   =   [];
-    
+    private $data = [];
+
     /**
      * The output from the view file
      * 
      * @var string
      */
     private $output;
-    
+
     /**
      * Constructor
      * 
@@ -40,13 +42,13 @@ class View implements ViewInterface
      * @param string $viewPath
      * @param array $data
      */
-    public function __construct(File $file, $viewPath, array $data  =   []) 
+    public function __construct(File $file, $viewPath, array $data = [])
     {
-        $this->file     =   $file;
+        $this->file = $file;
         $this->preparePath($viewPath);
-        $this->data     =   $data;
+        $this->data = $data;
     }
-    
+
     /**
      * Prepare view path
      * 
@@ -55,13 +57,13 @@ class View implements ViewInterface
      */
     private function preparePath($viewPath)
     {
-        $relative_path      =   'App/Views/' . $viewPath . '.php';
-        $this->viewPath =   $this->file->to($relative_path);
-        if (! $this->viewFileExists($relative_path)) {
+        $relative_path  = 'App/Views/' . $viewPath . '.php';
+        $this->viewPath = $this->file->to($relative_path);
+        if (!$this->viewFileExists($relative_path)) {
             die('<b>' . $viewPath . '</b>' . ' doesn\'t exist in Views');
         }
     }
-    
+
     /**
      * Determine if the view file exists
      * 
@@ -72,7 +74,7 @@ class View implements ViewInterface
     {
         return $this->file->exists($viewPath);
     }
-    
+
     /**
      * {@inheritDoc}
      * 
@@ -80,17 +82,17 @@ class View implements ViewInterface
      * 
      * @return string
      */
-    public function getOutput() 
+    public function getOutput()
     {
-        if (is_null($this->output)){
+        if (is_null($this->output)) {
             ob_start();
             extract($this->data);
             require $this->viewPath;
-            $this->output   = ob_get_clean();
+            $this->output = ob_get_clean();
         }
         return $this->output;
     }
-    
+
     /**
      * {@inheritDoc}
      * 
@@ -98,8 +100,9 @@ class View implements ViewInterface
      * 
      * @return string
      */
-    public function __toString() 
+    public function __toString()
     {
         return $this->getOutput();
     }
+
 }

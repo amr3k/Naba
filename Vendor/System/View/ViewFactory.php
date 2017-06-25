@@ -1,27 +1,29 @@
 <?php
+
 namespace System\View;
 
 use System\App;
 
-class ViewFactory 
+class ViewFactory
 {
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     private $app;
-    
+
     /**
      * Constructor
      * 
      * @param App $app
      */
-    public function __construct(App $app) 
+    public function __construct(App $app)
     {
-        $this->app  =   $app;
+        $this->app = $app;
     }
-    
+
     /**
      * Render the given view path with the passed variables and generate new
      * 
@@ -29,8 +31,9 @@ class ViewFactory
      * @param array $data
      * @return \System\View\ViewInterface
      */
-    public function render($viewPath, array $data   =   [])
+    public function render($viewPath, array $data = [])
     {
         return new View($this->app->file, $viewPath, $data);
     }
+
 }

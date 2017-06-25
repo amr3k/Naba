@@ -1,24 +1,26 @@
 <?php
+
 namespace System;
 
 //use Closure;
 
 class App
 {
+
     /**
      * Container
      * 
      * @var array 
      */
-    private $container  =   [];
-    
+    private $container = [];
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     private static $instance;
-    
+
     /**
      * Constructor
      * 
@@ -30,16 +32,17 @@ class App
         $this->registerClasses();
         $this->loadHelpers();
     }
-    
+
     /**
      * Register classes in SPL auto load register
      * 
      * @return void
      */
-    private function registerClasses(){
-        spl_autoload_register([$this,'load']);
+    private function registerClasses()
+    {
+        spl_autoload_register([$this, 'load']);
     }
-    
+
     /**
      * Get application instance
      * 
@@ -48,13 +51,12 @@ class App
      */
     public static function getInstance($file = null)
     {
-        if (is_null(static::$instance))
-        {
-            static::$instance   =   new static($file);
+        if (is_null(static::$instance)) {
+            static::$instance = new static($file);
         }
         return static::$instance;
     }
-    
+
     /**
      * Run the application
      * 
@@ -65,39 +67,41 @@ class App
         $this->session->start();
         $this->request->prepareUrl();
         $this->file->call('App/index.php');
-        list($controller, $method, $arguments)  =   $this->route->getProperRoute();
-        $output =   (string) $this->load->action($controller, $method, $arguments);
+        list($controller, $method, $arguments) = $this->route->getProperRoute();
+        $output = (string) $this->load->action($controller, $method, $arguments);
         $this->response->setOutput($output);
         $this->response->send();
     }
-    
+
     /**
      * Load class through autoloading
      * 
      * @param type $class
      * @return void
      */
-    public function load($class){
-        if (strpos($class, 'App') === 0){
-            $file   = $class . '.php';
-        }else {
-            $file   = 'Vendor/' . $class . '.php';
+    public function load($class)
+    {
+        if (strpos($class, 'App') === 0) {
+            $file = $class . '.php';
+        } else {
+            $file = 'Vendor/' . $class . '.php';
         }
-        if ($this->file->exists($file)){
+        if ($this->file->exists($file)) {
             $this->file->call($file);
         }
     }
-    
+
     /**
      * Get shared value dynamically
      * 
      * @param string $key
      * @return mixed
      */
-    public function __get($key) {
+    public function __get($key)
+    {
         return $this->get($key);
     }
-    
+
     /**
      * Get shared value
      * 
@@ -106,16 +110,16 @@ class App
      */
     public function get($key)
     {
-        if (! $this->isSharing($key)){
-            if ($this->isCoreAlias($key)){
+        if (!$this->isSharing($key)) {
+            if ($this->isCoreAlias($key)) {
                 $this->share($key, $this->createNewCoreObject($key));
             } else {
-                die('<b>'.$key . '</b>'. 'is not found in app container');
+                die('<b>' . $key . '</b>' . 'is not found in app container');
             }
         }
         return $this->container[$key];
     }
-    
+
     /**
      * Share the given key/value through Application
      * 
@@ -125,12 +129,12 @@ class App
      */
     public function share($key, $value)
     {
-        if ($value instanceof \Closure){
-            $value  = call_user_func($value, $this);
+        if ($value instanceof \Closure) {
+            $value = call_user_func($value, $this);
         }
-        $this->container[$key]  =   $value;
+        $this->container[$key] = $value;
     }
-    
+
     /**
      * Determine if the given key is shared through Application
      * 
@@ -141,7 +145,7 @@ class App
     {
         return isset($this->container[$key]);
     }
-    
+
     /**
      * Determine if the given key is an alias to core class
      * 
@@ -150,9 +154,10 @@ class App
      */
     private function isCoreAlias($alias)
     {
-        $coreClasses    = $this->coreClasses();
+        $coreClasses = $this->coreClasses();
         return isset($coreClasses[$alias]);
     }
+
     /**
      * Create new object for the core class based on the given alias
      * 
@@ -161,11 +166,11 @@ class App
      */
     private function createNewCoreObject($alias)
     {
-        $coreClasses    =   $this->coreClasses();
-        $object     =   $coreClasses[$alias];
+        $coreClasses = $this->coreClasses();
+        $object      = $coreClasses[$alias];
         return new $object($this);
     }
-    
+
     /**
      * Get all core classes with its aliases
      * 
@@ -174,21 +179,21 @@ class App
     private function coreClasses()
     {
         return [
-            'request'       =>  'System\\Http\\Request',
-            'response'      =>  'System\\Http\\Response',
+            'request'   => 'System\\Http\\Request',
+            'response'  => 'System\\Http\\Response',
 //            'upload'        =>  'System\\Http\\UploadedFiles',
-            'route'         =>  'System\\Route',
-            'load'          =>  'System\\Loader',
-            'session'       =>  'System\\Session',
-            'cookie'        =>  'System\\Cookie',
-            'html'          =>  'System\\Html',
-            'db'            =>  'System\\Database',
-            'view'          =>  'System\\View\\ViewFactory',
-            'url'           =>  'System\\Url',
-            'validator'     =>  'System\\Validation',
+            'route'     => 'System\\Route',
+            'load'      => 'System\\Loader',
+            'session'   => 'System\\Session',
+            'cookie'    => 'System\\Cookie',
+            'html'      => 'System\\Html',
+            'db'        => 'System\\Database',
+            'view'      => 'System\\View\\ViewFactory',
+            'url'       => 'System\\Url',
+            'validator' => 'System\\Validation',
         ];
     }
-    
+
     /**
      * Load helpers file
      * 
@@ -198,16 +203,5 @@ class App
     {
         $this->file->call('Vendor/Helpers.php');
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
