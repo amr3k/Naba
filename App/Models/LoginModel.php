@@ -1,23 +1,25 @@
 <?php
+
 namespace App\Models;
 
 use System\Model;
 
 class LoginModel extends Model
 {
+
     /**
      * Table name
      * @var string
      */
-    protected $table    =   'u';
-    
+    protected $table = 'u';
+
     /**
      * Logged in user info
      * 
      * @var \stdClass
      */
     protected $user;
-    
+
     /**
      * Get logged in user data
      * 
@@ -27,7 +29,7 @@ class LoginModel extends Model
     {
         return $this->user;
     }
-    
+
     /**
      * Determine if the given login data is valid
      * 
@@ -37,14 +39,14 @@ class LoginModel extends Model
      */
     public function isValidLogin($email, $pass)
     {
-        $user   = $this->db->where('email = ?', $email)->fetch($this->table);
-        if (! $user){
+        $user = $this->db->where('email = ?', $email)->fetch($this->table);
+        if (!$user) {
             return FALSE;
         }
-        $this->user =   $user;
+        $this->user = $user;
         return password_verify($pass, $user->pass);
     }
-    
+
     /**
      * Determine if the user is logged in
      * 
@@ -52,27 +54,19 @@ class LoginModel extends Model
      */
     public function isLogged()
     {
-        if ($this->app->cookie->has('login')){
-            $code   = $this->app->cookie->get('login');
-        } elseif($this->app->session->has('login')){
-            $code   = $this->app->session->get('login');
+        if ($this->app->cookie->has('login')) {
+            $code = $this->app->cookie->get('login');
+        } elseif ($this->app->session->has('login')) {
+            $code = $this->app->session->get('login');
         } else {
-            $code   =   NULL;
+            $code = NULL;
         }
-        $user   = $this->db->where('code = ?', $code)->fetch($this->table);
-        if (! $user){
+        $user = $this->db->where('code = ?', $code)->fetch($this->table);
+        if (!$user) {
             return FALSE;
         }
-        $this->user =   $user;
+        $this->user = $user;
         return TRUE;
     }
+
 }
-
-
-
-
-
-
-
-
-

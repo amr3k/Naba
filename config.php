@@ -1,7 +1,8 @@
 <?php
+
 return [
-    'server'    =>  'localhost',
-    'dbname'    =>  'blog',
-    'user'      =>  'root',
-    'pass'      =>  ''
+    'server' => 'localhost',
+    'dbname' => 'blog',
+    'user'   => 'root',
+    'pass'   => ''
 ];

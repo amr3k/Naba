@@ -1,15 +1,17 @@
 <?php
+
 namespace System;
 
-class Url 
+class Url
 {
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     protected $app;
-    
+
     /**
      * Constructor
      * 
@@ -17,9 +19,9 @@ class Url
      */
     public function __construct(App $app)
     {
-        $this->app  =   $app;
+        $this->app = $app;
     }
-    
+
     /**
      * Get the full link based on the given path
      * 
@@ -30,7 +32,7 @@ class Url
     {
         return $this->app->request->baseUrl() . trim($path, '/');
     }
-    
+
     /**
      * Redirect to the given path
      * 
@@ -42,4 +44,5 @@ class Url
         header('location:' . $this->link($path));
         exit;
     }
+
 }
