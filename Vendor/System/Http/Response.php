@@ -1,41 +1,43 @@
 <?php
+
 namespace System\Http;
 
 use System\App;
 
-class Response 
+class Response
 {
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     private $app;
-    
+
     /**
      * Headers container
      * 
      * @var array
      */
-    private $headers    =   [];
-    
+    private $headers = [];
+
     /**
      * Content
      * 
      * @var string
      */
-    private $content    =   '';
-    
+    private $content = '';
+
     /**
      * Constructor
      * 
      * @param App $app
      */
-    public function __construct(App $app) 
+    public function __construct(App $app)
     {
-        $this->app  =   $app;
+        $this->app = $app;
     }
-    
+
     /**
      * Set the response output content
      * 
@@ -44,9 +46,9 @@ class Response
      */
     public function setOutput($content)
     {
-        $this->content  =   $content;
+        $this->content = $content;
     }
-    
+
     /**
      * Set the response header
      * 
@@ -56,9 +58,9 @@ class Response
      */
     public function setHeader($header, $value)
     {
-        $this->headers[$header] =   $value;
+        $this->headers[$header] = $value;
     }
-    
+
     /**
      * Send the response headers and content
      * 
@@ -69,7 +71,7 @@ class Response
         $this->sendHeaders();
         $this->sendOutput();
     }
-    
+
     /**
      * Send the response output
      * 
@@ -77,11 +79,11 @@ class Response
      */
     private function sendHeaders()
     {
-        foreach ($this->headers as $header => $value){
+        foreach ($this->headers as $header => $value) {
             header($header . ':' . $value);
         }
     }
-    
+
     /**
      * Send the response output
      * 
@@ -91,4 +93,5 @@ class Response
     {
         echo $this->content;
     }
+
 }

@@ -1,21 +1,22 @@
 <?php
+
 // Whitelist routes:
 use System\App;
 
-$app    = App::getInstance();
+$app = App::getInstance();
 
 // Initialising Middlwares
-if (strpos($app->request->url(), '/admin') === 0){
+if (strpos($app->request->url(), '/admin') === 0) {
     $app->load->controller('Admin/Access')->index();
 }
 
 // Share admin layout
-$app->share('adminLayout', function ($app){
+$app->share('adminLayout', function ($app) {
     return $app->load->controller('Admin/Common/Layout');
 });
 
 // Home
-$app->route->add('/','Home');
+$app->route->add('/', 'Home');
 $app->route->add('/posts/:text/:id', 'Posts/Post');
 
 // Admin Login

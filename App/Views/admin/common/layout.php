@@ -1,4 +1,5 @@
 <?php
+
 /////////////////////////////////
 echo $header;
 echo $sidebar;

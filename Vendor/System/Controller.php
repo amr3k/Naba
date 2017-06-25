@@ -1,21 +1,24 @@
 <?php
+
 namespace System;
 
 abstract class Controller
 {
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     protected $app;
-    
+
     /**
      * Errors container
      * 
      * @var array
      */
-    protected $errors   =   [];
+    protected $errors = [];
+
     /**
      * Constructor
      * 
@@ -25,7 +28,7 @@ abstract class Controller
     {
         $this->app = $app;
     }
-    
+
     /**
      * Encode the given value to JSON
      * 
@@ -43,7 +46,9 @@ abstract class Controller
      * @param string $key
      * @return mixed
      */
-    public function __get($key) {
+    public function __get($key)
+    {
         return $this->app->get($key);
     }
+
 }

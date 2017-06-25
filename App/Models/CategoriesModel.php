@@ -1,16 +1,18 @@
 <?php
+
 namespace App\Models;
 
 use System\Model;
 
 class CategoriesModel extends Model
 {
+
     /**
      * Table name
      * @var string
      */
-    protected $table    =   'categories';
-    
+    protected $table = 'categories';
+
     /**
      * Create a new category record
      * 
@@ -20,7 +22,7 @@ class CategoriesModel extends Model
     {
         $this->db->data('name', $this->request->post('name'))->data('status', $this->request->post('status'))->insert($this->table);
     }
-    
+
     /**
      * Update an existing Category
      * 
@@ -35,15 +37,5 @@ class CategoriesModel extends Model
                 ->where('id = ?', $id)
                 ->update($this->table);
     }
-    
+
 }
-
-
-
-
-
-
-
-
-
-

@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use System\Controller;
 
-class LogoutController extends Controller{
-    
+class LogoutController extends Controller
+{
+
     /**
      * Log the user out
      * 
@@ -16,7 +18,5 @@ class LogoutController extends Controller{
         $this->app->cookie->destroy();
         return $this->url->redirect('/admin/login');
     }
+
 }
-
-
-
