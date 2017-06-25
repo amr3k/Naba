@@ -66,7 +66,7 @@
                     type: 'POST',
                     data: sentData,
                     dataType: 'json',
-                    success: function(r){
+                    success: function (r) {
                         $('body').append(r.name);
                     },
                     cache: false,

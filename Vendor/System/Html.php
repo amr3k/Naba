@@ -1,36 +1,38 @@
 <?php
+
 namespace System;
 
-class Html {
-    
+class Html
+{
+
     /**
      * Application object
      * 
      * @var \System\App
      */
     protected $app;
-    
+
     /**
      * HTML title
      * 
      * @var string
      */
     private $title;
-    
+
     /**
      * Description
      * 
      * @var string
      */
     private $description;
-    
+
     /**
      * Keywords
      * 
      * @var string
      */
     private $keywords;
-    
+
     /**
      * Constructor
      * 
@@ -40,7 +42,7 @@ class Html {
     {
         $this->app = $app;
     }
-    
+
     /**
      * Set the title
      * 
@@ -49,9 +51,9 @@ class Html {
      */
     public function setTitle($title)
     {
-        $this->title    =   $title;
+        $this->title = $title;
     }
-    
+
     /**
      * Get the title
      * 
@@ -61,7 +63,7 @@ class Html {
     {
         return $this->title;
     }
-    
+
     /**
      * Set the description
      * 
@@ -70,9 +72,9 @@ class Html {
      */
     public function setDescription($description)
     {
-        $this->description  =   $description;
+        $this->description = $description;
     }
-    
+
     /**
      * Get the description
      * 
@@ -82,7 +84,7 @@ class Html {
     {
         return $this->description;
     }
-    
+
     /**
      * Set the keywords
      * 
@@ -91,9 +93,9 @@ class Html {
      */
     public function setKeywords($keywords)
     {
-        $this->keywords =   $keywords;
+        $this->keywords = $keywords;
     }
-    
+
     /**
      * Get the keywords
      * 
@@ -103,4 +105,5 @@ class Html {
     {
         return $this->keywords;
     }
+
 }

@@ -1,10 +1,10 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.3
+        <b>Version</b> 2.3.3
     </div>
     <strong>Copyright &copy; 2016 <a href="../http://www.aymanelash.com">Ayman Elash</a>.</strong> All rights
     reserved.
-  </footer>
+</footer>
 </div>
 <!-- ./wrapper -->
 
@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo assets('admin/bootstrap/js/bootstrap.min.js'); ?>"></script>
@@ -48,54 +48,54 @@
 <script>
     // Displaying a form to add a new item
     $('.popup').on('click', function () {
-        btn =   $(this);
-        url =   btn.data('target');
-        modalTarget =   btn.data('modal-target');
-        if ($(modalTarget).length > 0){
+        btn = $(this);
+        url = btn.data('target');
+        modalTarget = btn.data('modal-target');
+        if ($(modalTarget).length > 0) {
+            $(modalTarget).remove();
             $(modalTarget).modal('show');
-        }else {
-            $.ajax({
-                url : url,
-                type : 'POST',
-                success : function (html) {
-                    $('body').append(html);
-                    $(modalTarget).modal('show');
-                }
-            });
         }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            success: function (html) {
+                $('body').append(html);
+                $(modalTarget).modal('show');
+            }
+        });
     });
-    
+
     // Displaying a form to edit an existing item
     $('.edit-form').on('click', function () {
-    btn =   $(this);
-    url =   btn.data('target');
-    modalTarget =   btn.data('modal-target');
-    if ($(modalTarget).length > 0){
-        $(modalTarget).remove();
-        $(modalTarget).modal('show');
-    }
-    $.ajax({
-        url : url,
-        type : 'POST',
-        success : function (html) {
-            $('body').append(html);
+        btn = $(this);
+        url = btn.data('target');
+        modalTarget = btn.data('modal-target');
+        if ($(modalTarget).length > 0) {
+            $(modalTarget).remove();
             $(modalTarget).modal('show');
         }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            success: function (html) {
+                $('body').append(html);
+                $(modalTarget).modal('show');
+            }
+        });
     });
-    });
-    
+
     // Adding a new item
     $(document).on('click', '#submit-btn', function (e) {
-        btn     =   $(this);
+        btn = $(this);
         e.preventDefault();
-        form    =   btn.parents('.form');
+        form = btn.parents('.form');
         url = form.attr('action');
-        data    =   new FormData(form[0]);
-        formResults =   form.find('#form-results');
+        data = new FormData(form[0]);
+        formResults = form.find('#form-results');
         $.ajax({
-            url:    url,
-            data:   data,
-            type:   'POST',
+            url: url,
+            data: data,
+            type: 'POST',
             dataType: 'json',
             beforeSend: function () {
                 $('.cancel').hide();
@@ -103,13 +103,13 @@
             },
             success: function (r) {
                 $('.cancel').show();
-                if (r.errors){
+                if (r.errors) {
                     formResults.removeClass().addClass('alert alert-danger').html(r.errors);
-                } else if (r.success){
+                } else if (r.success) {
                     formResults.removeClass().addClass('alert alert-success').html(r.success);
                 }
-                if (r.redirect){
-                    window.location.href    =   r.redirect;
+                if (r.redirect) {
+                    window.location.href = r.redirect;
                 }
             },
             cache: false,
@@ -117,19 +117,19 @@
             contentType: false
         });
     });
-    
+
     // Editing an existing item
     $(document).on('click', '.save', function (e) {
-        btn     =   $(this);
+        btn = $(this);
         e.preventDefault();
-        form    =   btn.parents('.form');
+        form = btn.parents('.form');
         url = form.attr('action');
-        data    =   new FormData(form[0]);
-        formResults =   form.find('#form-results');
+        data = new FormData(form[0]);
+        formResults = form.find('#form-results');
         $.ajax({
-            url:    url,
-            data:   data,
-            type:   'POST',
+            url: url,
+            data: data,
+            type: 'POST',
             dataType: 'json',
             beforeSend: function () {
                 $('.cancel').hide();
@@ -137,13 +137,13 @@
             },
             success: function (r) {
                 $('.cancel').show();
-                if (r.errors){
+                if (r.errors) {
                     formResults.removeClass().addClass('alert alert-danger').html(r.errors);
-                } else if (r.success){
+                } else if (r.success) {
                     formResults.removeClass().addClass('alert alert-success').html(r.success);
                 }
-                if (r.redirect){
-                    window.location.href    =   r.redirect;
+                if (r.redirect) {
+                    window.location.href = r.redirect;
                 }
             },
             cache: false,
@@ -152,23 +152,23 @@
         });
     });
     // Deleting item
-    $('.delete').on('click', function(e){
+    $('.delete').on('click', function (e) {
         e.preventDefault();
         btn = $(this);
         c = confirm('Are you sure?');
-        if (c === true){
+        if (c === true) {
             $.ajax({
                 url: btn.data('target'),
                 type: 'POST',
                 dataType: 'json',
-                beforeSend: function(){
-                    
+                beforeSend: function () {
+
                 },
-                success: function(r){
-                    window.location.href    =   r.redirect;
+                success: function (r) {
+                    window.location.href = r.redirect;
                 }
             });
-        }else{
+        } else {
             return false;
         }
     });
