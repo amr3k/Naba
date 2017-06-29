@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.3.3
     </div>
-    <strong>Copyright &copy; 2016 <a href="../http://www.aymanelash.com">Ayman Elash</a>.</strong> All rights
+    <strong>Copyright &copy; 2016 <a href="http://www.aymanelash.com" target="_blank">Ayman Elash</a>.</strong> All rights
     reserved.
 </footer>
 </div>
@@ -18,6 +18,8 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo assets('admin/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<!-- CKEditor -->
+<script src="<?php echo assets('/admin/ckeditor/ckeditor.js'); ?>"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<?php echo assets('admin/plugins/morris/morris.min.js'); ?>"></script>
@@ -91,6 +93,12 @@
         form = btn.parents('.form');
         url = form.attr('action');
         data = new FormData(form[0]);
+        if (form.find('#editor').length) {
+            // If there's an element with the ID of 'editor' ..
+            // Add the value for it from the ckeditor
+            form.find('#editor').val(CKEDITOR.instances.editor.getData());
+            $('iframe').attr('name', 'text');
+        }
         formResults = form.find('#form-results');
         $.ajax({
             url: url,
@@ -126,6 +134,12 @@
         url = form.attr('action');
         data = new FormData(form[0]);
         formResults = form.find('#form-results');
+        if (form.find('#editor').length) {
+            // If there's an element with the ID of 'editor' ..
+            // Add the value for it from the ckeditor
+            form.find('#editor').val(CKEDITOR.instances.editor.getData());
+            $('iframe').attr('name', 'text');
+        }
         $.ajax({
             url: url,
             data: data,
