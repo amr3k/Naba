@@ -15,24 +15,30 @@ class LoginModel extends Model
 
     /**
      * Logged in user info
-     * 
+     *
      * @var \stdClass
      */
     protected $user;
 
     /**
      * Get logged in user data
-     * 
+     *
      * @return \stdClass
      */
     public function user()
     {
-        return $this->user;
+        if ($this->user) {
+            return $this->user;
+        }
+        $code       = $this->app->session->get('login');
+        $user       = $this->db->where('code = ?', $code)->fetch($this->table);
+        $this->user = $user;
+        return $user;
     }
 
     /**
      * Determine if the given login data is valid
-     * 
+     *
      * @param string $email
      * @param string $pass
      * @return bool
@@ -49,7 +55,7 @@ class LoginModel extends Model
 
     /**
      * Determine if the user is logged in
-     * 
+     *
      * @return bool
      */
     public function isLogged()

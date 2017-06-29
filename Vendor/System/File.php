@@ -74,6 +74,17 @@ class File
     }
 
     /**
+     * Generate full path to the given file in Avatar folder
+     *
+     * @param string $path
+     * @return string
+     */
+    public function toPostsImg($path)
+    {
+        return $this->to('Public/uploads/img/posts' . '/' . $path);
+    }
+
+    /**
      * Generate full path to the given file
      *
      * @param string $path
