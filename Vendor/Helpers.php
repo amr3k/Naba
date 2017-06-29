@@ -80,6 +80,22 @@ if (!function_exists('assets')) {
     }
 
 }
+
+if (!function_exists('avatar')) {
+
+    /**
+     * Generate full path for the given image file in Avatar directory
+     *
+     * @param string $img
+     * @return string
+     */
+    function avatar($img)
+    {
+        $app = App::getInstance();
+        return $app->url->link('Public/uploads/img/avatar/' . '/' . $img);
+    }
+
+}
 if (!function_exists('url')) {
 
     /**

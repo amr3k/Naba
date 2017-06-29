@@ -84,6 +84,11 @@ class Validation
             return $this;
         }
         $file = $this->app->request->file($inputName);
+        if (!$file->exists()) {
+            $msg = $customErrMsg ?: 'Please submit a valid image file';
+            $this->addErr($inputName, $msg);
+            return $this;
+        }
         if (!$file->isImg()) {
 //            $msg    =   $customErrMsg ? :   sprintf('%s Is Required', ucfirst($inputName));
             $msg = $customErrMsg ?: 'Please submit a valid image file';
@@ -148,7 +153,7 @@ class Validation
         }
         $input = $this->value($inputName);
         if (strlen($input) < $length) {
-            $msg = $customErrMsg ?: sprintf('This must be at least %d characters', $length);
+            $msg = $customErrMsg ?: sprintf('%s must be at least %d characters', $inputName, $length);
             $this->addErr($inputName, $msg);
         }
         return $this;

@@ -52,9 +52,9 @@ class UsersModel extends Model
             return;
         }
         $id       = $user->id;
-        $password = $user->pass;
-        if (!empty($this->request->post('pass'))) {
-            $password = password_hash($this->request->post('pass'), PASSWORD_DEFAULT);
+        $password = $this->request->post('pass');
+        if ($password) {
+            $this->db->data('pass', password_hash($password, PASSWORD_DEFAULT));
         }
         $img = $this->upImg();
         if ($img) {
@@ -71,7 +71,6 @@ class UsersModel extends Model
         $this->db
                 ->data('name', $this->request->post('name'))
                 ->data('email', $this->request->post('email'))
-                ->data('pass', $password)
                 ->data('ugid', $this->request->post('ugid'))
                 ->data('status', $this->request->post('status'))
                 ->where('id = ?', $id)
