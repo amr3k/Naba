@@ -9,28 +9,44 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/categories')) {
-    echo 'active';
-} ?>">
+            <li class="<?php
+            if (strstr($_SERVER['REQUEST_URI'], '/admin/categories')) {
+                echo 'active';
+            }
+            ?>">
                 <a href="<?php echo url('/admin/categories') ?>">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-server"></i>
                     <span>Categories</span>
                 </a>
             </li>
-            <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users-g')) {
-    echo 'active';
-} ?>">
+            <li class="<?php
+            if (strstr($_SERVER['REQUEST_URI'], '/admin/users-g')) {
+                echo 'active';
+            }
+            ?>">
                 <a href="<?php echo url('/admin/users-groups') ?>">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-users"></i>
                     <span>Users-Groups</span>
                 </a>
             </li>
-            <li class="<?php if (strstr($_SERVER['REQUEST_URI'], '/admin/users ')) {
-    echo 'active';
-} ?>">
+            <li class="<?php
+            if (strstr($_SERVER['REQUEST_URI'], '/admin/users ')) {
+                echo 'active';
+            }
+            ?>">
                 <a href="<?php echo url('/admin/users') ?>">
                     <i class="fa fa-user"></i>
                     <span>Users</span>
+                </a>
+            </li>
+            <li class="<?php
+            if (strstr($_SERVER['REQUEST_URI'], '/admin/posts')) {
+                echo 'active';
+            }
+            ?>">
+                <a href="<?php echo url('/admin/posts') ?>">
+                    <i class="fa fa-paper-plane-o"></i>
+                    <span>Posts</span>
                 </a>
             </li>
         </ul>

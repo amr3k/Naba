@@ -9,7 +9,7 @@ class LoginController extends Controller
 
     /**
      * Display login form
-     * 
+     *
      * @return mixed
      */
     public function index()
@@ -24,7 +24,7 @@ class LoginController extends Controller
 
     /**
      * Submit login form
-     * 
+     *
      * @return void
      */
     public function submit()
@@ -33,10 +33,11 @@ class LoginController extends Controller
             $loginModel     = $this->load->model('Login');
             $logged_in_user = $loginModel->user();
             if ($this->request->post('remember')) {
-                // Save login info in cookie
+                // Save login info in cookie and session
                 $this->cookie->set('login', $logged_in_user->code);
+                $this->session->set('login', $logged_in_user->code);
             } else {
-                // Save login info in session
+                // Save login info in session only
                 $this->session->set('login', $logged_in_user->code);
             }
             $json             = [];
@@ -52,7 +53,7 @@ class LoginController extends Controller
 
     /**
      * Validate login form
-     * 
+     *
      * @return bool
      */
     private function isValid()

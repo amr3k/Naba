@@ -142,11 +142,11 @@ class UsersController extends Controller
         } else {
             // This means that the user either changed the password or not
             // but it's no neccesserely required
-            if (!empty($this->request->post('pass'))) {
+            if ($this->request->post('pass')) {
                 $this->validator->min('pass', 8)->max('pass', 128)->match('pass', 're-pass');
             }
-            if (!empty($this->request->post('img'))) {
-                $this->validator->requiredFile('img')->img('img');
+            if ($this->request->file('img')->exists()) {
+                $this->validator->img('img');
             }
         }
         return $this->validator->pass();

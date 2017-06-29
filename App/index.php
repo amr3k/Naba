@@ -46,17 +46,17 @@ $app->route->add('/admin/users-groups/delete/:id', 'Admin/UsersGroups@delete', '
 
 // Posts
 $app->route->add('/admin/posts', 'Admin/Posts');
-$app->route->add('/admin/posts/add', 'Admin/Posts@add');
+$app->route->add('/admin/posts/add', 'Admin/Posts@add', 'POST');
 $app->route->add('/admin/posts/submit', 'Admin/Posts@submit', 'POST');
-$app->route->add('/admin/posts/edit/:id', 'Admin/Posts@edit');
+$app->route->add('/admin/posts/edit/:id', 'Admin/Posts@edit', 'POST');
 $app->route->add('/admin/posts/save/:id', 'Admin/Posts@save', 'POST');
-$app->route->add('/admin/posts/delete/:id', 'Admin/Posts@delete');
+$app->route->add('/admin/posts/delete/:id', 'Admin/Posts@delete', 'POST');
 
 // Comments
 $app->route->add('/admin/posts/:id/comments', 'Admin/Comments');
-$app->route->add('/admin/posts/:id/comments/edit', 'Admin/Comments@edit');
+$app->route->add('/admin/posts/:id/comments/edit', 'Admin/Comments@edit', 'POST');
 $app->route->add('/admin/posts/:id/comments/save', 'Admin/Comments@save', 'POST');
-$app->route->add('/admin/posts/:id/comments/delete', 'Admin/Comments@delete');
+$app->route->add('/admin/posts/:id/comments/delete', 'Admin/Comments@delete', 'POST');
 
 // Categories
 $app->route->add('/admin/categories', 'Admin/Categories');
@@ -77,11 +77,11 @@ $app->route->add('/admin/contact/send/:id', 'Admin/Contact@send', 'POST');
 
 // Ads
 $app->route->add('/admin/ads', 'Admin/Ads');
-$app->route->add('/admin/ads/add', 'Admin/Ads@add');
+$app->route->add('/admin/ads/add', 'Admin/Ads@add', 'POST');
 $app->route->add('/admin/ads/submit', 'Admin/Ads@submit', 'POST');
 $app->route->add('/admin/ads/edit/:id', 'Admin/Ads@edit', 'POST');
 $app->route->add('/admin/ads/save/:id', 'Admin/Ads@save', 'POST');
-$app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete');
+$app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete', 'POST');
 
 // Logout
 $app->route->add('/admin/logout', 'Admin/Logout');
