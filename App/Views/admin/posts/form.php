@@ -13,16 +13,9 @@
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Title">
                     </div>
-                    <div id="cke_editor"
-                         class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
                         <label for="editor">Text</label>
-                        <textarea name="text" id="editor"></textarea>
-                        <script>
-//                            if (CKEDITOR.instances.editor) {
-//                                CKEDITOR.instances.editor.destroy();
-//                            }
-                            CKEDITOR.replace('editor');
-                        </script>
+                        <textarea name="text" class="form-control" id="editor" style="resize: vertical"></textarea>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="tags">Tags (<span style="color: red">Separate with comma</span>)</label>

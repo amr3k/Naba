@@ -68,7 +68,7 @@ class File
      * @param string $path
      * @return string
      */
-    public function toAvatar($path)
+    public function toAvatar($path = null)
     {
         return $this->to('Public/uploads/img/avatar' . '/' . $path);
     }
@@ -79,9 +79,20 @@ class File
      * @param string $path
      * @return string
      */
-    public function toPostsImg($path)
+    public function toPostsImg($path = null)
     {
         return $this->to('Public/uploads/img/posts' . '/' . $path);
+    }
+
+    /**
+     * Generate full path to the given file in Avatar folder
+     *
+     * @param string $path
+     * @return string
+     */
+    public function toAdsImg($path = null)
+    {
+        return $this->to('Public/uploads/img/ads' . '/' . $path);
     }
 
     /**
