@@ -7,28 +7,42 @@ class Route
 
     /**
      * Application object
-     * 
+     *
      * @var \System\App
      */
     private $app;
 
     /**
      * Routes container
-     * 
+     *
      * @var array
      */
     public $routes = [];
 
     /**
      * not found URL
-     * 
+     *
      * @var string
      */
     private $notFound;
 
     /**
+     * Current route
+     *
+     * @var string
+     */
+    private $currentRoute;
+
+    /**
+     * Calls container
+     *
+     * @param \System\App $app
+     */
+    private $calls = [];
+
+    /**
      * Constructor
-     * 
+     *
      * @param \System\App $app
      */
     public function __construct(App $app)
@@ -38,7 +52,7 @@ class Route
 
     /**
      * Add new route
-     * 
+     *
      * @param string $url
      * @param string $action
      * @param string $requestMethod
@@ -57,7 +71,7 @@ class Route
 
     /**
      * Set not found URL
-     * 
+     *
      * @param type $url
      * @return void
      */
@@ -68,7 +82,7 @@ class Route
 
     /**
      * Get all routes
-     * 
+     *
      * @return array
      */
     public function routes()
@@ -77,8 +91,43 @@ class Route
     }
 
     /**
+     * Call the given callback before calling the main controller
+     *
+     * @param callable $callable
+     * @return $this
+     */
+    public function callFirst(callable $callable)
+    {
+        $this->calls['first'][] = $callable;
+        return $this;
+    }
+
+    /**
+     * Determine if there are any callbacks that will be called before calling
+     * the main controller
+     *
+     * @return bool
+     */
+    public function hasCallsFirst()
+    {
+        return !empty($this->calls['first']);
+    }
+
+    /**
+     * Call all callbacks that will be called before calling the main controller
+     *
+     * @return void
+     */
+    public function callFirstCalls()
+    {
+        foreach ($this->calls['first'] as $callback) {
+            call_user_func($callback, $this->app);
+        }
+    }
+
+    /**
      * Get proper route
-     * 
+     *
      * @return array
      */
     public function getProperRoute()
@@ -89,6 +138,7 @@ class Route
 
                 // Cotroller@method
                 list($controller, $method) = explode('@', $route['action']);
+                $this->currentRoute = $route['url'];
                 return [$controller, $method, $arguments];
             }
         }
@@ -97,7 +147,7 @@ class Route
 
     /**
      * Determine if the given pattern matches the current request URL
-     * 
+     *
      * @param string $pattern
      * @return bool
      */
@@ -107,9 +157,9 @@ class Route
     }
 
     /**
-     * Determine if the current request method matches 
+     * Determine if the current request method matches
      * the given route method
-     * 
+     *
      * @param string $routeMethod
      * @return bool
      */
@@ -120,7 +170,7 @@ class Route
 
     /**
      * Get Arguments from the current request URL based on the given pattern
-     * 
+     *
      * @param string $pattern
      * @return array
      */
@@ -133,7 +183,7 @@ class Route
 
     /**
      * Generate a RegEx pattern for the given URL
-     * 
+     *
      * @param string $url
      * @return string
      */
@@ -147,7 +197,7 @@ class Route
 
     /**
      * Get the proper action
-     * 
+     *
      * @param string $action
      * @return string
      */
@@ -155,6 +205,16 @@ class Route
     {
         $action = str_replace('/', '\\', $action);
         return strpos($action, '@') !== FALSE ? $action : $action . '@index';
+    }
+
+    /**
+     * Get current route URL
+     *
+     * @return string
+     */
+    public function getCurrentRoute()
+    {
+        return $this->currentRoute;
     }
 
 }

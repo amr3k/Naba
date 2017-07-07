@@ -141,4 +141,71 @@ class PostsModel extends Model
                         ->fetchAll();
     }
 
+    /**
+     * Get Post With its comments
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function getPostWithComments($id)
+    {
+        $post = $this->select('p.*', 'c.name AS `category`', 'u.name', 'u.img AS userImage')
+                ->from('posts p')
+                ->join('LEFT JOIN categories c ON p.category_id=c.id')
+                ->join('LEFT JOIN u users ON p.uid=user.id')
+                ->where('p.id=? AND p.status=?', $id, 'enabled')
+                ->fetch();
+
+        if (!$post) {
+            return null;
+        }
+        // we will get the post comments
+        // and each comment we will get for him the user name
+        // who created that comment
+        $post->comments = $this->select('c.*', 'u.name', 'u.img AS userImage')
+                ->from('comments c')
+                ->join('LEFT JOIN u users ON c.uid=user.id')
+                ->where('c.post_id=?', $id)
+                ->fetchAll();
+
+        return $post;
+    }
+
+    /**
+     * Get Latest Posts
+     *
+     * @return array
+     */
+    public function latest()
+    {
+        return $this->db
+                        ->select('posts.*', 'categories.name AS category, u.name AS `author`')
+                        ->select('(SELECT COUNT(comments.id) FROM comments WHERE comments.post_id = posts.id) AS total_comments')
+                        ->from('posts')
+                        ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                        ->joins('LEFT JOIN u ON posts.uid = u.id')
+                        ->where('posts.status=?', 'enabled')
+                        ->orderBy('posts.id', 'DESC')
+                        ->fetchAll();
+    }
+
+    /**
+     * Add New Comment to the given post
+     *
+     * @param int $postId
+     * @param string $comment
+     * @param int $userId
+     * @return void
+     */
+    public function addNewComment($postId, $comment, $userId)
+    {
+        $this->db
+                ->data('uid', $userId)
+                ->data('post_id', $postId)
+                ->data('comment', $comment)
+                ->data('created', time())
+                ->data('status', 'enabled')
+                ->insert('comments');
+    }
+
 }

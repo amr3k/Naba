@@ -18,8 +18,6 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo assets('admin/bootstrap/js/bootstrap.min.js'); ?>"></script>
-<!-- CKEditor -->
-<script src="<?php echo assets('/admin/ckeditor/ckeditor.js'); ?>"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<?php echo assets('admin/plugins/morris/morris.min.js'); ?>"></script>
@@ -48,6 +46,14 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo assets('admin/dist/js/demo.js'); ?>"></script>
 <script>
+    // Sidebar links
+    var currentUrl = window.location.href;
+    var segment = currentUrl.split('/').pop();
+    $('#sidebar-' + segment + '-link').addClass('active');
+
+// I'm not gonna use some fu**ing text editors for now , I don't consider time as a luxary
+// That thing took a lot of time & I couldn't eventually make it usable
+
     // Displaying a form to add a new item
     $('.popup').on('click', function () {
         btn = $(this);
@@ -93,12 +99,6 @@
         form = btn.parents('.form');
         url = form.attr('action');
         data = new FormData(form[0]);
-        if (form.find('#editor').length) {
-            // If there's an element with the ID of 'editor' ..
-            // Add the value for it from the ckeditor
-            form.find('#editor').val(CKEDITOR.instances.editor.getData());
-            $('iframe').attr('name', 'text');
-        }
         formResults = form.find('#form-results');
         $.ajax({
             url: url,
@@ -134,12 +134,6 @@
         url = form.attr('action');
         data = new FormData(form[0]);
         formResults = form.find('#form-results');
-        if (form.find('#editor').length) {
-            // If there's an element with the ID of 'editor' ..
-            // Add the value for it from the ckeditor
-            form.find('#editor').val(CKEDITOR.instances.editor.getData());
-            $('iframe').attr('name', 'text');
-        }
         $.ajax({
             url: url,
             data: data,
@@ -169,7 +163,7 @@
     $('.delete').on('click', function (e) {
         e.preventDefault();
         btn = $(this);
-        c = confirm('Are you sure?');
+        c = confirm('Are you sure? This action cannot be undone ! Think twice before doing it');
         if (c === true) {
             $.ajax({
                 url: btn.data('target'),

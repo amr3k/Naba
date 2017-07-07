@@ -56,7 +56,14 @@ class Request
      */
     public function get($key, $default = NULL)
     {
-        return array_get($_GET, $key, $default);
+        // just remove any white space if there is a value
+        $value = array_get($_GET, $key, $default);
+        if (is_array($value)) {
+            $value = array_filter($value);
+        } else {
+            $value = trim($value);
+        }
+        return $value;
     }
 
     /**
@@ -68,7 +75,26 @@ class Request
      */
     public function post($key, $default = NULL)
     {
-        return array_get($_POST, $key, $default);
+        // just remove any white space if there is a value
+        $value = array_get($_POST, $key, $default);
+        if (is_array($value)) {
+            $value = array_filter($value);
+        } else {
+            $value = trim($value);
+        }
+        return $value;
+    }
+
+    /**
+     * Set Value To _POST For the given key
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return mixed
+     */
+    public function setPost($key, $value)
+    {
+        $_POST[$key] = $value;
     }
 
     /**
@@ -97,6 +123,16 @@ class Request
     public function server($key, $default = NULL)
     {
         return array_get($_SERVER, $key, $default);
+    }
+
+    /**
+     * Get the referer link
+     *
+     * @return string
+     */
+    public function referer()
+    {
+        return $this->server('HTTP_REFERER');
     }
 
     /**

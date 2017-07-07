@@ -91,7 +91,10 @@ class UsersGroupsController extends Controller
                 $json['errors'] = 'The new name already exists';
             } else {
                 $ugModel->update($id);
-                $json['success']  = '<b>' . $ugOldName . '</b> has been successfully changed to <b>' . $ugNewName . '</b>';
+                $json['success'] = '<b>' . $ugOldName . '</b> has been successfully changed to <b>' . $ugNewName . '</b>';
+                if ($ugNewName === $ugOldName) {
+                    $json['success'] = '<b>' . $ugOldName . '</b> has been successfully updated';
+                }
                 $json['redirect'] = $this->url->link('/admin/users-groups');
             }
         } else {
@@ -125,6 +128,7 @@ class UsersGroupsController extends Controller
     private function isValid()
     {
         $this->validator->required('name', 'Please set the Users-Group name');
+        $this->validator->required('pages', 'Please set the Users-Group permissions');
         return $this->validator->pass();
     }
 
