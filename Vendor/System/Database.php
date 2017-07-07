@@ -10,91 +10,105 @@ class Database
 
     /**
      * Application object
-     * 
+     *
      * @var \System\App
      */
     private $app;
 
     /**
      * PDO connection
-     * 
+     *
      * @var \PDO
      */
     private static $con;
 
     /**
      * Table name
-     * 
+     *
      * @var string
      */
     private $table;
 
     /**
      * Data container
-     * 
+     *
      * @var array
      */
     private $data = [];
 
     /**
      * Bindings container
-     * 
+     *
      * @var array
      */
     private $bindings = [];
 
     /**
      * Last inserted ID
-     * 
+     *
      * @var int
      */
     private $lastId;
 
     /**
      * Conditions container used in SQL commands
-     * 
+     *
      * @var array
      */
     private $where = [];
 
     /**
+     * Having
+     *
+     * @var array
+     */
+    private $having = [];
+
+    /**
+     * Group by
+     *
+     * @var array
+     */
+    private $groupBy = [];
+
+    /**
      * Selects container
-     * 
+     *
      * @var array
      */
     private $selects = [];
 
     /**
      * Limit indicator
-     * 
+     *
      * @var int
      */
     private $limit;
 
     /**
      * Offset
-     * 
+     *
      * @var int
      */
     private $offset;
 
     /**
      * Total Rows
-     * 
+     *
      * @var int
      */
     private $rows = 0;
 
     /**
      * Joins container
-     * 
+     *
      * @var array
      */
     private $joins = [];
 
     /**
      * Order by
-     * 
+     *
      * @var array
      */
     private $orderBy = [];
@@ -113,7 +127,7 @@ class Database
 
     /**
      * Determine if there is any connection to database
-     * 
+     *
      * @return bool
      */
     private function isConnected()
@@ -123,7 +137,7 @@ class Database
 
     /**
      * Connect to database
-     * 
+     *
      * @return void
      */
     private function connect()
@@ -142,7 +156,7 @@ class Database
 
     /**
      * Get database connection object : PDO object
-     * 
+     *
      * @return PDO
      */
     public function connection()
@@ -152,7 +166,7 @@ class Database
 
     /**
      * Set the table name
-     * 
+     *
      * @param string $table
      * @return $this
      */
@@ -164,7 +178,7 @@ class Database
 
     /**
      * Set the table name
-     * 
+     *
      * @param string $table
      * @return $this
      */
@@ -175,7 +189,7 @@ class Database
 
     /**
      * Add a new Where clause
-     * 
+     *
      * @param string $bindings
      * @return $this
      */
@@ -188,8 +202,34 @@ class Database
     }
 
     /**
+     * Add a new having clause
+     *
+     * @param string $bindings
+     * @return $this
+     */
+    public function having(...$bindings)
+    {
+        $sql            = array_shift($bindings);
+        $this->addToBindings($bindings);
+        $this->having[] = $sql;
+        return $this;
+    }
+
+    /**
+     * Group By clause
+     *
+     * @param array $arguments
+     * @return $this
+     */
+    public function groupBy(...$arguments)
+    {
+        $this->groupBy = $arguments;
+        return $this;
+    }
+
+    /**
      * Set the data that will be stored in database table
-     * 
+     *
      * @param mixed $key
      * @param mixed $value
      * @return $this
@@ -208,7 +248,7 @@ class Database
 
     /**
      * Add the given value to bindings
-     * 
+     *
      * @param mixed $value
      * @return voic
      */
@@ -223,7 +263,7 @@ class Database
 
     /**
      * Get the last inserted ID
-     * 
+     *
      * @return int
      */
     public function lastId()
@@ -233,7 +273,7 @@ class Database
 
     /**
      * Set fields for insert and update
-     * 
+     *
      * @return string
      */
     private function setFields()
@@ -248,7 +288,7 @@ class Database
 
     /**
      * Set select clause
-     * 
+     *
      * @return $this
      */
     public function select(...$selects)
@@ -259,7 +299,7 @@ class Database
 
     /**
      * Set the join clause
-     * 
+     *
      * @param string $join
      * @return $this
      */
@@ -271,7 +311,7 @@ class Database
 
     /**
      * Set limit and offset
-     * 
+     *
      * @param int $limit
      * @param int $offset
      * @return $this
@@ -285,7 +325,7 @@ class Database
 
     /**
      * Set ORDER BY clause
-     * 
+     *
      * @param string $orderBy
      * @param string $sort
      * @return $this
@@ -298,7 +338,7 @@ class Database
 
     /**
      * Prepare fetch statement
-     * 
+     *
      * @return string
      */
     private function fetchStatement()
@@ -315,8 +355,7 @@ class Database
             $sql .= implode(' ', $this->joins);
         }
         if ($this->where) {
-
-            $sql .= ' WHERE ' . implode(' ', $this->where);
+            $sql .= ' WHERE ' . implode(' ', $this->where) . ' ';
         }
         if ($this->limit) {
             $sql .= ' LIMIT ' . $this->limit;
@@ -324,15 +363,21 @@ class Database
         if ($this->offset) {
             $sql .= ' OFFSET ' . $this->offset;
         }
+        if ($this->having) {
+            $sql .= ' HAVING ' . implode(' ', $this->having) . ' ';
+        }
         if ($this->orderBy) {
             $sql .= ' ORDER BY ' . implode(' ', $this->orderBy);
+        }
+        if ($this->groupBy) {
+            $sql .= ' GROUP BY ' . implode(' ', $this->groupBy);
         }
         return $sql;
     }
 
     /**
-     * Execute the given SQL statement 
-     * 
+     * Execute the given SQL statement
+     *
      * @param string $bindings
      * @return \PDOStatement
      */
@@ -359,7 +404,7 @@ class Database
     /**
      * Fetch table
      * This will only return one record
-     * 
+     *
      * @param string $table
      * @return \stdClass / NULL
      */
@@ -376,7 +421,7 @@ class Database
 
     /**
      * Fetch all records from the given table
-     * 
+     *
      * @param string $table
      * @return array
      */
@@ -395,7 +440,7 @@ class Database
 
     /**
      * Get total rows after last fetchAll statement
-     * 
+     *
      * @return int
      */
     public function rows()
@@ -405,7 +450,7 @@ class Database
 
     /**
      * Insert data to database
-     * 
+     *
      * @param string $table
      * @return $this
      */
@@ -424,7 +469,7 @@ class Database
 
     /**
      * Update clause
-     * 
+     *
      * @param string $table
      * @return $this
      */
@@ -445,7 +490,7 @@ class Database
 
     /**
      * Delete clause
-     * 
+     *
      * @param string $table
      * @return $this
      */
@@ -465,7 +510,7 @@ class Database
 
     /**
      * Reset all data
-     * 
+     *
      * @return void
      */
     private function reset()
@@ -479,6 +524,8 @@ class Database
         $this->offset   = NULL;
         $this->joins    = [];
         $this->orderBy  = [];
+        $this->having   = [];
+        $this->groupBy  = [];
     }
 
 }

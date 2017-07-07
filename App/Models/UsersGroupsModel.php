@@ -9,6 +9,7 @@ class UsersGroupsModel extends Model
 
     /**
      * Table name
+     * 
      * @var string
      */
     protected $table = 'ug';

@@ -132,7 +132,7 @@ class UsersController extends Controller
      */
     private function isValid($id = NULL)
     {
-        $this->validator->required('email')->email('email');
+        $this->validator->required('email')->email('email')->unique('email', ['u', 'email', 'id', $id], 'This email already exists');
         $this->validator->required('name', 'Please set the Users name');
         if (is_null($id)) {
             // If the $id is null,
@@ -141,7 +141,7 @@ class UsersController extends Controller
             $this->validator->requiredFile('img')->img('img');
         } else {
             // This means that the user either changed the password or not
-            // but it's no neccesserely required
+            // but it's not neccesserely required
             if ($this->request->post('pass')) {
                 $this->validator->min('pass', 8)->max('pass', 128)->match('pass', 're-pass');
             }

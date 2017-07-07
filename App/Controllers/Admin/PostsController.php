@@ -91,7 +91,6 @@ class PostsController extends Controller
     public function save($id)
     {
         if ($this->isValid($id)) {
-//            pred($_POST);
             $postModel        = $this->load->model('Posts');
             $postModel->update($id);
             $json['success']  = 'Your post has been successfully updated';
