@@ -9,20 +9,13 @@
             <div class="modal-body">
                 <form action="<?php echo $action; ?>" class="form-modal form" method="POST" enctype="multipart/form-data">
                     <div id="form-results"></div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-12">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="<?php echo $title; ?>">
                     </div>
-                    <div id="cke_editor"
-                         class="form-group col-sm-12">
+                    <div class="form-group col-sm-12">
                         <label for="editor">Text</label>
-                        <textarea name="text" id="editor"><?php echo $text; ?></textarea>
-                        <script>
-//                            if (CKEDITOR.instances.editor) {
-//                                CKEDITOR.instances.editor.destroy();
-//                            }
-                            CKEDITOR.replace('editor');
-                        </script>
+                        <textarea name="text" class="form-control" id="editor" style="resize: vertical"><?php echo $text; ?></textarea>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="tags">Tags (<span style="color: red">Separate with comma</span>)</label>
@@ -68,7 +61,7 @@
                         <input type="file" id="img" name="img">
                     </div>
                     <div class="clearfix"></div>
-                    <button id="submit-btn" class="btn btn-info submit-btn">Submit</button>
+                    <button class="btn btn-info save">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">

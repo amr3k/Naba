@@ -9,21 +9,21 @@ class App
 
     /**
      * Container
-     * 
-     * @var array 
+     *
+     * @var array
      */
     private $container = [];
 
     /**
      * Application object
-     * 
+     *
      * @var \System\App
      */
     private static $instance;
 
     /**
      * Constructor
-     * 
+     *
      * @param \System\File $file
      */
     private function __construct(File $file)
@@ -35,7 +35,7 @@ class App
 
     /**
      * Register classes in SPL auto load register
-     * 
+     *
      * @return void
      */
     private function registerClasses()
@@ -45,7 +45,7 @@ class App
 
     /**
      * Get application instance
-     * 
+     *
      * @param \System\File $file
      * @return \System\Application
      */
@@ -59,7 +59,7 @@ class App
 
     /**
      * Run the application
-     * 
+     *
      * @return void
      */
     public function run()
@@ -68,6 +68,9 @@ class App
         $this->request->prepareUrl();
         $this->file->call('App/index.php');
         list($controller, $method, $arguments) = $this->route->getProperRoute();
+        if ($this->route->hasCallsFirst()) {
+            $this->route->callFirstCalls();
+        }
         $output = (string) $this->load->action($controller, $method, $arguments);
         $this->response->setOutput($output);
         $this->response->send();
@@ -75,7 +78,7 @@ class App
 
     /**
      * Load class through autoloading
-     * 
+     *
      * @param type $class
      * @return void
      */
@@ -93,7 +96,7 @@ class App
 
     /**
      * Get shared value dynamically
-     * 
+     *
      * @param string $key
      * @return mixed
      */
@@ -104,7 +107,7 @@ class App
 
     /**
      * Get shared value
-     * 
+     *
      * @param string $key
      * @return mixed
      */
@@ -122,7 +125,7 @@ class App
 
     /**
      * Share the given key/value through Application
-     * 
+     *
      * @param type $key
      * @param type $value
      * @return mixed
@@ -137,7 +140,7 @@ class App
 
     /**
      * Determine if the given key is shared through Application
-     * 
+     *
      * @param string $key
      * @return bool
      */
@@ -148,7 +151,7 @@ class App
 
     /**
      * Determine if the given key is an alias to core class
-     * 
+     *
      * @param string $alias
      * @return bool
      */
@@ -160,7 +163,7 @@ class App
 
     /**
      * Create new object for the core class based on the given alias
-     * 
+     *
      * @param string $alias
      * @return object
      */
@@ -173,30 +176,30 @@ class App
 
     /**
      * Get all core classes with its aliases
-     * 
+     *
      * @return array
      */
     private function coreClasses()
     {
         return [
-            'request'   => 'System\\Http\\Request',
-            'response'  => 'System\\Http\\Response',
-//            'upload'        =>  'System\\Http\\UploadedFiles',
-            'route'     => 'System\\Route',
-            'load'      => 'System\\Loader',
-            'session'   => 'System\\Session',
-            'cookie'    => 'System\\Cookie',
-            'html'      => 'System\\Html',
-            'db'        => 'System\\Database',
-            'view'      => 'System\\View\\ViewFactory',
-            'url'       => 'System\\Url',
-            'validator' => 'System\\Validation',
+            'request'    => 'System\\Http\\Request',
+            'response'   => 'System\\Http\\Response',
+            'route'      => 'System\\Route',
+            'load'       => 'System\\Loader',
+            'session'    => 'System\\Session',
+            'cookie'     => 'System\\Cookie',
+            'html'       => 'System\\Html',
+            'db'         => 'System\\Database',
+            'view'       => 'System\\View\\ViewFactory',
+            'url'        => 'System\\Url',
+            'validator'  => 'System\\Validation',
+            'pagination' => 'System\\Pagination',
         ];
     }
 
     /**
      * Load helpers file
-     * 
+     *
      * @return void
      */
     private function loadHelpers()

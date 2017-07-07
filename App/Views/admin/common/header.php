@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,6 @@
         <link rel="stylesheet" href="<?php echo assets('admin/plugins/daterangepicker/daterangepicker-bs3.css'); ?>">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?php echo assets('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>">
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -43,7 +42,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="../index2.html" class="logo">
+                <a href="<?php echo url('/admin'); ?>" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>T</b>SW</span>
                     <!-- logo for regular state and mobile devices -->
@@ -67,37 +66,23 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                   <!-- <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-                                    <span class="hidden-xs">Amr</span>
+                                    <span class="hidden-xs"><?php echo $user->name; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                      <!-- <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
+                                        <img src="<?php echo assets('uploads/img/avatar/' . $user->img); ?>" class="img-circle" alt="User Image">
 
                                         <p>
-                                            Amr - Web Developer
+                                            <?php echo $user->name; ?>
+                                            <small>Web Developer</small>
                                             <small>Member since September. 2016</small>
                                         </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Followers</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Sales</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Friends</a>
-                                            </div>
-                                        </div>
-                                        <!-- /.row -->
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="../#" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="<?php echo url('/admin/profile'); ?>" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
                                             <a href="<?php echo url('/admin/logout'); ?>" class="btn btn-default btn-flat">Logout</a>

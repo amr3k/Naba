@@ -7,24 +7,36 @@ class Cookie
 
     /**
      * Application object
-     * 
+     *
      * @var \System\App
      */
     private $app;
 
     /**
+     * Cookies Path
+     *
+     * @var string
+     */
+    private $path = '/';
+
+    /**
      * Constructor
-     * 
+     *
      * @param \System\App $app
      */
     public function __construct(App $app)
     {
         $this->app = $app;
+
+        // we will get the path from SCRIPT_NAME index from $_SERVER variable
+        // we will remove or just get the directory of the script name by removing
+        // the file name from it => we will remove index.php
+        $this->path = dirname($this->app->request->server('SCRIPT_NAME')) ?: '/';
     }
 
     /**
      * Set a new value to cookie
-     * 
+     *
      * @param string $key
      * @param mixed $value
      * @param int $durationInDays
@@ -32,12 +44,16 @@ class Cookie
      */
     public function set($key, $value, $durationInDays = 30)
     {
-        setcookie($key, $value, time() + $durationInDays * 3600 * 24, '', '', FALSE, FALSE);
+        // here we will see if the hours variable equals -1
+        // then it means we will remove the key from cookies
+        // otherwise, we will just add our normal time
+        $expireTime = $durationInDays == -1 ? -1 : time() + $durationInDays * 3600 * 24;
+        setcookie($key, $value, $expireTime, $this->path, '', FALSE, FALSE);
     }
 
     /**
      * Get value from cookie by the given key
-     * 
+     *
      * @param string $key
      * @param mixed $default
      * @return mixed
@@ -49,7 +65,7 @@ class Cookie
 
     /**
      * Determine if the cookie has the given key
-     * 
+     *
      * @param string $key
      * @return bool
      */
@@ -60,19 +76,19 @@ class Cookie
 
     /**
      * Remove the given key from cookie
-     * 
+     *
      * @param string $key
      * @return void
      */
     public function remove($key)
     {
-        setcookie($key, NULL, -1);
+        $this->set($key, NULL, -1);
         unset($_COOKIE[$key]);
     }
 
     /**
      * Get all cookies data
-     * 
+     *
      * @return array
      */
     public function all()
@@ -82,7 +98,7 @@ class Cookie
 
     /**
      * Destroy cookie
-     * 
+     *
      * @return void
      */
     public function destroy()
@@ -90,7 +106,6 @@ class Cookie
         foreach (array_keys($this->all()) as $key) {
             $this->remove($key);
         }
-        $_COOKIE = [];
         unset($_COOKIE);
     }
 

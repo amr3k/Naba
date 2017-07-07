@@ -189,11 +189,6 @@ class UploadedFiles
             return;
         }
         $filePath = rtrim($target, '/') . '/' . $fileName;
-        // Check first if file exists
-        // as I'm afraid that sha1 will re-create the same file name
-        if (file_exists($filePath)) {
-            $this->move($target);
-        }
         move_uploaded_file($this->tmp, $filePath);
         return $fileName;
     }

@@ -7,7 +7,9 @@ $app = App::getInstance();
 
 // Initialising Middlwares
 if (strpos($app->request->url(), '/admin') === 0) {
-    $app->load->controller('Admin/Access')->index();
+    $app->route->callFirst(function ($app) {
+        $app->load->controller('Admin/Access')->index();
+    });
 }
 
 // Share admin layout
@@ -15,9 +17,10 @@ $app->share('adminLayout', function ($app) {
     return $app->load->controller('Admin/Common/Layout');
 });
 
-// Home
-$app->route->add('/', 'Home');
-$app->route->add('/posts/:text/:id', 'Posts/Post');
+// Share admin layout
+$app->share('blogLayout', function ($app) {
+    return $app->load->controller('Blog/Common/Layout');
+});
 
 // Admin Login
 $app->route->add('/admin/login', 'Admin/Login');
@@ -68,7 +71,7 @@ $app->route->add('/admin/categories/delete/:id', 'Admin/Categories@delete', 'POS
 
 // Settings
 $app->route->add('/admin/settings', 'Admin/Settings');
-$app->route->add('/admin/settings/save', 'Admin/Settings@save', 'POST');
+$app->route->add('/admin/settings/submit', 'Admin/Settings@submit', 'POST');
 
 // Contact
 $app->route->add('/admin/contact', 'Admin/Contact');
@@ -83,9 +86,29 @@ $app->route->add('/admin/ads/edit/:id', 'Admin/Ads@edit', 'POST');
 $app->route->add('/admin/ads/save/:id', 'Admin/Ads@save', 'POST');
 $app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete', 'POST');
 
+// Admin profile
+$app->route->add('/admin/profile', 'Admin/Profile');
+$app->route->add('/admin/profile/submit', 'Admin/Profile@submit', 'POST');
+
 // Logout
 $app->route->add('/admin/logout', 'Admin/Logout');
 $app->route->add('/logout', 'Admin/Logout');
+
+// Blog routes
+$app->route->add('/', 'Blog/Home');
+$app->route->add('/category/:text/:id', 'Blog/Category');
+$app->route->add('/post/:text/:id', 'Blog/Post');
+$app->route->add('/post/:text/:id/add-comment', 'Blog/Post@addComment');
+$app->route->add('/register', 'Blog/Register');
+$app->route->add('/register/submit', 'Blog/Register@submit', 'POST');
+$app->route->add('/login', 'Blog/login');
+$app->route->add('/login/submit', 'Blog/Login@submit', 'POST');
+$app->route->add('/contact', 'Blog/Contact');
+$app->route->add('/contact/submit', 'Blog/Contact@submit', 'POST');
+$app->route->add('/about', 'Blog/About');
+$app->route->add('/profile', 'Blog/Profile');
+$app->route->add('/search', 'Blog/Search');
+
 // Not found routes
 $app->route->add('/404', 'NotFound');
 $app->route->notFound('/404');
