@@ -22,6 +22,7 @@ class HomeController extends Controller
         $data['post_box']   = function ($post) use ($postController) {
             return $postController->box($post);
         };
+//        pred($data);
 // i will use getOutput() method just to display errors
 // as i'm using php 7 which is throwing all errors as exceptions
 // which won't be thrown through the __toString() method
