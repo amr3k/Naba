@@ -12,7 +12,7 @@ This script will be continuously updated.
 
 ------------------------------------------------------------------------------------
 
-## Current status :
+### Current status :
 
 I'v found myself forced to serve in the military since the middle of July 2017 for one year as part of conscription in my country , So I have no Internet access this year except those little vacations (6~8 days every month).
 
@@ -22,7 +22,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 # Coming features :
 
-## Under the hood :
+### Under the hood :
 
 - Enhancing security against spam, SQL injection and XSS attacks.
 - Implementing Google recaptcha for signup, login and contacting site admin requests.
@@ -32,13 +32,13 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Social sharing
 - Multi language support (Adding arabic)
 
-## Admin Panel :
+### Admin Panel :
 - Dashboard page.
 - Adding posts via normal page (currenty it's done with a floating window).
 - Implementing a live text editor (ex. CKEditor).
 - Re-creating Settings page (Lot's of features giving more control over script).
 
-## Front pages :
+### Front pages :
 - Adding 'User' profile page.
 - Adding 'About-us' page.
 - Adding 'User-contributed-posts' page.
