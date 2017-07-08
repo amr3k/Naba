@@ -24,14 +24,16 @@
                         <label for="re-pass">Confirm Password</label>
                         <input type="password" id="re-pass" class="form-control" name="re-pass" placeholder="Re-Type password">
                     </div>
-                    <div class="form-group col-sm-6">
-                        <label for="group">Group</label>
-                        <select id="group" name="ugid" class="form-control">
-                            <?php foreach ($groups as $group) { ?>
-                                <option value="<?php echo $group->id; ?>"><?php echo $group->name; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
+                    <?php if ($admin === '1') { ?>
+                        <div class="form-group col-sm-6">
+                            <label for="group">Group</label>
+                            <select id="group" name="ugid" class="form-control">
+                                <?php foreach ($groups as $group) { ?>
+                                    <option value="<?php echo $group->id; ?>"><?php echo $group->name; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    <?php } ?>
                     <div class="form-group col-sm-6">
                         <label for="status">Status</label>
                         <select id="status" class="form-control" name="status">
@@ -39,16 +41,14 @@
                             <option value="disabled" selected="">Disable</option>
                         </select>
                     </div>
+                    <div class="clearfix"></div>
                     <div class="form-group col-sm-6">
                         <label for="img">Profile photo</label>
                         <input type="file" id="img" name="img">
                     </div>
-                    <br><br><br>
-                    <br><br><br>
-                    <br><br><br>
-                    <br><br><br>
-                    <br><br><br>
+                    <div class="clearfix"></div>
                     <button id="submit-btn" class="btn btn-info submit-btn">Submit</button>
+                    <input type="hidden" name="code" value="<?php echo $code; ?>">
                 </form>
             </div>
             <div class="modal-footer">

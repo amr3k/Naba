@@ -357,17 +357,17 @@ class Database
         if ($this->where) {
             $sql .= ' WHERE ' . implode(' ', $this->where) . ' ';
         }
-        if ($this->limit) {
-            $sql .= ' LIMIT ' . $this->limit;
-        }
-        if ($this->offset) {
-            $sql .= ' OFFSET ' . $this->offset;
-        }
         if ($this->having) {
             $sql .= ' HAVING ' . implode(' ', $this->having) . ' ';
         }
         if ($this->orderBy) {
             $sql .= ' ORDER BY ' . implode(' ', $this->orderBy);
+        }
+        if ($this->limit) {
+            $sql .= ' LIMIT ' . $this->limit;
+        }
+        if ($this->offset) {
+            $sql .= ' OFFSET ' . $this->offset;
         }
         if ($this->groupBy) {
             $sql .= ' GROUP BY ' . implode(' ', $this->groupBy);

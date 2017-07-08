@@ -70,7 +70,18 @@ abstract class Model
      */
     public function get($id)
     {
-        return $this->db->where('id = ?', $id)->fetch($this->table);
+        return $this->db->where('id= ?', $id)->fetch($this->table);
+    }
+
+    /**
+     * Get record by ID
+     *
+     * @param int $id
+     * @return \stdClass
+     */
+    public function fetch($value, $column)
+    {
+        return $this->db->where($column . '= ?', $value)->fetch($this->table);
     }
 
     /**

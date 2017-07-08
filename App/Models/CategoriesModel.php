@@ -61,10 +61,8 @@ class CategoriesModel extends Model
                     ->where('categories.status=?', 'enabled')
                     ->having('total_posts > 0')
                     ->fetchAll();
-
             $this->app->share('enabled-categories', $categories);
         }
-
         return $this->app->get('enabled-categories');
     }
 
@@ -76,39 +74,37 @@ class CategoriesModel extends Model
      */
     public function getCategoryWithPosts($id)
     {
-        $category = $this->where('id=? AND status=?', $id, 'enabled')->fetch($this->table);
+        $category = $this->db->where('id=? AND status=?', $id, 'enabled')->fetch($this->table);
 
-        if (!$category)
+        if (!$category) {
             return [];
-
+        }
         // We Will get the current page
-        $currentPage = $this->pagination->page();
+        $currentPage     = $this->pagination->page();
         // We Will get the items Per Page
-        $limit       = $this->pagination->itemsPerPage();
-
+        $limit           = $this->pagination->itemsPerPage();
         // Set our offset
-        $offset = $limit * ($currentPage - 1);
-
-        $category->posts = $this->select('p.*', 'u.first_name', 'u.last_name')
-                ->select('(SELECT COUNT(co.id) FROM comments co WHERE co.post_id=p.id) AS total_comments')
-                ->from('posts p')
-                ->join('LEFT JOIN users u ON p.user_id=u.id')
-                ->where('p.category_id=? AND p.status=?', $id, 'enabled')
-                ->orderBy('p.id', 'DESC')
+        $offset          = $limit * ($currentPage - 1);
+        $category->posts = $this->db
+                ->select('posts.*', 'u.name AS `author`')
+                ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
+                ->from('posts')
+                ->joins('LEFT JOIN u ON posts.uid = u.id')
+                ->where('posts.cid=? AND posts.status=?', $id, 'enabled')
+                ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll();
-
         // Get total posts for pagination
-        $totalPosts = $this->select('COUNT(id) AS `total`')
+        $totalPosts      = $this->db
+                ->select('COUNT(id) AS `total`')
                 ->from('posts')
-                ->where('category_id=? AND status=?', $id, 'enabled')
+                ->where('cid=? AND status=?', $id, 'enabled')
                 ->orderBy('id', 'DESC')
                 ->fetch();
 
         if ($totalPosts) {
             $this->pagination->setTotalItems($totalPosts->total);
         }
-
         return $category;
     }
 

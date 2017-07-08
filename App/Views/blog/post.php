@@ -4,7 +4,7 @@
         <a href="<?php echo url('/'); ?>">Home</a>
     </li>
     <li>
-        <a href="<?php echo url('/category/' . seo($post->category) . '/' . $post->category_id); ?>"><?php echo $post->category; ?></a>
+        <a href="<?php echo url('/category/' . seo($post->category) . '/' . $post->cid); ?>"><?php echo $post->category; ?></a>
     </li>
     <li class="active"><?php echo $post->title; ?></li>
 </ul>
@@ -34,16 +34,16 @@
                 </div>
                 <div class="clearfix"></div>
                 <a href="#" class="image-box">
-                    <img src="<?php echo assets('images/' . $post->image); ?>" alt="<?php echo $post->title; ?>" />
+                    <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
                 </a>
                 <p class="details">
-                    <?php echo htmlspecialchars_decode($post->details); ?>
+                    <?php echo htmlspecialchars_decode($post->text); ?>
                 </p>
             </div>
             <div id="post-author">
-                <img src="<?php echo assets('images/' . $post->userImage); ?>" alt="" />
+                <img src="<?php echo assets('uploads/img/avatar/' . $post->userImage); ?>" alt="" />
                 <div class="name">
-                    <?php echo $post->first_name . ' ' . $post->last_name; ?>
+                    <?php echo $post->name; ?>
                     <div class="author-detials">
                         David Cage is a perfect Blog Publisher that creates wonderful
                     </div>
@@ -59,22 +59,22 @@
             </div>
             <!--/ Total Comments -->
             <?php foreach ($post->comments AS $comment) { ?>
-            <div class="comment">
-                <div class="author-image">
-                    <img src="<?php echo assets('images/' . $comment->userImage); ?> " alt="" />
+                <div class="comment">
+                    <div class="author-image">
+                        <img src="<?php echo assets('uploads/img/avatar/' . $comment->userImage); ?> " alt="" />
+                    </div>
+                    <div class="comment-container">
+                        <div class="author-name">
+                            <?php echo $comment->name; ?>
+                        </div>
+                        <div class="comment-date">
+                            <?php echo date('d/m/Y h:i A', $comment->created); ?>
+                        </div>
+                        <div class="comment-text">
+                            <?php echo $comment->comment; ?>
+                        </div>
+                    </div>
                 </div>
-                <div class="comment-container">
-                    <div class="author-name">
-                        <?php echo $comment->first_name . ' ' . $comment->last_name; ?>
-                    </div>
-                    <div class="comment-date">
-                        <?php echo date('d/m/Y h:i A', $comment->created); ?>
-                    </div>
-                    <div class="comment-text">
-                        <?php echo $comment->comment; ?>
-                    </div>
-                </div>
-            </div>
             <?php } ?>
         </div>
         <!--/ Comments -->
