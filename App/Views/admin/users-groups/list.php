@@ -20,10 +20,12 @@
                 <div class="box" id="users-list">
                     <div class="box-header with-border">
                         <h3 class="box-title">Manage your Users Groups</h3>
-                        <button class="btn btn-success pull-right popup" type="button"
-                                data-modal-target="#add-ug-form"
-                                data-target="<?php echo url('/admin/users-groups/add'); ?>">
-                            Add New Users group</button>
+                        <?php if ($admin === '1') { ?>
+                            <button class="btn btn-success pull-right popup" type="button"
+                                    data-modal-target="#add-ug-form"
+                                    data-target="<?php echo url('/admin/users-groups/add'); ?>">
+                                Add New Users group</button>
+                        <?php } ?>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -41,23 +43,27 @@
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $ug->name; ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-info edit-form"
-                                                data-modal-target="#edit-ug-form"
-                                                data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Edit</button>
-                                        <?php if ($ug->id === "1") { ?>
-                                            <button type="button" class="btn btn-danger disabled" disabled="disabled"
-                                                    >
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                Delete</button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-danger delete"
-                                                    data-target="<?php echo url('/admin/users-groups/delete/') . '/' . $ug->id; ?>"
-                                                    >
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                Delete</button>
-                                        <?php } ?>
+                                        <?php if ($admin === '1') { ?>
+                                            <button type="button" class="btn btn-info edit-form"
+                                                    data-modal-target="#edit-ug-form"
+                                                    data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                Edit</button>
+                                            <?php if ($ug->id === "1" || $ug->id === "2") { ?>
+                                                <button type="button" class="btn btn-danger disabled" disabled="disabled"
+                                                        >
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    Delete</button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-danger delete"
+                                                        data-target="<?php echo url('/admin/users-groups/delete/') . '/' . $ug->id; ?>"
+                                                        >
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    Delete</button>
+                                            <?php
+                                            }
+                                        }
+                                        ?>
                                     </td>
                                 </tr>
                                 <?php

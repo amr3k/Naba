@@ -8,10 +8,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?php echo $action; ?>" class="form-modal form" method="POST" enctype="multipart/form-data">
-                    <?php
-                    // Displaying super admin editable information only to super admin
-                    if ($id === '1' && $admin === '1') {
-                        ?>
+                    <?php if ($id === $admin) { ?>
                         <div class="form-group col-sm-6">
                             <label for="username">Username</label>
                             <input type="text" name="name" class="form-control" id="username" placeholder="Username" value="<?php echo $name; ?>">
@@ -33,23 +30,8 @@
                     <?php } else { ?>
                         <div class="form-group col-sm-6">
                             <label>Email</label>
-                            <input type="email" class="form-control disabled" disabled="disabled"
+                            <input type="text" class="form-control disabled" disabled="disabled"
                                    value="<?php echo $email; ?>">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label for="groups">Group</label>
-                            <select id="groups" name="ugid" class="form-control">
-                                <?php foreach ($groups as $group) {
-                                    ?>
-                                    <option value="<?php echo $group->id; ?>"<?php
-                                    if ($ugid == $group->id) {
-                                        echo 'selected=""';
-                                    }
-                                    ?>><?php echo $group->name; ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                            </select>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="status">Status</label>
@@ -73,7 +55,7 @@
                                 ?>>Disable</option>
                             </select>
                         </div>
-                    <?php } if ($id === '1' && $admin === '1') { ?>
+                    <?php } if ($id === $admin) { ?>
                         <div class="form-group col-sm-6">
                             <label for="img">Profile photo</label>
                             <input type="file" id="img" name="img">

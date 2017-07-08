@@ -7,7 +7,8 @@ use System\View\ViewInterface;
 
 class LayoutController extends Controller
 {
-     /**
+
+    /**
      * Disabled Sections container
      *
      * @var array
@@ -15,10 +16,10 @@ class LayoutController extends Controller
     private $disabledSections = [];
 
     /**
-    * Render the layout with the given view Object
-    *
-    * @param \System\View\ViewInterface $view
-    */
+     * Render the layout with the given view Object
+     *
+     * @param \System\View\ViewInterface $view
+     */
     public function render(ViewInterface $view)
     {
         $data['content'] = $view;
@@ -33,11 +34,11 @@ class LayoutController extends Controller
     }
 
     /**
-    * Determine what will be not displayed in the layout page
-    *
-    * @oaram string $section
-    * @return $this
-    */
+     * Determine what will be not displayed in the layout page
+     *
+     * @oaram string $section
+     * @return $this
+     */
     public function disable($section)
     {
         $this->disabledSections[] = $section;
@@ -45,7 +46,7 @@ class LayoutController extends Controller
         return $this;
     }
 
-     /**
+    /**
      * Set the title for the blog page
      *
      * @param string $title
@@ -53,6 +54,7 @@ class LayoutController extends Controller
      */
     public function title($title)
     {
-        $this->html->setTitle($title . ' | ' . $this->settings->get('site_name'));
+        $this->html->setTitle($title . ' | ' . $this->load->model('Settings')->get(1)->name);
     }
+
 }

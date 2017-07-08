@@ -6,7 +6,8 @@ use System\Controller;
 
 class CategoryController extends Controller
 {
-     /**
+
+    /**
      * Display Category Page
      *
      * @param string name
@@ -16,9 +17,8 @@ class CategoryController extends Controller
     public function index($title, $id)
     {
         $category = $this->load->model('Categories')->getCategoryWithPosts($id);
-
-        if (! $category) {
-            return $this->url->redirectTo('/404');
+        if (!$category) {
+            return $this->url->redirect('/404');
         }
 
         $this->html->setTitle($category->name);
@@ -29,7 +29,7 @@ class CategoryController extends Controller
             if ($this->pagination->page() != 1) {
                 // then just redirect him to the first page of the category
                 // regardless there is posts or not in that category
-                return $this->url->redirectTo("/category/$title/$id");
+                return $this->url->redirect("/category/$title/$id");
             }
         }
 
@@ -83,4 +83,5 @@ class CategoryController extends Controller
 
         return $this->blogLayout->render($view);
     }
+
 }

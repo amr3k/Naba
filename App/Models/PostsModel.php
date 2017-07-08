@@ -149,11 +149,12 @@ class PostsModel extends Model
      */
     public function getPostWithComments($id)
     {
-        $post = $this->select('p.*', 'c.name AS `category`', 'u.name', 'u.img AS userImage')
-                ->from('posts p')
-                ->join('LEFT JOIN categories c ON p.category_id=c.id')
-                ->join('LEFT JOIN u users ON p.uid=user.id')
-                ->where('p.id=? AND p.status=?', $id, 'enabled')
+        $post = $this->db
+                ->select('posts.*', 'categories.name AS `category`', 'u.name', 'u.img AS userImage')
+                ->from('posts')
+                ->joins('LEFT JOIN categories ON posts.cid=categories.id')
+                ->joins('LEFT JOIN u ON posts.uid=u.id')
+                ->where('posts.id=? AND posts.status=?', $id, 'enabled')
                 ->fetch();
 
         if (!$post) {
@@ -162,10 +163,11 @@ class PostsModel extends Model
         // we will get the post comments
         // and each comment we will get for him the user name
         // who created that comment
-        $post->comments = $this->select('c.*', 'u.name', 'u.img AS userImage')
-                ->from('comments c')
-                ->join('LEFT JOIN u users ON c.uid=user.id')
-                ->where('c.post_id=?', $id)
+        $post->comments = $this->db
+                ->select('comments.*', 'u.name', 'u.img AS userImage')
+                ->from('comments')
+                ->joins('LEFT JOIN u ON comments.uid=u.id')
+                ->where('comments.post_id=?', $id)
                 ->fetchAll();
 
         return $post;

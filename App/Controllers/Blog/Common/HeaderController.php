@@ -6,11 +6,12 @@ use System\Controller;
 
 class HeaderController extends Controller
 {
+
     public function index()
     {
-        $data['title'] = $this->html->getTitle();
-
-        $loginModel = $this->load->model('Login');
+        $data['title']     = $this->html->getTitle();
+        $data['site_name'] = $this->load->model('Settings')->get(1)->name;
+        $loginModel        = $this->load->model('Login');
 
         $data['user'] = $loginModel->isLogged() ? $loginModel->user() : null;
 
@@ -18,4 +19,5 @@ class HeaderController extends Controller
 
         return $this->view->render('blog/common/header', $data)->getOutput();
     }
+
 }
