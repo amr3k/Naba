@@ -73,8 +73,22 @@ class UsersModel extends Model
                 ->data('email', $this->request->post('email'))
                 ->data('ugid', $this->request->post('ugid'))
                 ->data('status', $this->request->post('status'))
+                ->data('ip', $this->request->ip())
                 ->where('id = ?', $id)
                 ->update($this->table);
+    }
+
+    /**
+     * small update for normal admins
+     *
+     * @return void
+     */
+    public function smallUpdate($id)
+    {
+        $this->db
+                ->data('status', $this->request->post('status'))
+                ->data('ugid', $this->request->post('ugid'))
+                ->where('id = ?', $id)->update($this->table);
     }
 
     /**
@@ -118,6 +132,16 @@ class UsersModel extends Model
                         ->from('u users')
                         ->joins('LEFT JOIN ug users_groups ON users.ugid = users_groups.id')
                         ->fetchAll();
+    }
+
+    /**
+     * Determine if the user is admin or normal user
+     *
+     * @return bool
+     */
+    public function isAdmin($id)
+    {
+        return $this->db->where('id = ? AND ugid = ?', $id, 1)->fetch('u');
     }
 
 }

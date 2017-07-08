@@ -6,95 +6,79 @@ use System\Controller;
 
 class LoginController extends Controller
 {
+
     /**
-    * Display Login Form
-    *
-    * @return mixed
-    */
+     * Display Login Form
+     *
+     * @return mixed
+     */
     public function index()
     {
         $this->blogLayout->title('Login');
-
         $loginModel = $this->load->model('Login');
-
         // disable sidebar
         $this->blogLayout->disable('sidebar');
-
         if ($loginModel->isLogged()) {
-            return $this->url->redirectTo('/');
+            return $this->url->redirect('/');
         }
-
         $data['errors'] = $this->errors;
-
-        $view = $this->view->render('blog/users/login', $data);
-
+        $view           = $this->view->render('blog/users/login', $data);
         return $this->blogLayout->render($view);
     }
 
     /**
-    * Submit Login form
-    *
-    * @return mixed
-    */
+     * Submit Login form
+     *
+     * @return mixed
+     */
     public function submit()
     {
         if ($this->isValid()) {
-            $loginModel = $this->load->model('Login');
-
-            $loggedInUser = $loginModel->user();
-
+            $loginModel     = $this->load->model('Login');
+            $logged_in_user = $loginModel->user();
             if ($this->request->post('remember')) {
-                // save login data in cookie
-                $this->cookie->set('login', $loggedInUser->code);
+                // save login data in cookie and session
+                $this->cookie->set('login', $logged_in_user->code);
+                $this->session->set('login', $logged_in_user->code);
             } else {
                 // save login data in session
-                $this->session->set('login', $loggedInUser->code);
+                $this->session->set('login', $logged_in_user->code);
             }
-
-            $json = [];
-
-            $json['success']  = 'Welcome Back ' . $loggedInUser->first_name;
-
+            $json               = [];
+            $json['success']    = 'Welcome Back ' . $logged_in_user->name;
             $json['redirectTo'] = $this->url->link('/');
-
             return $this->json($json);
         } else {
-            $json = [];
-
+            $json           = [];
             $json['errors'] = implode('<br>', $this->errors);
-
             return $this->json($json);
         }
     }
 
     /**
-    * Validate Login Form
-    *
-    * @return bool
-    */
+     * Validate Login Form
+     *
+     * @return bool
+     */
     private function isValid()
     {
         $email = $this->request->post('email');
-        $password = $this->request->post('password');
-
-        if (! $email) {
-            $this->errors[] = 'Please Insert Email address';
-        } elseif (! filter_var($email , FILTER_VALIDATE_EMAIL)) {
-            $this->errors[] = 'Please Insert Valid Email';
+        $pass  = $this->request->post('password');
+        if (!$email) {
+            $this->errors[] = 'Please insert your email address';
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->errors[] = 'Please insert a valid email address';
         }
-
-        if (! $password) {
-            $this->errors[] = 'Please Insert Password';
+        if (!$pass) {
+            $this->errors[] = 'Please insert your password';
         }
-
-        if (! $this->errors) {
+        if (!$this->errors) {
             $loginModel = $this->load->model('Login');
-
-            if (! $loginModel->isValidLogin($email, $password)) {
-                $this->errors[] = 'Invalid Login Data';
+            if (!$loginModel->isValidLogin($email, $pass)) {
+                $this->errors[] = 'Invalid email or password';
             }
         }
-
         return empty($this->errors);
     }
+
 }
