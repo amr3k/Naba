@@ -8,7 +8,7 @@ Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 
 ------------------------------------------------------------------------------------
 
-This script will be continuously updated (currently, It has more than 15K lines of code)
+This script will be continuously updated (currently, It has more than 16K lines of code)
 
 ------------------------------------------------------------------------------------
 
