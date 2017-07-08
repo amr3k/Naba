@@ -1,16 +1,21 @@
 # advanced-blog :
 
 This is my application on PHP MVC course.
+
 You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {in Arabic}
+
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 
 ------------------------------------------------------------------------------------
+
 This script will be continuously updated.
 
 ------------------------------------------------------------------------------------
 
 ## Current status :
+
 I'v found myself forced to serve in the military since the middle of July 2017 for one year as part of conscription in my country , So I have no Internet access this year except those little vacations (6~8 days every month).
+
 Being said , I'm gonna add more and more features to this script and fix bugs as soon as I get to Home.
 
 ------------------------------------------------------------------------------------
@@ -18,6 +23,7 @@ Being said , I'm gonna add more and more features to this script and fix bugs as
 # Coming features :
 
 ## Under the hood :
+
 - Enhancing security against spam, SQL injection and XSS attacks.
 - Implementing Google recaptcha for signup, login and contacting site admin requests.
 - Activating registered accounts via email using tokens.
