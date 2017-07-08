@@ -8,7 +8,6 @@
             </div>
             <div class="modal-body">
                 <form action="<?php echo $action; ?>" class="form-modal form" method="POST" enctype="multipart/form-data">
-                    <div id="form-results"></div>
                     <div class="form-group col-sm-12">
                         <label for="link">Link</label>
                         <input type="text" name="link" class="form-control" id="link" placeholder="Link" value="<?php echo $link; ?>">
@@ -61,6 +60,8 @@
                         <label for="img">Profile photo</label>
                         <input type="file" id="img" name="img">
                     </div>
+                    <div class="clearfix"></div>
+                    <div id="form-results"></div>
                     <div class="clearfix"></div>
                     <button id="submit-btn" class="btn btn-info submit-btn">Submit</button>
                 </form>

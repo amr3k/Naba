@@ -15,7 +15,8 @@ class UsersGroupsController extends Controller
     public function index()
     {
         $this->html->setTitle('Users Groups');
-        $data['ugs'] = $this->load->model('UsersGroups')->all();
+        $data['ugs']   = $this->load->model('UsersGroups')->all();
+        $data['admin'] = $this->load->model('Login')->user()->id;
         return $this->adminLayout->render($this->view->render('admin/users-groups/list', $data));
     }
 
@@ -28,6 +29,7 @@ class UsersGroupsController extends Controller
     {
         $data['action'] = $this->url->link('/admin/users-groups/submit');
         $data['pages']  = $this->pages();
+        $data['admin']  = $this->load->model('Login')->user()->id;
         return $this->app->view->render('admin/users-groups/form', $data);
     }
 
@@ -39,6 +41,9 @@ class UsersGroupsController extends Controller
      */
     public function submit()
     {
+        if ($this->load->model('Login')->user()->id !== '1') {
+            return $this->url->link('/404');
+        }
         if ($this->isValid()) {
             $ugModel = $this->load->model('UsersGroups');
             $newName = trim($this->request->post('name'));
@@ -72,6 +77,7 @@ class UsersGroupsController extends Controller
         $data['action']   = $this->url->link('/admin/users-groups/save') . '/' . $id;
         $data['pages']    = $this->pages();
         $data['selected'] = $ugName->page;
+        $data['admin']    = $this->load->model('Login')->user()->id;
         return $this->app->view->render('admin/users-groups/form-edit', $data);
     }
 
@@ -83,6 +89,9 @@ class UsersGroupsController extends Controller
      */
     public function save($id)
     {
+        if ($this->load->model('Login')->user()->id !== '1') {
+            return $this->url->link('/404');
+        }
         if ($this->isValid()) {
             $ugModel   = $this->load->model('UsersGroups');
             $ugNewName = trim($this->request->post('name'));
@@ -112,7 +121,8 @@ class UsersGroupsController extends Controller
     public function delete($id)
     {
         $ugModel = $this->load->model('UsersGroups');
-        if (!$ugModel->exists($id) || $id === '1') {
+        // Preventing deleting Admins or Users groups
+        if (!$ugModel->exists($id) || $id == 1 || $id == 2) {
             return $this->url->redirect('/404');
         }
         $ugModel->delete($id);

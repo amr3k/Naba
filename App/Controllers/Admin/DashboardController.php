@@ -12,9 +12,4 @@ class DashboardController extends Controller
         return $this->view->render('admin/main/dashboard');
     }
 
-    public function submit()
-    {
-        
-    }
-
 }

@@ -37,7 +37,7 @@ class LoginController extends Controller
                 $this->cookie->set('login', $logged_in_user->code);
                 $this->session->set('login', $logged_in_user->code);
             } else {
-                // Save login info in session only
+                // Save login info in session
                 $this->session->set('login', $logged_in_user->code);
             }
             $json             = [];

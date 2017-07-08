@@ -15,7 +15,8 @@ class UsersController extends Controller
     public function index()
     {
         $this->html->setTitle('Users');
-        $data['users'] = $this->load->model('Users')->all();
+        $data['users']    = $this->load->model('Users')->all();
+        $data['admin_id'] = $this->load->model('Login')->user()->id;
         return $this->adminLayout->render($this->view->render('admin/users/list', $data));
     }
 
@@ -26,10 +27,13 @@ class UsersController extends Controller
      */
     public function add()
     {
+        $current_admin  = $this->load->model('Login')->user();
         $groupsModel    = $this->load->model('UsersGroups');
         $groups         = $groupsModel->all();
         $data['action'] = $this->url->link('/admin/users/submit');
         $data['groups'] = $groups;
+        $data['admin']  = $current_admin->id;
+        $data['code']   = $current_admin->code;
         return $this->app->view->render('admin/users/form', $data);
     }
 
@@ -42,6 +46,10 @@ class UsersController extends Controller
     public function submit()
     {
         if ($this->isValid()) {
+            $code = $this->request->post('code');
+            if ($this->admin($code) !== '1') {
+                $this->request->setPost('ugid', 2);
+            }
             $userModel = $this->load->model('Users');
             $newName   = trim($this->request->post('name'));
             if ($userModel->exists($newName)) {
@@ -65,7 +73,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $userModel = $this->load->model('Users');
+        $current_admin = $this->load->model('Login')->user();
+        $userModel     = $this->load->model('Users');
         if (!$userModel->exists($id)) {
             return $this->url->redirect('/404');
         }
@@ -75,12 +84,22 @@ class UsersController extends Controller
         $data['groups'] = $groups;
         // Getting Users info
         $userName       = $userModel->get($id);
+        // Setting data
+        $data['admin']  = $this->load->model('Login')->user()->id;
         $data['action'] = $this->url->link('/admin/users/save') . '/' . $id;
+        $data['id']     = $userName->id;
+        $data['ugid']   = $userName->ugid;
         $data['name']   = $userName->name;
         $data['email']  = $userName->email;
         $data['status'] = $userName->status;
-        $data['ugid']   = $userName->ugid;
         $data['img']    = $this->url->link('Public/uploads/img/avatar/') . '/' . $userName->img;
+        $data['code']   = $current_admin->code;
+        if ($current_admin->id !== '1') {
+            // This means that This user is not the site owner (super admin)
+            // So , He should edit only his private info
+            // As well as normal users status, and the ability to delete himself and normal users
+            return $this->app->view->render('admin/users/form-edit-admin', $data);
+        }
         return $this->app->view->render('admin/users/form-edit', $data);
     }
 
@@ -92,18 +111,54 @@ class UsersController extends Controller
      */
     public function save($id)
     {
-        if ($this->isValid($id)) {
-            $userModel       = $this->load->model('Users');
-            $userNewName     = trim($this->request->post('name'));
-            $userOldName     = $userModel->get($id)->name;
-            $userModel->update($id);
-            $json['success'] = '<b>' . $userOldName . '</b> has been successfully changed to <b>' . $userNewName . '</b>';
-            if ($userNewName === $userOldName) {
-                $json['success'] = '<b>' . $userOldName . '</b>\'s info has been successfully update';
+        $code     = $this->request->post('code');
+        $admin_id = $this->admin($code);
+        if ($admin_id === '1') {
+            // This means that the current admin is the site owner
+            // He can edit his own info and other users status and user group
+            if ($id === '1') {
+                $this->request->setPost('ugid', 1);
+                $this->request->setPost('status', 'enabled');
+                if ($this->isValid($id)) {
+                    $userModel        = $this->load->model('Users');
+                    $username         = trim($this->request->post('name'));
+                    $userModel->update($id);
+                    $json['success']  = '<b>' . $username . '</b>\'s info has been successfully updated';
+                    $json['redirect'] = $this->url->link('/admin/users');
+                } else {
+                    $json['errors'] = $this->validator->flatMsg();
+                }
+            } else {
+                // Only can edit group and status
+                $userModel        = $this->load->model('Users');
+                $userModel->smallUpdate($id);
+                $username         = $this->load->model('Users')->get($id)->name;
+                $json['success']  = '<b>' . $username . '</b>\'s info has been successfully updated';
+                $json['redirect'] = $this->url->link('/admin/users');
             }
-            $json['redirect'] = $this->url->link('/admin/users');
         } else {
-            $json['errors'] = $this->validator->flatMsg();
+            // This means that the current admin is a normal admin
+            if ($admin_id == $id) {
+                // Normal admin can edit his own info, and other normal users' status
+                if ($this->isValid($id)) {
+                    $this->request->setPost('ugid', 1);
+                    $this->request->setPost('status', 'enabled');
+                    $userModel        = $this->load->model('Users');
+                    $username         = trim($this->request->post('name'));
+                    $userModel->update($id);
+                    $json['success']  = '<b>' . $username . '</b>\'s info has been successfully updated';
+                    $json['redirect'] = $this->url->link('/admin/users');
+                } else {
+                    $json['errors'] = $this->validator->flatMsg();
+                }
+            } else {
+                $this->request->setPost('ugid', 2);
+                $userModel        = $this->load->model('Users');
+                $userModel->smallUpdate($id);
+                $userOldName      = $this->load->model('Users')->get($id)->name;
+                $json['success']  = '<b>' . $userOldName . '</b>\'s info has been successfully updated';
+                $json['redirect'] = $this->url->link('/admin/users');
+            }
         }
         return $this->json($json);
     }
@@ -116,13 +171,32 @@ class UsersController extends Controller
      */
     public function delete($id)
     {
-        $userModel = $this->load->model('Users');
+        $current_admin = $this->load->model('Login')->user()->id;
+        $userModel     = $this->load->model('Users');
         if (!$userModel->exists($id) || $id === '1') {
             return $this->url->redirect('/404');
         }
-        $userModel->delete($id);
+        if ($current_admin === '1') {
+            $userModel->delete($id);
+        } else {
+            if ($userModel->isAdmin($id)) {
+                return $this->url->redirect('/404');
+            }
+            $userModel->delete($id);
+        }
         $json['redirect'] = $this->url->link('/admin/users');
         return $this->json($json);
+    }
+
+    /**
+     * Checking admin privileges
+     *
+     * @return int
+     */
+    private function admin($code)
+    {
+        $admin_id = $this->load->model('Users')->fetch($code, 'code')->id;
+        return $admin_id;
     }
 
     /**
@@ -132,8 +206,10 @@ class UsersController extends Controller
      */
     private function isValid($id = NULL)
     {
-        $this->validator->required('email')->email('email')->unique('email', ['u', 'email', 'id', $id], 'This email already exists');
-        $this->validator->required('name', 'Please set the Users name');
+        $this->validator->required('email')->email('email')
+                ->unique('email', ['u', 'email', 'id', $id], 'This email already exists')
+                ->max('email', 64);
+        $this->validator->required('name', 'Please set the username')->min('name', 3)->max('name', 32);
         if (is_null($id)) {
             // If the $id is null,
             // This means that password and image are required for creating a new user

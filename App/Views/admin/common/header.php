@@ -44,9 +44,9 @@
                 <!-- Logo -->
                 <a href="<?php echo url('/admin'); ?>" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>T</b>SW</span>
+                    <span class="logo-mini">CP</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Blog</b>Cpanel</span>
+                    <span class="logo-lg">Control panel</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -76,7 +76,7 @@
                                         <p>
                                             <?php echo $user->name; ?>
                                             <small>Web Developer</small>
-                                            <small>Member since September. 2016</small>
+                                            <small>Member since <?php echo date('F. Y', $user->created); ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->

@@ -4,54 +4,55 @@ namespace System;
 
 class Pagination
 {
-     /**
+
+    /**
      * Application Object
      *
-     * @var \System\Application
+     * @var \System\App
      */
     private $app;
 
-     /**
+    /**
      * Total Items
      *
      * @var int
      */
     private $totalItems;
 
-     /**
+    /**
      * Items Per Page
      *
      * @var int
      */
     private $itemsPerPage = 10;
 
-     /**
+    /**
      * Last Page Number => Total Pages
      *
      * @var int
      */
     private $lastPage;
 
-     /**
+    /**
      * Current Page Number
      *
      * @var int
      */
     private $page = 1;
 
-     /**
+    /**
      * Constructor
      *
      * @param \System\Application $app
      */
-    public function __construct(Application $app)
+    public function __construct(App $app)
     {
         $this->app = $app;
 
         $this->setCurrentPage();
     }
 
-     /**
+    /**
      * Set Current Page
      *
      * @return void
@@ -65,14 +66,14 @@ class Pagination
 
         // just to make sure that the passed query string parameter page
         // must be number and should be more or equal than 1
-        if (! is_numeric($page) OR $page < 1) {
+        if (!is_numeric($page) OR $page < 1) {
             $page = 1;
         }
 
         $this->page = $page;
     }
 
-     /**
+    /**
      * Get Current Page Number
      *
      * @return int
@@ -82,7 +83,7 @@ class Pagination
         return $this->page;
     }
 
-     /**
+    /**
      * Get Items Per Page
      *
      * @return int
@@ -92,7 +93,7 @@ class Pagination
         return $this->itemsPerPage;
     }
 
-     /**
+    /**
      * Get Total Items
      *
      * @return int
@@ -102,7 +103,7 @@ class Pagination
         return $this->totalItems;
     }
 
-     /**
+    /**
      * Get Last Page
      *
      * @return int
@@ -112,7 +113,7 @@ class Pagination
         return $this->lastPage;
     }
 
-     /**
+    /**
      * Get Next Page number
      *
      * @return int
@@ -122,7 +123,7 @@ class Pagination
         return $this->page + 1;
     }
 
-     /**
+    /**
      * Get Previous Page number
      *
      * @return int
@@ -132,7 +133,7 @@ class Pagination
         return $this->page - 1;
     }
 
-     /**
+    /**
      * Set Total Items
      *
      * @param int $totalItems
@@ -145,7 +146,7 @@ class Pagination
         return $this;
     }
 
-     /**
+    /**
      * Set Items Per Page
      *
      * @param int $itemsPerPage
@@ -158,7 +159,7 @@ class Pagination
         return $this;
     }
 
-     /**
+    /**
      * Start Pagination
      *
      * @return $this
@@ -170,7 +171,7 @@ class Pagination
         return $this;
     }
 
-     /**
+    /**
      * Set Last Page
      *
      * @return void
