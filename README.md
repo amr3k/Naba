@@ -16,7 +16,7 @@ This script will be continuously updated.
 
 I'v found myself forced to serve in the military since the middle of July 2017 for one year as part of conscription in my country , So I have no Internet access this year except those little vacations (6~8 days every month).
 
-Being said , I'm gonna add more and more features to this script and fix bugs as soon as I get to Home.
+I'm gonna add more and more features to this script and fix bugs as soon as I get a vacation.
 
 ------------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ Being said , I'm gonna add more and more features to this script and fix bugs as
 ## Admin Panel :
 - Dashboard page.
 - Adding posts via normal page (currenty it's done with a floating window).
-- Implementing a live text editor (i.e CKEditor).
+- Implementing a live text editor (ex. CKEditor).
 - Re-creating Settings page (Lot's of features giving more control over script).
 
 ## Front pages :
