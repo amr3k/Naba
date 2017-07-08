@@ -35,6 +35,7 @@ Being said , I'm gonna add more and more features to this script and fix bugs as
 ## Admin Panel :
 - Dashboard page.
 - Adding posts via normal page (currenty it's done with a floating window).
+- Implementing a live text editor (i.e CKEditor).
 - Re-creating Settings page (Lot's of features giving more control over script).
 
 ## Front pages :
