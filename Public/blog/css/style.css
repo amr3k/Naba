@@ -193,11 +193,32 @@ header .user-image {
     margin-bottom: 20px;
     padding: 0;
 }
-
+.post-box a{
+    text-decoration: none;
+}
 .post-box .post-content {
     padding: 7px 14px;
 }
-
+.post-box .post-content .tags{
+    margin-left: 20px;
+    margin-bottom: 50px
+}
+.post-box .post-content .tags .tag-title{
+    color: #666;
+    margin-bottom: 20px
+}
+.post-box .post-content .tags .tag{
+    color: darkblue;
+    font-size: 1em;
+    padding: 10px;
+    margin:10px;
+    background: rgba(153,153,153,0.2);
+    border-radius: 13px;
+}
+.post-box .post-content .tags .tag:hover{
+    background: rgba(153,153,153,0.1);
+    transition-duration: 0.5s;
+}
 .post-box .image-box {
     display: block;
     width: 100%;

@@ -27,7 +27,7 @@
                         <span class="fa fa-google-plus"></span>
                     </a>
                 </div>
-                <h1 class="heading"><?php echo $post->title; ?></h1>
+                <h1 class="heading"><a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id); ?>"><?php echo $post->title; ?></a></h1>
                 <div class="date-container">
                     <span class="fa fa-calendar"></span>
                     <span class="date"><?php echo date('d-m-Y', $post->created) . ' At ' . date('h:i A', $post->created); ?></span>
@@ -39,10 +39,23 @@
                 <p class="details">
                     <?php echo htmlspecialchars_decode($post->text); ?>
                 </p>
+                <div class="tags">
+                    <h3 class="tag-title">Read more about:</h3>
+                    <?php
+                    $tags = explode(',', $post->tags);
+                    foreach ($tags as $tag) {
+                        ?>
+                        <a class="tag" href="<?php echo url('/tag') . '/' . $tag; ?>"><?php echo $tag; ?></a>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <div id="post-author">
                 <div class="author-image">
-                    <img src="<?php echo assets('uploads/img/avatar/' . $post->userImage); ?>" alt="<?php echo $post->userImage . '\'s photo'; ?>" />
+                    <a href="<?php echo url('author') . '/' . $post->name; ?>">
+                        <img src="<?php echo assets('uploads/img/avatar/' . $post->userImage); ?>" alt="<?php echo $post->userImage . '\'s photo'; ?>" />
+                    </a>
                 </div>
                 <div>
                     <h3 class="name"><?php echo $post->name; ?></h3>
@@ -61,14 +74,16 @@
             <?php foreach ($post->comments AS $comment) { ?>
                 <div class="comment">
                     <div class="author-image">
-                        <img src="<?php echo assets('uploads/img/avatar/' . $comment->userImage); ?> " alt="" />
+                        <a href="<?php echo url('author') . '/' . $post->name; ?>">
+                            <img src="<?php echo assets('uploads/img/avatar/' . $comment->userImage); ?> " alt="" />
+                        </a>
                     </div>
                     <div class="comment-container">
                         <div class="author-name">
                             <?php echo $comment->name; ?>
                         </div>
                         <div class="comment-date">
-                            <?php echo date('d/m/Y h:i A', $comment->created); ?>
+                            <?php echo date('d-m-Y', $comment->created) . ' At ' . date('h:i A', $comment->created); ?>
                         </div>
                         <div class="comment-text">
                             <?php echo $comment->comment; ?>
@@ -81,7 +96,11 @@
         <!-- Comment Form -->
         <form action="<?php echo url('/post/' . seo($post->title) . '/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
             <h3 class="heading">Post Comment</h3>
-            <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="10" required="required"></textarea>
+            <?php if ($user) { ?>
+                <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
+            <?php } else { ?>
+                <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
+            <?php } ?>
             <button class="comment-button">Submit</button>
         </form>
         <!--/ Comment Form -->

@@ -56,7 +56,11 @@ class ProfileController extends Controller
      */
     private function isValid($id)
     {
-        $this->validator->required('name')->min('name', 3)->max('name', 255);
+        $this->validator
+                ->required('name')
+                ->min('name', 3)
+                ->max('name', 255)
+                ->unique('name', ['u', 'name', 'id', $id], 'This username is already registered, Please choose another one');
         $this->validator
                 ->required('email')->email('email')
                 ->unique('email', ['u', 'email', 'id', $id], 'This email already exists')

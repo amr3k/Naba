@@ -18,10 +18,12 @@ class PostController extends Controller
     {
         $post = $this->load->model('Posts')->getPostWithComments($id);
         if (!$post) {
-            return $this->url->redirectTo('/404');
+            return $this->url->redirect('/404');
         }
         $this->html->setTitle($post->title);
+        $data['user'] = $this->load->model('Login')->isLogged();
         $data['post'] = $post;
+        $data['ads']  = $this->load->model('Ads')->enabled();
         $view         = $this->view->render('blog/post', $data);
         return $this->blogLayout->render($view);
     }
@@ -42,7 +44,7 @@ class PostController extends Controller
         $loginModel = $this->load->model('Login');
         $post       = $postsModel->get($id);
         if (!$post OR $post[0]->status == 'disabled' OR ! $comment OR ! $loginModel->isLogged()) {
-            return $this->url->redirectTo('/404');
+            return $this->url->redirect('/404');
         }
         $user = $loginModel->user();
         $postsModel->addNewComment($id, $comment, $user->id);

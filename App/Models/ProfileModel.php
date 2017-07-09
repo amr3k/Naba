@@ -38,9 +38,9 @@ class ProfileModel extends Model
                 // Changing new image file permissions
                 $newImgPath = $this->app->file->toAvatar($img);
                 chmod($newImgPath, 0777);
-                // Inserting the image filename in database
-                $this->db->data('img', $img);
             }
+            // Inserting the image filename in database
+            $this->db->data('img', $img);
         }
         $this->db
                 ->data('name', $this->request->post('name'))
