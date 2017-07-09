@@ -44,8 +44,8 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Adding 'User-contributed-posts' page.
 - ~~Adding 'Contact-us' page.~~
 - Implementing search mechanism
-
-- You can request more features as you want.
+***
+# You can request more features as you want.
 
 
 
