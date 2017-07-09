@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Blog;
 
 use System\Controller;
 
@@ -14,13 +14,20 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $this->html->setTitle('Profile');
+        $this->blogLayout->title('Profile');
+        $this->blogLayout->disable('sidebar');
+        $loginModel = $this->load->model('Login');
+        if (!$loginModel->isLogged()) {
+            return $this->url->redirect('/');
+        }
         $user           = $this->load->model('Login')->user();
         $data['user']   = $user;
-        $data['action'] = $this->url->link('admin/profile/submit') . '/' . $user->id;
+        $data['action'] = $this->url->link('/profile/submit') . '/' . $user->id;
         $data['bio']    = $user->bio;
         $data['img']    = $this->url->link('Public/uploads/img/avatar/') . '/' . $data['user']->img;
-        return $this->adminLayout->render($this->view->render('admin/profile/page', $data));
+        $data['errors'] = $this->errors;
+        $view           = $this->view->render('blog/users/profile', $data);
+        return $this->blogLayout->render($view);
     }
 
     /**
@@ -32,10 +39,10 @@ class ProfileController extends Controller
     public function submit($id)
     {
         if ($this->isValid($id)) {
-            $profileModel     = $this->load->model('Profile');
+            $profileModel       = $this->load->model('Profile');
             $profileModel->update();
-            $json['success']  = 'Your profile hes been successfully updated';
-            $json['redirect'] = $this->url->link('/admin/profile');
+            $json['success']    = 'Your profile hes been successfully updated';
+            $json['redirectTo'] = $this->url->link('/profile');
         } else {
             $json['errors'] = $this->validator->flatMsg();
         }

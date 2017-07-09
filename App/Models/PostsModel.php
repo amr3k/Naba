@@ -150,7 +150,7 @@ class PostsModel extends Model
     public function getPostWithComments($id)
     {
         $post = $this->db
-                ->select('posts.*', 'categories.name AS `category`', 'u.name', 'u.img AS userImage')
+                ->select('posts.*', 'categories.name AS `category`', 'u.name', 'u.bio', 'u.img AS userImage')
                 ->from('posts')
                 ->joins('LEFT JOIN categories ON posts.cid=categories.id')
                 ->joins('LEFT JOIN u ON posts.uid=u.id')

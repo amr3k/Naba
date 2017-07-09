@@ -410,7 +410,7 @@ header .user-image {
 
 #content .breadcrumb li a {
     font-size: 16px;
-    color: #000;                              
+    color: #000;
 }
 
 #content .breadcrumb li.active {
@@ -529,24 +529,27 @@ footer .social a {
     padding-bottom: 20px;
 }
 
-#post-page .post-box .details:first-letter {
+/*#post-page .post-box .details:first-letter {
     font-size: 50px;
     background: #000;
     color: #FFF;
     padding: 4px 10px;
     font-weight: bold;
     margin-right: 10px;
-}
+}*/
 
 #post-page #post-author {
-    border-top: 1px solid #ccc;
+    border-top: 2px solid #ccc;
     margin: 10px;
     padding-top: 10px;
     overflow: hidden;
 }
 
 #post-page #post-author img {
-    float: left;
+    position: absolute;
+    overflow: hidden;
+    /*float: left;*/
+    margin: 0px;
     width: 100px;
     height: 100px;
     padding: 3px;
@@ -554,16 +557,19 @@ footer .social a {
 }
 
 #post-page #post-author .author-detials {
+    margin-left: 120px;
+    margin-bottom: 20px;
     font-weight: normal;
+    color: #666;
     font-size: 14px;
 }
 
 #post-page #post-author .name {
-    float: left;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: sans-serif;
     font-weight: bold;
-    margin-left: 17px;
-    margin-top: 35px;
-    display: block;
+    margin-left: 120px;
 }
 
 #post-page #total-comments {

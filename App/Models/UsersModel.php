@@ -47,9 +47,7 @@ class UsersModel extends Model
     public function update($id)
     {
         // Checking for existing user
-        $user = $this->db
-                ->where('id = ?', $id)
-                ->fetch($this->table);
+        $user = $this->get($id);
         if (!$user) {
             return;
         }
@@ -60,15 +58,17 @@ class UsersModel extends Model
         }
         $img = $this->upImg();
         if ($img) {
-            // Deleting old photo before submitting the new one
-            $oldImg     = $user->img;
-            $oldImgPath = $this->app->file->toAvatar($oldImg);
-            unlink($oldImgPath);
-            // Changing new image file permissions
-            $newImgPath = $this->app->file->toAvatar($img);
-            chmod($newImgPath, 0777);
-            // Inserting the image filename in database
-            $this->db->data('img', $img);
+            if (!strstr($user->img, 'default/')) {
+                // Deleting old photo before submitting the new one
+                $oldImg     = $user->img;
+                $oldImgPath = $this->app->file->toAvatar($oldImg);
+                unlink($oldImgPath);
+                // Changing new image file permissions
+                $newImgPath = $this->app->file->toAvatar($img);
+                chmod($newImgPath, 0777);
+                // Inserting the image filename in database
+                $this->db->data('img', $img);
+            }
         }
         $this->db
                 ->data('name', $this->request->post('name'))

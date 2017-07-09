@@ -14,7 +14,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $this->html->setTitle('About');
+        $this->blogLayout->title('About');
         $data['site_name'] = $this->load->model('Settings')->get(1)->name;
         $data['ads']       = $this->load->model('Ads')->enabled();
         $view              = $this->view->render('blog/about', $data);

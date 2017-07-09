@@ -30,19 +30,22 @@ class ProfileModel extends Model
         }
         $img = $this->upImg();
         if ($img) {
-// Deleting old photo before submitting the new one
-            $oldImg     = $user->img;
-            $oldImgPath = $this->app->file->toAvatar($oldImg);
-            unlink($oldImgPath);
-// Changing new image file permissions
-            $newImgPath = $this->app->file->toAvatar($img);
-            chmod($newImgPath, 0777);
-// Inserting the image filename in database
-            $this->db->data('img', $img);
+            if (!strstr($user->img, 'default/')) {
+                // Deleting old photo before submitting the new one
+                $oldImg     = $user->img;
+                $oldImgPath = $this->app->file->toAvatar($oldImg);
+                unlink($oldImgPath);
+                // Changing new image file permissions
+                $newImgPath = $this->app->file->toAvatar($img);
+                chmod($newImgPath, 0777);
+                // Inserting the image filename in database
+                $this->db->data('img', $img);
+            }
         }
         $this->db
                 ->data('name', $this->request->post('name'))
                 ->data('email', $this->request->post('email'))
+                ->data('bio', $this->request->post('bio'))
                 ->where('id = ?', $id)
                 ->update($this->table);
     }
