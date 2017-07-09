@@ -9,7 +9,10 @@ class NotFoundController extends Controller
 
     public function index()
     {
-        return $this->view->render('not-found');
+        $this->blogLayout->disable('sidebar');
+        $data['referer'] = $this->request->referer() ?: $this->url->link('/');
+        $view            = $this->view->render('not-found', $data);
+        return $this->blogLayout->render($view);
     }
 
 }
