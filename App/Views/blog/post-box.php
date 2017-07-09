@@ -20,13 +20,13 @@
             <span class="date"><?php echo date('d-m-Y', $post->created) . ' At ' . date('h:i A', $post->created); ?></span>
         </div>
         <div class="clearfix"></div>
-        <a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id); ?>" class="image-box">
+        <a href="<?php echo url('/post/' . $post->id); ?>" class="image-box">
             <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
         </a>
         <p class="details">
             <?php echo read_more(strip_tags(html_entity_decode($post->text)), 33); ?>
         </p>
-        <a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id); ?>" class="read-more">
+        <a href="<?php echo url('/post/' . '/' . $post->id); ?>" class="read-more">
             Read More
             <span class="fa fa-long-arrow-right"></span>
         </a>
@@ -41,7 +41,7 @@
             In:
             <span class="main"><?php echo $post->category; ?></span>
         </a>
-        <a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id) . '#comments'; ?>" class="comments">
+        <a href="<?php echo url('/post/' . $post->id) . '#comments'; ?>" class="comments">
             <span class="main"><?php echo $post->total_comments; ?></span>
             Comments
         </a>

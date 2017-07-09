@@ -20,10 +20,8 @@
                 <div class="box" id="posts">
                     <div class="box-header with-border">
                         <h3 class="box-title">Manage your Posts</h3>
-                        <button class="btn btn-success pull-right popup" type="button"
-                                data-modal-target="#add-post-form"
-                                data-target="<?php echo url('/admin/posts/add'); ?>">
-                            Add A New Post</button>
+                        <a href="<?php echo url('/admin/posts/add'); ?>" class="btn btn-success pull-right popup">
+                            Add A New Post</a>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -51,11 +49,10 @@
                                     <td><?php echo date('Y-m-d', $post->created); ?></td>
                                     <td><?php echo $post->views; ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-info edit-form"
-                                                data-modal-target="#edit-post-form"
-                                                data-target="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>" >
+                                        <a href="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>"
+                                           class="btn btn-info edit-form">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Edit</button>
+                                            Edit</a>
                                         <button type="button" class="btn btn-danger delete"
                                                 data-target="<?php echo url('/admin/posts/delete/') . '/' . $post->id; ?>"
                                                 >
