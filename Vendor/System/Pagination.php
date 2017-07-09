@@ -110,6 +110,9 @@ class Pagination
      */
     public function last()
     {
+        if ($this->page == $this->lastPage) {
+            return $this->page;
+        }
         return $this->lastPage;
     }
 
@@ -120,6 +123,9 @@ class Pagination
      */
     public function next()
     {
+        if ($this->page == $this->lastPage) {
+            return $this->page;
+        }
         return $this->page + 1;
     }
 
@@ -130,6 +136,9 @@ class Pagination
      */
     public function prev()
     {
+        if ($this->page == 1) {
+            return $this->page;
+        }
         return $this->page - 1;
     }
 

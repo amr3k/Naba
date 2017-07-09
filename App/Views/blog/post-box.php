@@ -33,15 +33,15 @@
     </div>
 
     <div class="post-box-footer">
-        <a href="#" class="user">
+        <a href="<?php echo url('/author') . '/' . $post->author; ?>" class="user">
             By:
             <span class="main"><?php echo $post->author; ?></span>
         </a>
-        <a href="#" class="category">
+        <a href="<?php echo url('/category') . '/' . $post->category . '/' . $post->cid; ?>" class="category">
             In:
             <span class="main"><?php echo $post->category; ?></span>
         </a>
-        <a href="#" class="comments">
+        <a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id) . '#comments'; ?>" class="comments">
             <span class="main"><?php echo $post->total_comments; ?></span>
             Comments
         </a>
