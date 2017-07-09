@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index($id)
     {
         $post = $this->load->model('Posts')->getPostWithComments($id);
-        if (!$post) {
+        if (!$post || $post->category_status !== 'enabled') {
             return $this->url->redirect('/404');
         }
         $this->html->setTitle($post->title);
