@@ -49,7 +49,7 @@
     // Sidebar links
     var currentUrl = window.location.href;
     var segment = currentUrl.split('/').pop();
-    $('#sidebar-' + segment + '-link').addClass('active');
+    $('#sidebar-' + segment).addClass('active');
 
 // I'm not gonna use some fu**ing text editors for now , I don't consider time as a luxary
 // That thing took a lot of time & I couldn't eventually make it usable
