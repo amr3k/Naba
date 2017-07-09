@@ -174,6 +174,44 @@ class PostsModel extends Model
     }
 
     /**
+     * Get Posts by author ID
+     *
+     * @param int $id
+     * @return array
+     */
+    public function getPostsByAuthor($id)
+    {
+        // We Will get the current page
+        $currentPage = $this->pagination->page();
+        // We Will get the items Per Page
+        $limit       = $this->pagination->itemsPerPage();
+        // Set our offset
+        $offset      = $limit * ($currentPage - 1);
+        $posts       = $this->db
+                ->select('posts.*', 'categories.name AS category')
+                ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
+                ->from('posts')
+                ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                ->where('posts.uid=? AND posts.status=?', $id, 'enabled')
+                ->orderBy('posts.id', 'DESC')
+                ->limit($limit, $offset)
+                ->fetchAll($this->table);
+        if (!$posts) {
+            return [];
+        }
+        // Get total posts for pagination
+        $totalPosts = $this->db
+                ->select('COUNT(id) AS `total`')
+                ->from('posts')
+                ->where('uid=? AND status=?', $id, 'enabled')
+                ->fetch();
+        if ($totalPosts) {
+            $this->pagination->setTotalItems($totalPosts->total);
+        }
+        return $posts;
+    }
+
+    /**
      * Get Latest Posts
      *
      * @return array

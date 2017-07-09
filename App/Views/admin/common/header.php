@@ -54,25 +54,23 @@
                     <a href="../#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
-
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- Messages: style can be found in dropdown.less-->
-
                             <!-- Notifications: style can be found in dropdown.less -->
-
-
                             <!-- User Account: style can be found in dropdown.less -->
+                            <li>
+                                <a href="<?php echo url('/'); ?>">Main Page</a>
+                            </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                  <!-- <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-                                    <span class="hidden-xs"><?php echo $user->name; ?></span>
+                                    <img src="<?php echo assets('uploads/img/avatar/' . $user->img); ?>"
+                                         class="img-circle" alt="<?php echo $user->name . '\'s photo'; ?>"
+                                         style="width: 20px;height: 20px;">
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="<?php echo assets('uploads/img/avatar/' . $user->img); ?>" class="img-circle" alt="User Image">
-
                                         <p>
                                             <?php echo $user->name; ?>
                                             <small><?php echo read_more($user->bio, 5); ?></small>
