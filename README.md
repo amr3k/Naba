@@ -8,7 +8,7 @@ Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 
 ------------------------------------------------------------------------------------
 
-This script will be continuously updated (currently, It has more than 16K lines of code)
+This script will be continuously updated (currently, It has more than 15K lines of code)
 
 ------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 ### Front pages :
 - Adding 'User' profile page.
-- Adding 'About-us' page.
+- ~~Adding 'About-us' page.~~
 - Adding 'User-contributed-posts' page.
 - Adding 'Contact-us' page.
 - Implementing search mechanism
