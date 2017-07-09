@@ -39,9 +39,9 @@ class RegisterController extends Controller
             // to be the id of the "users" group
             $this->request->setPost('ugid', 2);
             // Set the user status to be disabled untill the admin approves it
-            $this->request->setPost('status', 'disabled');
+            $this->request->setPost('status', 'enabled');
             $this->load->model('Users')->create();
-            $json['success']    = 'Your account has been successfully created, Please wait for approval';
+            $json['success']    = 'Your account has been successfully created';
             $json['redirectTo'] = $this->url->link('/login');
         } else {
             // it means there are errors in form validation
@@ -61,7 +61,6 @@ class RegisterController extends Controller
         $this->validator->required('name', 'Please set the Users name')->min('name', 3)->max('name', 32);
         $this->validator->required('email')->email('email')->unique('email', ['u', 'email'], 'This email already exists')->max('email', 64);
         $this->validator->required('pass')->min('pass', 8)->max('pass', 128)->match('pass', 're-pass');
-        $this->validator->requiredFile('img')->img('img');
         return $this->validator->pass();
     }
 

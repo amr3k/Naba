@@ -43,13 +43,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li id="nav-">
                                 <a href="<?php echo url('/'); ?>">Home</a>
                             </li>
-                            <li>
-                                <a href="#">About Us</a>
+                            <li id="nav-about" >
+                                <a href="<?php echo url('/about'); ?>">About Us</a>
                             </li>
-                            <li>
+                            <li id="nav-contact" >
                                 <a href="#">Contact Us</a>
                             </li>
                             <li class="dropdown">
