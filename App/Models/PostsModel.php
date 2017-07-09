@@ -171,6 +171,7 @@ class PostsModel extends Model
     {
         $post = $this->db
                 ->select('posts.*', 'categories.name AS `category`', 'u.name', 'u.bio', 'u.img AS userImage')
+                ->select('(SELECT categories.status FROM categories WHERE categories.id = posts.cid) AS category_status')
                 ->from('posts')
                 ->joins('LEFT JOIN categories ON posts.cid=categories.id')
                 ->joins('LEFT JOIN u ON posts.uid=u.id')
