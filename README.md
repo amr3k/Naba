@@ -24,21 +24,22 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 ### Under the hood :
 
+- ~~Redesign post URLs to fix some routing issues~~
 - Enhancing security against spam, SQL injection and XSS attacks.
-- Implementing Google recaptcha for signup, login and contacting site admin requests.
+- Implementing Google ReCAPTCHA for signup, login and contacting site admin requests.
 - Activating registered accounts via email using tokens.
 - Enhancing performance using caching.
 - Social Login
 - Social sharing
-- Multi language support (Adding arabic)
+- Multi language support (Adding Arabic)
 
 ### Admin Panel :
 - Dashboard page.
-- Adding posts via normal page (currently it's done with a floating window).
-- Implementing a live text editor (ex. CKEditor).
+- ~~Adding posts via normal page (currently it's done with a floating window).~~
+- ~~Implementing a live text editor (ex. CKEditor or Summernote).~~
 - Re-creating Settings page (Lot's of features giving more control power over script).
 
-### Front pages :
+### Main script :
 - ~~Adding 'User profile' page.~~
 - ~~Adding 'About-us' page.~~
 - ~~Adding 'User-posts' page.~~
