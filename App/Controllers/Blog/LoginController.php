@@ -16,7 +16,6 @@ class LoginController extends Controller
     {
         $this->blogLayout->title('Login');
         $loginModel = $this->load->model('Login');
-        // disable sidebar
         $this->blogLayout->disable('sidebar');
         if ($loginModel->isLogged()) {
             return $this->url->redirect('/');

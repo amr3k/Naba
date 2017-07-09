@@ -88,7 +88,7 @@ $app->route->add('/admin/ads/delete/:id', 'Admin/Ads@delete', 'POST');
 
 // Admin profile
 $app->route->add('/admin/profile', 'Admin/Profile');
-$app->route->add('/admin/profile/submit', 'Admin/Profile@submit', 'POST');
+$app->route->add('/admin/profile/submit/:id', 'Admin/Profile@submit', 'POST');
 
 // Logout
 $app->route->add('/admin/logout', 'Admin/Logout');
@@ -107,6 +107,7 @@ $app->route->add('/contact', 'Blog/Contact');
 $app->route->add('/contact/submit', 'Blog/Contact@submit', 'POST');
 $app->route->add('/about', 'Blog/About');
 $app->route->add('/profile', 'Blog/Profile');
+$app->route->add('/profile/submit/:id', 'Blog/Profile@submit', 'POST');
 $app->route->add('/search', 'Blog/Search');
 
 // Not found routes

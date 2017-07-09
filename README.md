@@ -1,4 +1,4 @@
-# advanced-blog :
+# AE-AdvBlog :
 
 This is my application on PHP MVC course.
 
@@ -34,15 +34,15 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 ### Admin Panel :
 - Dashboard page.
-- Adding posts via normal page (currenty it's done with a floating window).
+- Adding posts via normal page (currently it's done with a floating window).
 - Implementing a live text editor (ex. CKEditor).
 - Re-creating Settings page (Lot's of features giving more control over script).
 
 ### Front pages :
-- Adding 'User' profile page.
+- ~~Adding 'User profile' page.~~
 - ~~Adding 'About-us' page.~~
 - Adding 'User-contributed-posts' page.
-- Adding 'Contact-us' page.
+- ~~Adding 'Contact-us' page.~~
 - Implementing search mechanism
 
 - You can request more features as you want.
