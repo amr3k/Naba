@@ -46,3 +46,5 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Implementing search mechanism
 ***
 # You can request more features as you want.
+## You can also report bugs ..
+Just head to [issues](https://github.com/akkk33/AE-AdvBlog/issues) and write whatever you want
