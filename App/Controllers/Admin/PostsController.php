@@ -15,7 +15,7 @@ class PostsController extends Controller
     public function index()
     {
         $this->html->setTitle('Posts');
-        $data['posts'] = $this->load->model('Posts')->latest();
+        $data['posts'] = $this->load->model('Posts')->all();
         return $this->adminLayout->render($this->view->render('admin/posts/list', $data));
     }
 
