@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
+            Ads
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo url('/'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li class="active">Ads</li>
         </ol>
     </section>
 
@@ -48,13 +48,13 @@
                                         echo 'style="color: Green"';
                                     }
                                     ?>>
-                                    <?php echo date('Y-m-d', $ad->start); ?></td>
+                                        <?php echo date('Y-m-d', $ad->start); ?></td>
                                     <td <?php
                                     if (time() > $ad->end) {
                                         echo 'style="color:Red"';
                                     }
                                     ?>>
-    <?php echo date('Y-m-d', $ad->end); ?></td>
+                                        <?php echo date('Y-m-d', $ad->end); ?></td>
                                     <td><?php echo $ad->page; ?></td>
                                     <td><?php echo ucfirst($ad->status); ?></td>
                                     <td>
