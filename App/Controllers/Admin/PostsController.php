@@ -15,7 +15,7 @@ class PostsController extends Controller
     public function index()
     {
         $this->html->setTitle('Posts');
-        $data['posts'] = $this->load->model('Posts')->all();
+        $data['posts'] = $this->load->model('Posts')->latest();
         return $this->adminLayout->render($this->view->render('admin/posts/list', $data));
     }
 
@@ -26,9 +26,11 @@ class PostsController extends Controller
      */
     public function add()
     {
+        $this->html->setTitle('Add a new post');
         $data['action']     = $this->url->link('/admin/posts/submit');
         $data['categories'] = $this->load->model('Categories')->all();
-        return $this->app->view->render('admin/posts/form', $data);
+        $view               = $this->app->view->render('admin/posts/form', $data);
+        return $this->adminLayout->render($view);
     }
 
     /**
@@ -79,7 +81,9 @@ class PostsController extends Controller
         $data['tags']       = $post->tags;
         $data['status']     = $post->status;
         $data['img']        = $this->url->link('Public/uploads/img/posts/') . '/' . $post->img;
-        return $this->app->view->render('admin/posts/form-edit', $data);
+        $this->html->setTitle('Edit: ' . $post->title);
+        $view               = $this->app->view->render('admin/posts/form-edit', $data);
+        return $this->adminLayout->render($view);
     }
 
     /**

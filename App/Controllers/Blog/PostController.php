@@ -10,11 +10,10 @@ class PostController extends Controller
     /**
      * Display Post Page
      *
-     * @param string name
      * @param int $id
      * @return mixed
      */
-    public function index($title, $id)
+    public function index($id)
     {
         $post = $this->load->model('Posts')->getPostWithComments($id);
         if (!$post) {
@@ -31,11 +30,10 @@ class PostController extends Controller
     /**
      * Add New Comment to the given post
      *
-     * @param string $title
      * @param int $id
      * @return mixed
      */
-    public function addComment($title, $id)
+    public function addComment($id)
     {
         // first we will check if there is no comment or the post does not exist
         // then we will redirect him to not found page
@@ -48,7 +46,7 @@ class PostController extends Controller
         }
         $user = $loginModel->user();
         $postsModel->addNewComment($id, $comment, $user->id);
-        return $this->url->redirect('/post/' . $title . '/' . $id . '#comments');
+        return $this->url->redirect('/post' . '/' . $id . '#comments');
     }
 
     /**

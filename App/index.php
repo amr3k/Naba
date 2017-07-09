@@ -49,9 +49,9 @@ $app->route->add('/admin/users-groups/delete/:id', 'Admin/UsersGroups@delete', '
 
 // Posts
 $app->route->add('/admin/posts', 'Admin/Posts');
-$app->route->add('/admin/posts/add', 'Admin/Posts@add', 'POST');
+$app->route->add('/admin/posts/add', 'Admin/Posts@add');
 $app->route->add('/admin/posts/submit', 'Admin/Posts@submit', 'POST');
-$app->route->add('/admin/posts/edit/:id', 'Admin/Posts@edit', 'POST');
+$app->route->add('/admin/posts/edit/:id', 'Admin/Posts@edit');
 $app->route->add('/admin/posts/save/:id', 'Admin/Posts@save', 'POST');
 $app->route->add('/admin/posts/delete/:id', 'Admin/Posts@delete', 'POST');
 
@@ -97,8 +97,8 @@ $app->route->add('/logout', 'Admin/Logout');
 // Blog routes
 $app->route->add('/', 'Blog/Home');
 $app->route->add('/category/:text/:id', 'Blog/Category');
-$app->route->add('/post/:text/:id', 'Blog/Post');
-$app->route->add('/post/:text/:id/add-comment', 'Blog/Post@addComment', 'POST');
+$app->route->add('/post/:id', 'Blog/Post');
+$app->route->add('/post/:id/add-comment', 'Blog/Post@addComment', 'POST');
 $app->route->add('/author/:text', 'Blog/Author');
 $app->route->add('/register', 'Blog/Register');
 $app->route->add('/register/submit', 'Blog/Register@submit', 'POST');

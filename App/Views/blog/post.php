@@ -27,15 +27,15 @@
                         <span class="fa fa-google-plus"></span>
                     </a>
                 </div>
-                <h1 class="heading"><a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id); ?>"><?php echo $post->title; ?></a></h1>
+                <h1 class="heading"><a href="<?php echo url('/post/' . $post->id); ?>"><?php echo $post->title; ?></a></h1>
                 <div class="date-container">
                     <span class="fa fa-calendar"></span>
                     <span class="date"><?php echo date('d-m-Y', $post->created) . ' At ' . date('h:i A', $post->created); ?></span>
                 </div>
                 <div class="clearfix"></div>
-                <a href="#" class="image-box">
+                <div class="image-box">
                     <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
-                </a>
+                </div>
                 <p class="details">
                     <?php echo htmlspecialchars_decode($post->text); ?>
                 </p>
@@ -94,7 +94,7 @@
         </div>
         <!--/ Comments -->
         <!-- Comment Form -->
-        <form action="<?php echo url('/post/' . seo($post->title) . '/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
+        <form action="<?php echo url('/post/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
             <h3 class="heading">Post Comment</h3>
             <?php if ($user) { ?>
                 <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>

@@ -2,7 +2,7 @@ $(function () {
     adjustFooter();
 
     "use strict";
-    
+
     new WOW().init();
 
     $(".dropdown").hover(function () {
@@ -11,23 +11,23 @@ $(function () {
 
     $('.placeholder').each(function () {
         var input = $(this),
-            placeholder = input.attr('placeholder');
+                placeholder = input.attr('placeholder');
 
         input.attr('data-placeholder', placeholder);
         input.attr('placeholder', '');
         input.val(placeholder);
     }).on('focus', function () {
         var input = $(this),
-            placeholder = input.attr('data-placeholder'),
-            inputVal = input.val();
+                placeholder = input.attr('data-placeholder'),
+                inputVal = input.val();
 
         if (inputVal == placeholder) {
             input.val('');
         }
     }).on('focusout', function () {
         var input = $(this),
-            placeholder = input.attr('data-placeholder'),
-            inputVal = input.val();
+                placeholder = input.attr('data-placeholder'),
+                inputVal = input.val();
 
         if (inputVal == '') {
             input.val(placeholder);
@@ -49,7 +49,8 @@ $(function () {
             input = $(this);
             placeholder = input.attr('data-placeholder');
 
-            if (! placeholder) return false;
+            if (!placeholder)
+                return false;
 
             if (input.val() == placeholder) {
                 input.val('');
@@ -70,7 +71,7 @@ $(function () {
             beforeSend: function () {
                 formResults.removeClass().addClass('alert alert-info').html('Loading...');
             },
-            success: function(results) {
+            success: function (results) {
                 if (results.errors) {
                     formResults.removeClass().addClass('alert alert-danger').html(results.errors);
                 } else if (results.success) {
