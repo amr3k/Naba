@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="editor">Text</label>
-                        <textarea name="text" class="form-control" id="editor" style="resize: vertical"><?php echo $text; ?></textarea>
+                        <textarea name="text" class="textarea form-control" id="editor" style="resize: vertical"><?php echo $text; ?></textarea>
                     </div>
                     <div class="form-group col-sm-12">
                         <label for="tags">Tags (<span style="color: red">Separate with comma</span>)</label>

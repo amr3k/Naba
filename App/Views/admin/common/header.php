@@ -75,7 +75,7 @@
 
                                         <p>
                                             <?php echo $user->name; ?>
-                                            <small>Web Developer</small>
+                                            <small><?php echo read_more($user->bio, 5); ?></small>
                                             <small>Member since <?php echo date('F. Y', $user->created); ?></small>
                                         </p>
                                     </li>
