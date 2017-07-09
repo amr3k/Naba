@@ -34,7 +34,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Multi language support (Adding Arabic)
 
 ### Admin Panel :
-- Dashboard page.
+- ~~Dashboard page.~~
 - ~~Adding posts via normal page (currently it's done with a floating window).~~
 - ~~Implementing a live text editor (ex. CKEditor or Summernote).~~
 - Re-creating Settings page (Lot's of features giving more control power over script).
