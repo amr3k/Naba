@@ -31,13 +31,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="image" class="col-sm-3 col-xs-12">Profile Photo</label>
-                <div class="col-sm-9 col-xs-12">
-                    <input type="file" name="img" id="image" class="input" />
-                </div>
-            </div>
-
-            <div class="form-group">
                 <div class=" col-sm-offset-3 col-sm-9">
                     <button class="button bold submit-btn">Sign Up</button>
                 </div>

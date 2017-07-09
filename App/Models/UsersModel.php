@@ -20,9 +20,11 @@ class UsersModel extends Model
      */
     public function create()
     {
-        $img = $this->upImg();
+        // Images are not neccessarily while registering
+        // So I'm gonna use a default avatar
+        $img = $this->defaultImg();
         // Changing image file permissions
-        chmod($this->app->file->toAvatar($img), 0777);
+//        chmod($this->app->file->toAvatar($img), 0777);
         $this->db
                 ->data('name', trim($this->request->post('name')))
                 ->data('email', trim($this->request->post('email')))
@@ -92,11 +94,23 @@ class UsersModel extends Model
     }
 
     /**
+     * Default image
+     *
+     * @return string
+     */
+    private function defaultImg()
+    {
+        $photo = rand(1, 9) . '.jpg';
+        $path  = 'default/' . $photo;
+        return $path;
+    }
+
+    /**
      * Upload image
      *
      * @return string
      */
-    public function upImg()
+    private function upImg()
     {
         $img = $this->request->file('img');
         if (!$img->exists()) {
@@ -114,9 +128,11 @@ class UsersModel extends Model
      */
     public function delete($id)
     {
-        $user    = $this->get($id);
-        $imgPath = $this->app->file->toAvatar($user->img);
-        unlink($imgPath);
+        $user = $this->get($id);
+        if (!strstr($user->img, 'default/')) {
+            $imgPath = $this->app->file->toAvatar($user->img);
+            unlink($imgPath);
+        }
         parent::delete($id);
     }
 

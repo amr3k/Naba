@@ -39,5 +39,11 @@
 <script src="<?php echo assets('blog/js/wow.min.js'); ?>"></script>
 <!-- Custom JS -->
 <script src="<?php echo assets('blog/js/custom.js'); ?>"></script>
+<script>
+    // Navbar items
+    var currentUrl = window.location.href;
+    var segment = currentUrl.split('/').pop();
+    $('#nav-' + segment).addClass('active');
+</script>
 </body>
 </html>
