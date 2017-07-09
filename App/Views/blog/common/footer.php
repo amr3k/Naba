@@ -44,6 +44,7 @@
     var currentUrl = window.location.href;
     var segment = currentUrl.split('/').pop();
     $('#nav-' + segment).addClass('active');
+
 </script>
 </body>
 </html>

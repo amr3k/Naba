@@ -30,7 +30,7 @@
                 <h1 class="heading"><?php echo $post->title; ?></h1>
                 <div class="date-container">
                     <span class="fa fa-calendar"></span>
-                    <span class="date"><?php echo date('d/m/Y h:i A', $post->created); ?></span>
+                    <span class="date"><?php echo date('d-m-Y', $post->created) . ' At ' . date('h:i A', $post->created); ?></span>
                 </div>
                 <div class="clearfix"></div>
                 <a href="#" class="image-box">
@@ -41,12 +41,12 @@
                 </p>
             </div>
             <div id="post-author">
-                <img src="<?php echo assets('uploads/img/avatar/' . $post->userImage); ?>" alt="" />
-                <div class="name">
-                    <?php echo $post->name; ?>
-                    <div class="author-detials">
-                        David Cage is a perfect Blog Publisher that creates wonderful
-                    </div>
+                <div class="author-image">
+                    <img src="<?php echo assets('uploads/img/avatar/' . $post->userImage); ?>" alt="<?php echo $post->userImage . '\'s photo'; ?>" />
+                </div>
+                <div>
+                    <h3 class="name"><?php echo $post->name; ?></h3>
+                    <p class="author-detials"><?php echo $post->bio; ?></p>
                 </div>
             </div>
         </div>

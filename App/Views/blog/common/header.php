@@ -50,7 +50,7 @@
                                 <a href="<?php echo url('/about'); ?>">About Us</a>
                             </li>
                             <li id="nav-contact" >
-                                <a href="#">Contact Us</a>
+                                <a href="<?php echo url('/contact'); ?>">Contact Us</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>

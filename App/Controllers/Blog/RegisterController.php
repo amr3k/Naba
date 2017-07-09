@@ -45,7 +45,7 @@ class RegisterController extends Controller
             $json['redirectTo'] = $this->url->link('/login');
         } else {
             // it means there are errors in form validation
-            $json['errors'] = $this->validator->flattenMessages();
+            $json['errors'] = $this->validator->flatMsg();
         }
         return $this->json($json);
     }
