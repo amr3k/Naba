@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
+            Users-Groups
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo url('/'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li class="active">Users-Groups</li>
         </ol>
     </section>
 
@@ -60,7 +60,7 @@
                                                         >
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     Delete</button>
-                                            <?php
+                                                <?php
                                             }
                                         }
                                         ?>

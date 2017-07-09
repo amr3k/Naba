@@ -138,6 +138,26 @@ class PostsModel extends Model
                         ->from('posts')
                         ->joins('LEFT JOIN categories ON posts.cid = categories.id')
                         ->joins('LEFT JOIN u ON posts.uid = u.id')
+                        ->orderBy('posts.id', 'DESC')
+                        ->fetchAll();
+    }
+
+    /**
+     * Get Latest Posts
+     *
+     * @return array
+     */
+    public function latest()
+    {
+        return $this->db
+                        ->select('posts.*', 'categories.name AS category, u.name AS `author`')
+                        ->select('(SELECT COUNT(comments.id) FROM comments WHERE comments.post_id = posts.id) AS total_comments')
+                        ->select('(SELECT categories.status FROM categories WHERE categories.id = posts.cid) AS category_status')
+                        ->from('posts')
+                        ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                        ->joins('LEFT JOIN u ON posts.uid = u.id')
+                        ->where('posts.status=?', 'enabled')
+                        ->orderBy('posts.id', 'DESC')
                         ->fetchAll();
     }
 
@@ -209,24 +229,6 @@ class PostsModel extends Model
             $this->pagination->setTotalItems($totalPosts->total);
         }
         return $posts;
-    }
-
-    /**
-     * Get Latest Posts
-     *
-     * @return array
-     */
-    public function latest()
-    {
-        return $this->db
-                        ->select('posts.*', 'categories.name AS category, u.name AS `author`')
-                        ->select('(SELECT COUNT(comments.id) FROM comments WHERE comments.post_id = posts.id) AS total_comments')
-                        ->from('posts')
-                        ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                        ->joins('LEFT JOIN u ON posts.uid = u.id')
-                        ->where('posts.status=?', 'enabled')
-                        ->orderBy('posts.id', 'DESC')
-                        ->fetchAll();
     }
 
     /**

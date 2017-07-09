@@ -33,8 +33,12 @@
 <!--/ Slideshow -->
 <!-- Main Content -->
 <div class="col-sm-9 col-xs-12" id="main-content">
-    <?php foreach ($posts AS $post) { ?>
-        <?php echo $post_box($post); ?>
-    <?php } ?>
+    <?php
+    foreach ($posts AS $post) {
+        if ($post->category_status === 'enabled') {
+            echo $post_box($post);
+        }
+    }
+    ?>
 </div>
 <!--/ Main Content -->
