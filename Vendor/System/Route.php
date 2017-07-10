@@ -48,6 +48,7 @@ class Route
     public function __construct(App $app)
     {
         $this->app = $app;
+//        pred($this->routes);
     }
 
     /**
@@ -133,15 +134,17 @@ class Route
     public function getProperRoute()
     {
         foreach ($this->routes as $route) {
+//            pre($route);
             if ($this->isMatching($route['pattern']) && $this->isMatchingRequestMethod($route['method'])) {
-                $arguments = $this->getArgumentsFrom($route['pattern']);
-
+                $arguments          = $this->getArgumentsFrom($route['pattern']);
+//                echo '<h1>Matched</h1>';
                 // Cotroller@method
                 list($controller, $method) = explode('@', $route['action']);
                 $this->currentRoute = $route['url'];
                 return [$controller, $method, $arguments];
             }
         }
+//        die;
         return $this->app->url->redirect($this->notFound);
     }
 
@@ -176,6 +179,7 @@ class Route
      */
     private function getArgumentsFrom($pattern)
     {
+        $matches = [];
         preg_match($pattern, $this->app->request->url(), $matches);
         array_shift($matches);
         return $matches;
@@ -190,7 +194,7 @@ class Route
     private function generatePattern($url)
     {
         $pattern = '#^';
-        $pattern .= str_replace([':text', ':id'], ['([a-zA-Z0-9-]+)', '(\d+)'], $url);
+        $pattern .= str_replace([':text', ':id'], ['([\w\d+=-\?]+)', '(\d+)'], $url);
         $pattern .= '$#';
         return $pattern;
     }

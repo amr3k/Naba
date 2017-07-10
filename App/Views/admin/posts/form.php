@@ -55,14 +55,14 @@
                             <div class="clearfix"></div>
                             <div id="form-results"></div>
                             <div class="clearfix"></div>
-                            <button id="submit-btn" class="btn btn-info submit-btn" style="float: left">Submit</button>
+                            <div class="col-offset-sm-2">
+                                <button id="submit-btn" class="btn btn-info submit-btn" style="float: left">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </section>
     <!-- /.content -->
 </div>
