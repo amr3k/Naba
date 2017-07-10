@@ -100,6 +100,7 @@ $app->route->add('/category/:text/:id', 'Blog/Category');
 $app->route->add('/post/:id', 'Blog/Post');
 $app->route->add('/post/:id/add-comment', 'Blog/Post@addComment', 'POST');
 $app->route->add('/author/:text', 'Blog/Author');
+$app->route->add('/tag/:text', 'Blog/Tag');
 $app->route->add('/register', 'Blog/Register');
 $app->route->add('/register/submit', 'Blog/Register@submit', 'POST');
 $app->route->add('/login', 'Blog/Login');

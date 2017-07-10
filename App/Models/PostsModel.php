@@ -233,6 +233,45 @@ class PostsModel extends Model
     }
 
     /**
+     * Get Posts by author ID
+     *
+     * @param int $tag
+     * @return array
+     */
+    public function getPostsByTag($tag)
+    {
+        // We Will get the current page
+        $currentPage = $this->pagination->page();
+        // We Will get the items Per Page
+        $limit       = $this->pagination->itemsPerPage();
+        // Set our offset
+        $offset      = $limit * ($currentPage - 1);
+        $posts       = $this->db
+                ->select('posts.*', 'u.name AS author', 'categories.name AS category')
+                ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
+                ->from('posts')
+                ->joins('LEFT JOIN u ON posts.uid = u.id')
+                ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                ->where('posts.tags LIKE ? AND posts.status=?', "%$tag%", 'enabled')
+                ->orderBy('posts.id', 'DESC')
+                ->limit($limit, $offset)
+                ->fetchAll($this->table);
+        if (!$posts) {
+            return [];
+        }
+        // Get total posts for pagination
+        $totalPosts = $this->db
+                ->select('COUNT(id) AS `total`')
+                ->from('posts')
+                ->where('tags LIKE ? AND status=?', "%$tag%", 'enabled')
+                ->fetch();
+        if ($totalPosts) {
+            $this->pagination->setTotalItems($totalPosts->total);
+        }
+        return $posts;
+    }
+
+    /**
      * Add New Comment to the given post
      *
      * @param int $postId
