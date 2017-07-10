@@ -17,13 +17,6 @@
         <div class="box post-box wow fadeIn" data-wow-duration="3s">
             <div class="post-content">
                 <div class="social-icons pull-right">
-                    <?php if ($ugid === '1') { ?>
-                        Edit <span class="fa fa-arrow-right"></span>
-                        <a class="rss" href="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>">
-                            <span class="fa fa-edit"></span>
-                        </a>
-                    <?php } ?>
-                    Share <span class="fa fa-arrow-right"></span>
                     <a href="#" class="facebook">
                         <span class="fa fa-facebook"></span>
                     </a>
@@ -43,6 +36,18 @@
                         <span style="color: black; margin-left: 0px"><?php echo $post->views; ?></span>
                     </span>
                 </div>
+                <?php if ($ugid === '1') { ?>
+                    Actions
+                    <a href="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>"
+                       class="btn btn-info edit-form">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Edit</a>
+                    <button type="button" class="btn btn-danger delete"
+                            data-target="<?php echo url('/admin/posts/delete/') . '/' . $post->id; ?>"
+                            >
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        Delete</button>
+                <?php } ?>
                 <div class="clearfix"></div>
                 <div class="image-box">
                     <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
@@ -90,6 +95,12 @@
                         </a>
                     </div>
                     <div class="comment-container">
+                        <button type="button" class="btn btn-danger delete" style="float: right"
+                                data-target="<?php echo url('/admin/') . '/' . $comment->id . '/comments/delete'; ?>"
+                                >
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            Delete
+                        </button>
                         <div class="author-name">
                             <?php echo $comment->name; ?>
                         </div>

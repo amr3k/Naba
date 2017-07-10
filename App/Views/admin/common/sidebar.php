@@ -33,6 +33,12 @@
                     <span>Posts</span>
                 </a>
             </li>
+            <li id="sidebar-comments" class="sidebar-link">
+                <a href="<?php echo url('/admin/comments') ?>">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                    <span>Comments</span>
+                </a>
+            </li>
             <li id="sidebar-ads" class="sidebar-link">
                 <a href="<?php echo url('/admin/ads') ?>">
                     <i class="fa fa-flag"></i>
