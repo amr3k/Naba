@@ -13,7 +13,7 @@
             </a>
         </div>
         <h1 class="heading">
-            <a href="<?php echo url('/post/' . seo($post->title) . '/' . $post->id); ?>"><?php echo $post->title; ?></a>
+            <a href="<?php echo url('/post/' . $post->id); ?>"><?php echo $post->title; ?></a>
         </h1>
         <div class="date-container">
             <span class="fa fa-calendar"></span>
