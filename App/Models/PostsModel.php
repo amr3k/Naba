@@ -309,20 +309,6 @@ class PostsModel extends Model
     }
 
     /**
-     * Getting number of views for post ID
-     *
-     * @param ing $id
-     * @return int
-     */
-    public function views($id)
-    {
-        return $this->db
-                        ->select('views')
-                        ->where('id=?', $id)
-                        ->fetch($this->table)->views;
-    }
-
-    /**
      * Get Posts by views
      *
      * @param int $limit
