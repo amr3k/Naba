@@ -21,6 +21,7 @@ class PostController extends Controller
         }
         $this->html->setTitle($post->title);
         $data['user'] = $this->load->model('Login')->isLogged();
+        $data['ugid'] = $this->load->model('Login')->user()->ugid;
         $data['post'] = $post;
         $data['ads']  = $this->load->model('Ads')->enabled();
         $view         = $this->view->render('blog/post', $data);
