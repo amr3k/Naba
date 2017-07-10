@@ -108,4 +108,23 @@ class CategoriesModel extends Model
         return $category;
     }
 
+    /**
+     * Delete category with its posts
+     *
+     * @param int $id Category ID
+     * @return void
+     */
+    public function delete($id)
+    {
+        $posts = $this->db
+                ->select('id')
+                ->from('posts')
+                ->where('posts.cid=?', $id)
+                ->fetchAll();
+        foreach ($posts as $post) {
+            $this->load->model('Posts')->delete($post->id);
+        }
+        parent::delete($id);
+    }
+
 }

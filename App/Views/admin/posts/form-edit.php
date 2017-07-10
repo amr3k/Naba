@@ -23,7 +23,7 @@
                         <form action="<?php echo $action; ?>" class="form-modal form" method="POST" enctype="multipart/form-data">
                             <div class="form-group col-sm-12">
                                 <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="<?php echo $title; ?>">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Title" maxlength="30" value="<?php echo $title; ?>">
                             </div>
                             <div class="form-group col-sm-12">
                                 <label for="editor">Text</label>

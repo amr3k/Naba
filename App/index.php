@@ -108,7 +108,7 @@ $app->route->add('/contact/submit', 'Blog/Contact@submit', 'POST');
 $app->route->add('/about', 'Blog/About');
 $app->route->add('/profile', 'Blog/Profile');
 $app->route->add('/profile/submit/:id', 'Blog/Profile@submit', 'POST');
-$app->route->add('/search:text', 'Blog/Search');
+$app->route->add('/search', 'Blog/Search');
 // Not found routes
 $app->route->add('/404', 'NotFound');
 $app->route->notFound('/404');
