@@ -44,7 +44,24 @@
     var currentUrl = window.location.href;
     var segment = currentUrl.split('/').pop();
     $('#nav-' + segment).addClass('active');
-
+// Deleting item
+    $('.delete').on('click', function (e) {
+        e.preventDefault();
+        btn = $(this);
+        c = confirm('Are you sure? This action cannot be undone ! Think twice before doing it');
+        if (c === true) {
+            $.ajax({
+                url: btn.data('target'),
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    window.location.href = r.redirectHome;
+                }
+            });
+        } else {
+            return false;
+        }
+    });
 </script>
 </body>
 </html>

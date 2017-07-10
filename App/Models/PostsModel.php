@@ -101,6 +101,10 @@ class PostsModel extends Model
         $post    = $this->get($id)[0];
         $imgPath = $this->app->file->toPostsImg($post->img);
         unlink($imgPath);
+        // Deleting comments :
+        $this->db
+                ->where('post_id=?', $post->id)
+                ->delete('comments');
         parent::delete($id);
     }
 

@@ -113,9 +113,10 @@ class PostsController extends Controller
      */
     public function delete($id)
     {
-        $postModel        = $this->load->model('Posts');
+        $postModel            = $this->load->model('Posts');
         $postModel->delete($id);
-        $json['redirect'] = $this->url->link('/admin/posts');
+        $json['redirect']     = $this->url->link('/admin/posts');
+        $json['redirectHome'] = $this->url->link('/');
         return $this->json($json);
     }
 
