@@ -91,7 +91,7 @@ class PostsModel extends Model
     }
 
     /**
-     * Delete post and its image
+     * Delete post and its image and comments
      *
      * @param int $id
      * @return void
@@ -268,6 +268,45 @@ class PostsModel extends Model
                 ->select('COUNT(id) AS `total`')
                 ->from('posts')
                 ->where('tags LIKE ? AND status=?', "%$tag%", 'enabled')
+                ->fetch();
+        if ($totalPosts) {
+            $this->pagination->setTotalItems($totalPosts->total);
+        }
+        return $posts;
+    }
+
+    /**
+     * Get posts that contains one or more of search queries
+     *
+     * @param string $query
+     * @return array
+     */
+    public function search($query)
+    {
+        // We Will get the current page
+        $currentPage = $this->pagination->page();
+        // We Will get the items Per Page
+        $limit       = $this->pagination->itemsPerPage();
+        // Set our offset
+        $offset      = $limit * ($currentPage - 1);
+        $posts       = $this->db
+                ->select('posts.*', 'u.name AS author', 'categories.name AS category')
+                ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
+                ->from('posts')
+                ->joins('LEFT JOIN u ON posts.uid = u.id')
+                ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                ->where('posts.title LIKE ? OR posts.text LIKE ? AND posts.status=?', "%$query%", "%$query%", 'enabled')
+                ->orderBy('posts.id', 'DESC')
+                ->limit($limit, $offset)
+                ->fetchAll($this->table);
+        if (!$posts) {
+            return [];
+        }
+        // Get total posts for pagination
+        $totalPosts = $this->db
+                ->select('COUNT(id) AS `total`')
+                ->from('posts')
+                ->where('posts.title LIKE ? OR posts.text LIKE ? AND posts.status=?', "%$query%", "%$query%", 'enabled')
                 ->fetch();
         if ($totalPosts) {
             $this->pagination->setTotalItems($totalPosts->total);

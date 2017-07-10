@@ -121,7 +121,7 @@ class UsersModel extends Model
     }
 
     /**
-     * Delete user and his image
+     * Delete user and his image, posts and comments
      *
      * @param int $id
      * @return void
@@ -132,6 +132,14 @@ class UsersModel extends Model
         if (!strstr($user->img, 'default/')) {
             $imgPath = $this->app->file->toAvatar($user->img);
             unlink($imgPath);
+        }
+        $posts = $this->db
+                ->select('id')
+                ->from('posts')
+                ->where('posts.uid=?', $id)
+                ->fetchAll();
+        foreach ($posts as $post) {
+            $this->load->model('Posts')->delete($post->id);
         }
         parent::delete($id);
     }

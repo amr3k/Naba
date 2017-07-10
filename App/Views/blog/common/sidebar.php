@@ -1,7 +1,7 @@
 <!-- Widget -->
 <div class="col-sm-3 hidden-xs" id="widget">
     <!-- Social Widget -->
-    <section class="box wow fadeInDown" data-wow-duration="2s" id="social-widget">
+<!--    <section class="box wow fadeInDown" data-wow-duration="2s" id="social-widget">
         <h3 class="heading">Social Media</h3>
         <div class="content">
             <a href="#" class="facebook">
@@ -26,14 +26,14 @@
                 <span class="fa fa-rss"></span>
             </a>
         </div>
-    </section>
+    </section>-->
     <!--/ Social Widget -->
     <!-- Search Widget -->
     <section class="box wow fadeInDown" data-wow-duration="2s" id="search-widget">
         <h3 class="heading">Search Blog</h3>
         <div class="content">
             <form action="<?php echo url('/search') . '/'; ?>" method="get">
-                <input type="text" name="q" class="input" />
+                <input type="search" name="q" class="input"/>
                 <button class="button">Search</button>
             </form>
         </div>
