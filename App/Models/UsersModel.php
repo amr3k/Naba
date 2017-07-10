@@ -26,7 +26,7 @@ class UsersModel extends Model
         // Changing image file permissions
 //        chmod($this->app->file->toAvatar($img), 0777);
         $this->db
-                ->data('name', trim($this->request->post('name')))
+                ->data('name', trim(strtolower($this->request->post('name'))))
                 ->data('email', trim($this->request->post('email')))
                 ->data('pass', password_hash(trim($this->request->post('pass')), PASSWORD_DEFAULT))
                 ->data('img', $img)
@@ -71,7 +71,7 @@ class UsersModel extends Model
             }
         }
         $this->db
-                ->data('name', $this->request->post('name'))
+                ->data('name', trim(strtolower($this->request->post('name'))))
                 ->data('email', $this->request->post('email'))
                 ->data('ugid', $this->request->post('ugid'))
                 ->data('status', $this->request->post('status'))
