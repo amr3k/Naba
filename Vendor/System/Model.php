@@ -74,7 +74,7 @@ abstract class Model
     }
 
     /**
-     * Get record by ID
+     * Get record by custom value
      *
      * @param int $id
      * @return \stdClass

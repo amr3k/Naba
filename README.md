@@ -26,7 +26,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 - ~~Redesign post URLs to fix some routing issues~~
 - Enhancing security against spam, SQL injection and XSS attacks.
-- Implementing Google ReCAPTCHA for signup, login and contacting site admin requests.
+- Implementing Google ReCAPTCHA for signup, login ~~and contacting site admin requests~~.
 - Activating registered accounts via email using tokens.
 - Enhancing performance using caching.
 - Social Login

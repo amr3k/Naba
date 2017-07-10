@@ -19,12 +19,14 @@ class PostController extends Controller
         if (!$post || $post->category_status !== 'enabled') {
             return $this->url->redirect('/404');
         }
+        $this->load->model('Posts')->addView($id);
         $this->html->setTitle($post->title);
-        $data['user'] = $this->load->model('Login')->isLogged();
-        $data['ugid'] = $this->load->model('Login')->user()->ugid;
-        $data['post'] = $post;
-        $data['ads']  = $this->load->model('Ads')->enabled();
-        $view         = $this->view->render('blog/post', $data);
+        $data['user']  = $this->load->model('Login')->isLogged();
+        $data['ugid']  = $this->load->model('Login')->user()->ugid;
+        $data['post']  = $post;
+        $data['views'] = $this->load->model('Posts')->views($id);
+        $data['ads']   = $this->load->model('Ads')->enabled();
+        $view          = $this->view->render('blog/post', $data);
         return $this->blogLayout->render($view);
     }
 
