@@ -22,13 +22,6 @@
                         <h3>Manage settings (<span style="color: red">Use with caution</span>)</h3>
                         <form action="<?php echo $action; ?>" class="form" method="POST">
                             <div class="form-group col-sm-6">
-                                <label for="start">Start</label>
-                                <input type="text" name="start"  id="start"
-                                       class="form-control date"
-                                       data-date-format="dd-mm-yyyy"
-                                       placeholder="Start">
-                            </div>
-                            <div class="form-group col-sm-6">
                                 <label for="name">Site name</label>
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Site name"
                                        value="<?php echo $site->name; ?>">
