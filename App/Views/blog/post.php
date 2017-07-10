@@ -52,7 +52,7 @@
                     $tags = explode(',', $post->tags);
                     foreach ($tags as $tag) {
                         ?>
-                        <a class="tag" href="<?php echo url('/tag') . '/' . $tag; ?>"><?php echo $tag; ?></a>
+                        <a class="tag" href="#"><?php echo $tag; ?></a>
                         <?php
                     }
                     ?>
