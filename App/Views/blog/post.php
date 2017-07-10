@@ -17,6 +17,13 @@
         <div class="box post-box wow fadeIn" data-wow-duration="3s">
             <div class="post-content">
                 <div class="social-icons pull-right">
+                    <?php if ($ugid === '1') { ?>
+                        Edit <span class="fa fa-arrow-right"></span>
+                        <a class="rss" href="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>">
+                            <span class="fa fa-edit"></span>
+                        </a>
+                    <?php } ?>
+                    Share <span class="fa fa-arrow-right"></span>
                     <a href="#" class="facebook">
                         <span class="fa fa-facebook"></span>
                     </a>

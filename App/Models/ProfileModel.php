@@ -43,7 +43,7 @@ class ProfileModel extends Model
             $this->db->data('img', $img);
         }
         $this->db
-                ->data('name', $this->request->post('name'))
+                ->data('name', trim(strtolower($this->request->post('name'))))
                 ->data('email', $this->request->post('email'))
                 ->data('bio', $this->request->post('bio'))
                 ->where('id = ?', $id)
