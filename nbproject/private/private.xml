@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/Controllers/Blog/CategoryController.php</file>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/index.php</file>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/Views/blog/common/header.php</file>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/Controllers/Blog/AuthorController.php</file>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/Models/CategoriesModel.php</file>
-            <file>file:/opt/lampp/htdocs/Playground/MVC/Z/App/Models/PostsModel.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

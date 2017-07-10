@@ -19,11 +19,11 @@ Password: `123123123`
 
 You can also register a new account to see it from a different angle.
 
-------------------------------------------------------------------------------------
+***
 
-This script will be continuously updated (currently, It has more than 15K lines of code)
+This script will be continuously updated (currently, It has more than 10K lines of pure PHP code)
 
-------------------------------------------------------------------------------------
+***
 
 ### Current status :
 
@@ -31,13 +31,17 @@ I'v found myself forced to serve in the military since the middle of July 2017 f
 
 I'm gonna add more and more features to this script and fix bugs as soon as I get a vacation.
 
-------------------------------------------------------------------------------------
+***
 
+# Known issues:
+
+- Nothing for now
+
+***
 # Coming features :
 
 ### Under the hood :
 
-- ~~Redesign post URLs to fix some routing issues~~
 - Enhancing security against spam, SQL injection and XSS attacks.
 - Implementing Google ReCAPTCHA for signup, login ~~and contacting site admin requests~~.
 - Activating registered accounts via email using tokens.
@@ -45,20 +49,24 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Social Login
 - Social sharing
 - Multi language support (Adding Arabic)
+- ~~Redesign post URLs to fix some routing issues~~
+- ~~Fixed deleting sequence , Now If you delete a user, His posts and comments will also be deleted .. same thing happens when deleting a category or post.~~
 
 ### Admin Panel :
-- ~~Dashboard page.~~
+
+- Re-creating Settings section (Lot's of features giving more control power over script).
+- Working on Dashboard page.
 - ~~Adding posts via normal page (currently it's done with a floating window).~~
 - ~~Implementing a live text editor (ex. CKEditor or Summernote).~~
-- Re-creating Settings page (Lot's of features giving more control power over script).
 
 ### Main script :
+
+- ~~Implementing search mechanism~~
 - ~~Adding 'User profile' page.~~
 - ~~Adding 'About-us' page.~~
 - ~~Adding 'User-posts' page.~~
 - ~~Adding 'Contact-us' page.~~
 - ~~Implementing tags section, so you can view related posts~~
-- Implementing search mechanism
 ***
 # You can request more features as you want.
 ## You can also report bugs ..
