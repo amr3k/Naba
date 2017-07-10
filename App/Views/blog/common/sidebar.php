@@ -56,18 +56,9 @@
     <section class="box wow fadeInDown" data-wow-duration="2s" id="popular-posts-widget">
         <h3 class="heading">Popular Posts</h3>
         <div class="content">
-            <a href="#">
-                Wildly Addictive Green Super Smoothie
-            </a>
-            <a href="#">
-                Bath in Rose Petals
-            </a>
-            <a href="#">
-                Orange Roulade with Mascar Filling
-            </a>
-            <a href="#">
-                China's Taste For Australian Products
-            </a>
+            <?php foreach ($posts as $post) { ?>
+                <a href="<?php echo url('/post') . '/' . $post->id; ?>"><?php echo $post->title; ?></a>
+            <?php } ?>
         </div>
     </section>
     <!--/ Popular Posts Widget -->

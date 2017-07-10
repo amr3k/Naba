@@ -290,4 +290,52 @@ class PostsModel extends Model
                 ->insert('comments');
     }
 
+    /**
+     * View counter
+     *
+     * @param ing $id
+     * @return void
+     */
+    public function addView($id)
+    {
+        $views = $this->db
+                        ->select('views')
+                        ->where('id=?', $id)
+                        ->fetch($this->table)->views + 1;
+        $this->db
+                ->data('views', $views)
+                ->where('id=?', $id)
+                ->update($this->table);
+    }
+
+    /**
+     * Getting number of views for post ID
+     *
+     * @param ing $id
+     * @return int
+     */
+    public function views($id)
+    {
+        return $this->db
+                        ->select('views')
+                        ->where('id=?', $id)
+                        ->fetch($this->table)->views;
+    }
+
+    /**
+     * Get Posts by views
+     *
+     * @param int $limit
+     * @return array
+     */
+    public function getPostsByViews($limit = 5)
+    {
+        return $this->db
+                        ->select('id, title')
+                        ->where('posts.status=?', 'enabled')
+                        ->orderBy('posts.views', 'DESC')
+                        ->limit($limit)
+                        ->fetchAll($this->table);
+    }
+
 }
