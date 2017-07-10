@@ -59,9 +59,6 @@
                             <!-- Messages: style can be found in dropdown.less-->
                             <!-- Notifications: style can be found in dropdown.less -->
                             <!-- User Account: style can be found in dropdown.less -->
-                            <li>
-                                <a href="<?php echo url('/'); ?>">Main Page</a>
-                            </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="<?php echo assets('uploads/img/avatar/' . $user->img); ?>"

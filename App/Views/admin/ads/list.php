@@ -20,10 +20,8 @@
                 <div class="box" id="posts">
                     <div class="box-header with-border">
                         <h3 class="box-title">Manage your Ads</h3>
-                        <button class="btn btn-success pull-right popup" type="button"
-                                data-modal-target="#add-ad-form"
-                                data-target="<?php echo url('/admin/ads/add'); ?>">
-                            Add A New Advertisement</button>
+                        <a href="<?php echo url('/admin/ads/add'); ?>" class="btn btn-success pull-right popup">
+                            Add A New Advertisement</a>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -58,11 +56,10 @@
                                     <td><?php echo $ad->page; ?></td>
                                     <td><?php echo ucfirst($ad->status); ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-info edit-form"
-                                                data-modal-target="#edit-ad-form"
-                                                data-target="<?php echo url('/admin/ads/edit/') . '/' . $ad->id; ?>" >
+                                        <a href="<?php echo url('/admin/ads/edit') . '/' . $ad->id; ?>" class="btn btn-success">
+                                            Edit
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Edit</button>
+                                        </a>
                                         <button type="button" class="btn btn-danger delete"
                                                 data-target="<?php echo url('/admin/ads/delete/') . '/' . $ad->id; ?>"
                                                 >
