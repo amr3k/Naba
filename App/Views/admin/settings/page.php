@@ -21,7 +21,13 @@
                     <div class="box-body">
                         <h3>Manage settings (<span style="color: red">Use with caution</span>)</h3>
                         <form action="<?php echo $action; ?>" class="form" method="POST">
-                            <div id="form-results"></div>
+                            <div class="form-group col-sm-6">
+                                <label for="start">Start</label>
+                                <input type="text" name="start"  id="start"
+                                       class="form-control date"
+                                       data-date-format="dd-mm-yyyy"
+                                       placeholder="Start">
+                            </div>
                             <div class="form-group col-sm-6">
                                 <label for="name">Site name</label>
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Site name"
@@ -56,6 +62,8 @@
                                 <label for="msg">In case status is OFF, Choose an appropriate message that will be visible to visitors</label>
                                 <input type="text" id="msg" name="msg" class="form-control" value="<?php echo $site->msg; ?>">
                             </div>
+                            <div class="clearfix"></div>
+                            <div id="form-results"></div>
                             <div class="clearfix"></div>
                             <button id="submit-btn" class="btn btn-info submit-btn">Submit</button>
                         </form>
