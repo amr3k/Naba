@@ -26,7 +26,7 @@
         <p class="details">
             <?php echo read_more(strip_tags(html_entity_decode($post->text)), 33); ?>
         </p>
-        <a href="<?php echo url('/post/' . '/' . $post->id); ?>" class="read-more">
+        <a href="<?php echo url('/post' . '/' . $post->id); ?>" class="read-more">
             Read More
             <span class="fa fa-long-arrow-right"></span>
         </a>
