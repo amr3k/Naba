@@ -169,9 +169,6 @@
                 url: btn.data('target'),
                 type: 'POST',
                 dataType: 'json',
-                beforeSend: function () {
-
-                },
                 success: function (r) {
                     window.location.href = r.redirect;
                 }

@@ -56,10 +56,8 @@ $app->route->add('/admin/posts/save/:id', 'Admin/Posts@save', 'POST');
 $app->route->add('/admin/posts/delete/:id', 'Admin/Posts@delete', 'POST');
 
 // Comments
-$app->route->add('/admin/posts/:id/comments', 'Admin/Comments');
-$app->route->add('/admin/posts/:id/comments/edit', 'Admin/Comments@edit', 'POST');
-$app->route->add('/admin/posts/:id/comments/save', 'Admin/Comments@save', 'POST');
-$app->route->add('/admin/posts/:id/comments/delete', 'Admin/Comments@delete', 'POST');
+$app->route->add('/admin/comments', 'Admin/Comments');
+$app->route->add('/admin/:id/comments/delete', 'Admin/Comments@delete', 'POST');
 
 // Categories
 $app->route->add('/admin/categories', 'Admin/Categories');
