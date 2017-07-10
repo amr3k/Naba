@@ -44,6 +44,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - ~~Adding 'About-us' page.~~
 - ~~Adding 'User-posts' page.~~
 - ~~Adding 'Contact-us' page.~~
+- Implementing tags section, so you can view related posts
 - Implementing search mechanism
 ***
 # You can request more features as you want.
