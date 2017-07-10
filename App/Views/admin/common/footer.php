@@ -51,8 +51,8 @@
     var segment = currentUrl.split('/').pop();
     $('#sidebar-' + segment).addClass('active');
 
-// I'm not gonna use some fu**ing text editors for now , I don't consider time as a luxary
-// That thing took a lot of time & I couldn't eventually make it usable
+    // Date picker
+    $(document).find('.date').datepicker();
 
     // Displaying a form to add a new item
     $('.popup').on('click', function () {

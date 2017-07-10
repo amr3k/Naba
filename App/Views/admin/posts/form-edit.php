@@ -69,13 +69,17 @@
                                 </select>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="img">Profile photo</label>
+                                <label for="img">Post image</label>
+                                <img src="<?php echo $img; ?>" style="max-height: 200px;max-width: 200px; display: block" alt="<?php echo $title; ?>" />
+                                <br>
                                 <input type="file" id="img" name="img">
                             </div>
                             <div class="clearfix"></div>
                             <div id="form-results"></div>
                             <div class="clearfix"></div>
-                            <button class="btn btn-info save">Submit</button>
+                            <div class="col-sm-4">
+                                <button class="btn btn-info save">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>

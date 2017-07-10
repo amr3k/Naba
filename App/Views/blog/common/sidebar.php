@@ -32,8 +32,8 @@
     <section class="box wow fadeInDown" data-wow-duration="2s" id="search-widget">
         <h3 class="heading">Search Blog</h3>
         <div class="content">
-            <form action="#">
-                <input type="text" name="search" class="input placeholder" placeholder="Search Blog" />
+            <form action="<?php echo url('/search') . '/'; ?>" method="get">
+                <input type="text" name="q" class="input" />
                 <button class="button">Search</button>
             </form>
         </div>

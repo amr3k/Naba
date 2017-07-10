@@ -6,8 +6,11 @@
             Dashboard
             <small>Control panel</small>
         </h1>
-        <h1 style="text-align: center; color: white; background-color: black; padding: 20px; margin-left: 25%; margin-right: 25%;margin-bottom: 20px; font-size: 3em;border-radius: 20px;">This is just a template<br>
-            It's not ready yet ..</h1>
+        <h1 style="text-align: center; color: white; background-color: black; padding: 20px; margin-left: 25%; margin-right: 25%;margin-bottom: 20px; font-size: 1.5em;border-radius: 20px;">
+            This dashboard page is just a template<br>
+            It's not ready yet ..<br>
+            Select another page from the sidebar
+        </h1>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Dashboard</li>

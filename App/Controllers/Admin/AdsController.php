@@ -26,11 +26,13 @@ class AdsController extends Controller
      */
     public function add()
     {
+        $this->html->setTitle('Add a new post');
         $data['action']     = $this->url->link('/admin/ads/submit');
         $data['date']       = date('Y-m-d');
         $data['categories'] = $this->load->model('Categories')->all();
         $data['pages']      = $this->pages();
-        return $this->app->view->render('admin/ads/form', $data);
+        $view               = $this->app->view->render('admin/ads/form', $data);
+        return $this->adminLayout->render($view);
     }
 
     /**
@@ -74,7 +76,9 @@ class AdsController extends Controller
         $data['adPage'] = $ad->page;
         $data['status'] = $ad->status;
         $data['img']    = $this->url->link('Public/uploads/img/ads/') . '/' . $ad->img;
-        return $this->app->view->render('admin/ads/form-edit', $data);
+        $this->html->setTitle('Edit: ' . $ad->link);
+        $view           = $this->app->view->render('admin/ads/form-edit', $data);
+        return $this->adminLayout->render($view);
     }
 
     /**
