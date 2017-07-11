@@ -217,7 +217,7 @@ class PostsModel extends Model
                 ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
                 ->from('posts')
                 ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                ->where('posts.uid=? AND posts.status=?', $id, 'enabled')
+                ->where('posts.uid=? AND posts.status=? AND categories.status = ?', $id, 'enabled', 'enabled')
                 ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll($this->table);
