@@ -9,9 +9,9 @@ Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 
 ### Wanna test it ?
 
-~~[This is a live demo]()~~ Live demo is coming soon.
+[This is a live demo](https://ae-wd.000webhostapp.com/)
 
-Use these credentials to login as an admin :
+Use these credentials to login as admin :
 
 Username: `admin@test.account`
 
