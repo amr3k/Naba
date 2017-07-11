@@ -21,7 +21,6 @@ class AuthorController extends Controller
             return $this->url->redirect('/404');
         }
         $posts = $this->load->model('Posts')->getPostsByAuthor($user->id);
-        pred($posts);
         if (!$posts) {
             $data['author'] = $author;
             $data['posts']  = $posts;
