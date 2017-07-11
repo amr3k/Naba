@@ -32,7 +32,7 @@
                                        value="<?php echo $site->email; ?>">
                             </div>
                             <div class="form-group col-sm-3">
-                                <label for="status">Site status</label>
+                                <label for="status">Site status</label><span>(Doesn't have an effect)</span>
                                 <select id="status" class="form-control" name="status">
                                     <option value="on"
                                     <?php

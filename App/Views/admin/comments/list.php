@@ -39,7 +39,18 @@
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $comment->author; ?></td>
-                                    <td><?php echo $comment->title; ?></td>
+                                    <td>
+                                        <?php if ($comment->post_status === 'enabled') {
+                                            ?>
+                                            <a href="<?php echo url('post') . '/' . $comment->post_id . '#comments'; ?>"
+                                               target="_blank">
+                                                   <?php echo $comment->title; ?>
+                                            </a>
+                                        <?php } else {
+                                            ?>
+                                            <?php echo $comment->title; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo read_more($comment->comment, 6); ?></td>
                                     <td><?php echo date('Y-m-d', $comment->created); ?></td>
                                     <td>
