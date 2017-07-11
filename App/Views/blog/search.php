@@ -1,6 +1,9 @@
 <!-- Main Content -->
 <div class="col-sm-9 col-xs-12" id="main-content">
     <!-- Category Page -->
+    <div class="box center-block" style="padding: 10px;">
+        <h3 class="bold"><?php echo count($posts); ?> results about : <span style="color:red"><?php echo $query; ?></span></h3>
+    </div><br>
     <?php if ($posts) { ?>
         <div id="category-page">
             <?php
@@ -46,8 +49,8 @@
         </nav>
         <!--/ Pagination Links -->
     <?php } else { ?>
-        <div class="box" style="padding: 10px;">
-            <h1 class="bold">This user has no articles yet</h1>
+        <div class="box center-block" style="padding: 10px;">
+            <h1 class="bold">No results</h1>
         </div>
     <?php } ?>
 </div>

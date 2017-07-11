@@ -16,8 +16,12 @@ class SearchController extends Controller
     {
         $query = $this->request->get('q');
         $posts = $this->load->model('Posts')->search($query);
-        if (!$posts) {
-            return $this->url->redirect('/404');
+        if (!$posts || !$query || strlen($query) > 20) {
+            $this->blogLayout->title('No results');
+            $data['query'] = $query;
+            $data['posts'] = NULL;
+            $view          = $this->view->render('blog/search', $data);
+            return $this->blogLayout->render($view);
         }
         $this->blogLayout->title('Search ' . $query);
         if ($this->pagination->page() != 1) {
