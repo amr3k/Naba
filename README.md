@@ -35,7 +35,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 
 # Known issues:
 
-- When browsing user's posts, Some posts are shown despite their category is disabled .
+- Nothing for now .
 
 ***
 # Coming features :
