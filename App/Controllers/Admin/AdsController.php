@@ -26,7 +26,7 @@ class AdsController extends Controller
      */
     public function add()
     {
-        $this->html->setTitle('Add a new post');
+        $this->html->setTitle('Add a new advertisement');
         $data['action']     = $this->url->link('/admin/ads/submit');
         $data['date']       = date('Y-m-d');
         $data['categories'] = $this->load->model('Categories')->all();
