@@ -33,7 +33,7 @@
         <h3 class="heading">Search Blog</h3>
         <div class="content">
             <form action="<?php echo url('/search') . '/'; ?>" method="get">
-                <input type="search" name="q" class="input"/>
+                <input type="search" name="q" class="input" required="required" maxlength="20"/>
                 <button class="button">Search</button>
             </form>
         </div>
