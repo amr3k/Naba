@@ -15,7 +15,7 @@
                            name="email" placeholder="someone@example.com"
                            value="<?php echo $user->email; ?>">
                 </div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12" title="You can write about yourself at maximum characters of 140">
                     <label for="bio">Bio</label>
                     <textarea id="bio" class="form-control" name="bio" style="resize: vertical"><?php echo $bio; ?></textarea>
                 </div>
