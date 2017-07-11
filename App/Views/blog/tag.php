@@ -55,7 +55,7 @@
         <!--/ Pagination Links -->
     <?php } else { ?>
         <div class="box" style="padding: 10px;">
-            <h1 class="bold">This user has no articles yet</h1>
+            <h1 class="bold">There are no posts contains this tag</h1>
         </div>
     <?php } ?>
 </div>

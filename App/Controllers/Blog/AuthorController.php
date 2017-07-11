@@ -22,7 +22,10 @@ class AuthorController extends Controller
         }
         $posts = $this->load->model('Posts')->getPostsByAuthor($user->id);
         if (!$posts) {
-            return $this->url->redirect('/404');
+            $data['author'] = $author;
+            $data['posts']  = $posts;
+            $view           = $this->view->render('blog/author', $data);
+            return $this->blogLayout->render($view);
         }
         $this->html->setTitle($author . '\'s articles');
         if ($this->pagination->page() != 1) {
