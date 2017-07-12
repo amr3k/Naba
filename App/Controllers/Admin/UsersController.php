@@ -14,7 +14,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        pred($this->load->model('Users')->all());
         $this->html->setTitle('Users');
         $data['users']    = $this->load->model('Users')->all();
         $data['admin_id'] = $this->load->model('Login')->user()->id;

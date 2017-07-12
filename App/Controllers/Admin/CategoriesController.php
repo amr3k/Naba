@@ -14,7 +14,6 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-//        pred($this->load->model('Categories')->all());
         $this->html->setTitle('Categories');
         $data['categories'] = $this->load->model('Categories')->all();
         return $this->adminLayout->render($this->view->render('admin/categories/list', $data));

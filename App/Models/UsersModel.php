@@ -153,6 +153,8 @@ class UsersModel extends Model
     {
         return $this->db
                         ->select('u.*', 'ug.name AS `group`')
+                        ->select('(SELECT COUNT(`id`) FROM posts WHERE posts.uid = u.id) AS `total_posts`')
+                        ->select('(SELECT COUNT(`id`) FROM comments WHERE comments.uid = u.id) AS `total_comments`')
                         ->from('u')
                         ->joins('LEFT JOIN ug ON u.ugid = ug.id')
                         ->fetchAll();

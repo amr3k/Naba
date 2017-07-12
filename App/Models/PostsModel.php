@@ -131,7 +131,7 @@ class PostsModel extends Model
     }
 
     /**
-     * Get all posts
+     * Get all posts with their authors and total comments
      *
      * @return array
      */
@@ -139,6 +139,7 @@ class PostsModel extends Model
     {
         return $this->db
                         ->select('posts.*', 'categories.name AS category', 'categories.status AS category_status', ' u.name AS `author`', 'u.status AS `author_status`')
+                        ->select('(SELECT COUNT(`id`) FROM comments WHERE comments.post_id = posts.id) AS `total_comments`')
                         ->from('posts')
                         ->joins('LEFT JOIN categories ON posts.cid = categories.id')
                         ->joins('LEFT JOIN u ON posts.uid = u.id')
