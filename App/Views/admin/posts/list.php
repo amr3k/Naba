@@ -33,6 +33,7 @@
                                 <th>Author</th>
                                 <th>Status</th>
                                 <th>Publish date</th>
+                                <th>Comments</th>
                                 <th>Views</th>
                                 <th>Action</th>
                             </tr>
@@ -69,6 +70,15 @@
                                     </td>
                                     <td style="<?php echo $post->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($post->status); ?></td>
                                     <td><?php echo date('Y-m-d', $post->created); ?></td>
+                                    <td><?php if ($post->total_comments > 0 && $post->author_status === 'enabled' && $post->status === 'enabled' && $post->category_status === 'enabled') { ?>
+                                            <a href="<?php echo url('/post') . '/' . $post->id . '#comments'; ?>"
+                                               class="btn btn-default"
+                                               target="_blank">
+                                                <?php echo $post->total_comments; ?></a>
+                                        <?php } else { ?>
+                                            <span class="btn btn-default disabled"><?php echo $post->total_comments; ?></span>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo $post->views; ?></td>
                                     <td>
                                         <a href="<?php echo url('/admin/posts/edit/') . '/' . $post->id; ?>"

@@ -31,6 +31,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Category name</th>
+                                <th>Total posts</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -46,6 +47,9 @@
                                         <?php } else { ?>
                                             <?php echo $category->name; ?>
                                         <?php } ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $category->total_posts; ?>
                                     </td>
                                     <td  style="<?php echo $category->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($category->status); ?></td>
                                     <td>
