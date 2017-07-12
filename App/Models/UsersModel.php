@@ -152,9 +152,9 @@ class UsersModel extends Model
     public function all()
     {
         return $this->db
-                        ->select('users.*', 'users_groups.name AS `group`')
-                        ->from('u users')
-                        ->joins('LEFT JOIN ug users_groups ON users.ugid = users_groups.id')
+                        ->select('u.*', 'ug.name AS `group`')
+                        ->from('u')
+                        ->joins('LEFT JOIN ug ON u.ugid = ug.id')
                         ->fetchAll();
     }
 

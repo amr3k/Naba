@@ -42,10 +42,16 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $user->name; ?></td>
+                                    <td>
+                                        <?php if ($user->status === 'enabled') { ?>
+                                            <a href="<?php echo url('/author') . '/' . $user->name; ?>" target="_blank"><?php echo $user->name; ?></a>
+                                        <?php } else { ?>
+                                            <?php echo $user->name; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo $user->group; ?></td>
                                     <td><?php echo $user->email; ?></td>
-                                    <td><?php echo ucfirst($user->status); ?></td>
+                                    <td style="<?php echo $user->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($user->status); ?></td>
                                     <td><?php echo date('Y-m-d', $user->created); ?></td>
                                     <td>
                                         <?php if ($ugid === '1' && $admin_id !== '1' && $admin_id !== $id) { ?>
