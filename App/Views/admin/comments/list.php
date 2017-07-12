@@ -38,11 +38,17 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $comment->author; ?></td>
+                                    <td>
+                                        <?php if ($comment->author_status === 'enabled') { ?>
+                                            <a href="<?php echo url('/author') . '/' . $comment->author; ?>" target="_blank"><?php echo $comment->author; ?></a>
+                                        <?php } else { ?>
+                                            <?php echo $comment->author; ?>
+                                        <?php } ?>
+                                    </td>
                                     <td>
                                         <?php if ($comment->post_status === 'enabled') {
                                             ?>
-                                            <a href="<?php echo url('post') . '/' . $comment->post_id . '#comments'; ?>"
+                                            <a href="<?php echo url('post') . '/' . $comment->post_id; ?>"
                                                target="_blank">
                                                    <?php echo $comment->title; ?>
                                             </a>
@@ -51,7 +57,18 @@
                                             <?php echo $comment->title; ?>
                                         <?php } ?>
                                     </td>
-                                    <td><?php echo read_more($comment->comment, 6); ?></td>
+                                    <td>
+                                        <?php if ($comment->post_status === 'enabled') {
+                                            ?>
+                                            <a href="<?php echo url('post') . '/' . $comment->post_id . '#comments'; ?>"
+                                               target="_blank">
+                                                   <?php echo read_more($comment->comment, 6); ?>
+                                            </a>
+                                        <?php } else {
+                                            ?>
+                                            <?php echo read_more($comment->comment, 6); ?>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo date('Y-m-d', $comment->created); ?></td>
                                     <td>
                                         <button type="button" class="btn btn-danger delete"
