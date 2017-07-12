@@ -43,7 +43,7 @@
                                     <td><?php echo $ad->link; ?></td>
                                     <td <?php
                                     if (time() < $ad->start) {
-                                        echo 'style="color: Green"';
+                                        echo 'style="color: Blue"';
                                     }
                                     ?>>
                                         <?php echo date('Y-m-d', $ad->start); ?></td>

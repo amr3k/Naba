@@ -33,6 +33,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Users group name</th>
+                                <th>Total users</th>
                                 <th>Action</th>
                             </tr>
                             <?php
@@ -42,6 +43,7 @@
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $ug->name; ?></td>
+                                    <td><?php echo $ug->total_users; ?></td>
                                     <td>
                                         <?php if ($admin === '1') { ?>
                                             <button type="button" class="btn btn-info edit-form"

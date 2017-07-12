@@ -55,7 +55,7 @@ class CategoriesModel extends Model
             // for each category
             // should be more than zero
             $categories = $this->db
-                    ->select('categories.id, categories.name')
+                    ->select('categories.*')
                     ->select('(SELECT COUNT(posts.id) FROM posts WHERE posts.status="enabled" AND posts.cid=categories.id) AS total_posts')
                     ->from('categories')
                     ->where('categories.status=?', 'enabled')
@@ -64,6 +64,24 @@ class CategoriesModel extends Model
             $this->app->share('enabled-categories', $categories);
         }
         return $this->app->get('enabled-categories');
+    }
+
+    /**
+     * Get all categories with total number of posts for each category
+     *
+     * @return array
+     */
+    public function all()
+    {
+        // first we will get the enabled categories
+        // and we will add another condition that total number of posts
+        // for each category
+        // should be more than zero
+        return $this->db
+                        ->select('categories.*')
+                        ->select('(SELECT COUNT(posts.id) FROM posts WHERE posts.cid=categories.id) AS total_posts')
+                        ->from('categories')
+                        ->fetchAll();
     }
 
     /**
