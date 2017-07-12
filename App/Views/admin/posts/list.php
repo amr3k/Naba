@@ -42,10 +42,32 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $post->title; ?></td>
-                                    <td><?php echo $post->category; ?></td>
-                                    <td><?php echo $post->author; ?></td>
-                                    <td><?php echo ucfirst($post->status); ?></td>
+                                    <td>
+                                        <?php if ($post->status === 'enabled' && $post->category_status === 'enabled') { ?>
+                                            <a href="<?php echo url('/post') . '/' . $post->id; ?>" target="_blank"><?php echo $post->title; ?></a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <?php echo $post->title; ?>
+                                            <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($post->category_status === 'enabled') { ?>
+                                            <a href="<?php echo url('/category') . '/' . $post->category . '/' . $post->cid; ?>" target="_blank"><?php echo $post->category; ?></a>
+                                        <?php } else { ?>
+                                            <?php echo $post->category; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($post->author_status === 'enabled') { ?>
+                                            <a href="<?php echo url('/author') . '/' . $post->author; ?>" target="_blank"><?php echo $post->author; ?></a>
+                                        <?php } else { ?>
+                                            <?php echo $post->author; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="<?php echo $post->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($post->status); ?></td>
                                     <td><?php echo date('Y-m-d', $post->created); ?></td>
                                     <td><?php echo $post->views; ?></td>
                                     <td>

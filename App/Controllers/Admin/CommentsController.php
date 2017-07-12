@@ -15,7 +15,6 @@ class CommentsController extends Controller
     public function index()
     {
         $this->html->setTitle('Comments');
-//        pred($this->load->model('Comments')->all());
         $data['comments'] = $this->load->model('Comments')->all();
         return $this->adminLayout->render($this->view->render('admin/comments/list', $data));
     }
