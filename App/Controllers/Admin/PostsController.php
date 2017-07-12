@@ -81,6 +81,7 @@ class PostsController extends Controller
         $data['tags']       = $post->tags;
         $data['status']     = $post->status;
         $data['img']        = $this->url->link('Public/uploads/img/posts/') . '/' . $post->img;
+        $data['referer']    = $this->request->referer();
         $this->html->setTitle('Edit: ' . $post->title);
         $view               = $this->app->view->render('admin/posts/form-edit', $data);
         return $this->adminLayout->render($view);
@@ -97,8 +98,8 @@ class PostsController extends Controller
         if ($this->isValid($id)) {
             $postModel        = $this->load->model('Posts');
             $postModel->update($id);
-            $json['success']  = 'Your post has been successfully updated';
-            $json['redirect'] = $this->url->link('/admin/posts');
+            $json['success']  = 'Your post have been successfully updated';
+            $json['redirect'] = $this->request->post('referer');
         } else {
             $json['errors'] = $this->validator->flatMsg();
         }

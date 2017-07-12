@@ -80,6 +80,7 @@
                             <div class="col-sm-4">
                                 <button class="btn btn-info save">Submit</button>
                             </div>
+                            <input type="hidden" name="referer" value="<?php echo $referer; ?>" >
                         </form>
                     </div>
                 </div>
