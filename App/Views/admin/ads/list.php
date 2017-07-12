@@ -54,7 +54,7 @@
                                     ?>>
                                         <?php echo date('Y-m-d', $ad->end); ?></td>
                                     <td><?php echo $ad->page; ?></td>
-                                    <td><?php echo ucfirst($ad->status); ?></td>
+                                    <td style="<?php echo $ad->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($ad->status); ?></td>
                                     <td>
                                         <a href="<?php echo url('/admin/ads/edit') . '/' . $ad->id; ?>" class="btn btn-success">
                                             Edit

@@ -40,8 +40,14 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $category->name; ?></td>
-                                    <td><?php echo ucfirst($category->status); ?></td>
+                                    <td>
+                                        <?php if ($category->status === 'enabled') { ?>
+                                            <a href="<?php echo url('category') . '/' . $category->name . '/' . $category->id; ?>" target="_blank"><?php echo $category->name; ?></a>
+                                        <?php } else { ?>
+                                            <?php echo $category->name; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td  style="<?php echo $category->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($category->status); ?></td>
                                     <td>
                                         <button type="button" class="btn btn-info edit-form"
                                                 data-modal-target="#edit-category-form"
