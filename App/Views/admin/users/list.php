@@ -31,6 +31,8 @@
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Join date</th>
+                                <th>Posts</th>
+                                <th>Comments</th>
                                 <th>Action</th>
                             </tr>
                             <!--Now we gotta get our hands dirty-->
@@ -53,6 +55,8 @@
                                     <td><?php echo $user->email; ?></td>
                                     <td style="<?php echo $user->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($user->status); ?></td>
                                     <td><?php echo date('Y-m-d', $user->created); ?></td>
+                                    <td><?php echo $user->total_posts; ?></td>
+                                    <td><?php echo $user->total_comments; ?></td>
                                     <td>
                                         <?php if ($ugid === '1' && $admin_id !== '1' && $admin_id !== $id) { ?>
                                             <button type="button" class="btn btn-info disabled" disabled="disabled">

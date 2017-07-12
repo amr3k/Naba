@@ -9,7 +9,7 @@ class UsersGroupsModel extends Model
 
     /**
      * Table name
-     * 
+     *
      * @var string
      */
     protected $table = 'ug';
@@ -69,6 +69,20 @@ class UsersGroupsModel extends Model
         $this->db
                 ->where('ugid = ?', $id)
                 ->delete('ugp');
+    }
+
+    /**
+     * Get all user groups with total number of users
+     *
+     * @return mixed
+     */
+    public function all()
+    {
+        return $this->db
+                        ->select('ug.*')
+                        ->select('(SELECT COUNT(u.id) FROM u WHERE u.ugid=ug.id) AS total_users')
+                        ->from('ug')
+                        ->fetchAll();
     }
 
     /**
