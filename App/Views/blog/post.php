@@ -53,7 +53,7 @@
                     <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
                 </div>
                 <p class="details">
-                    <?php echo htmlspecialchars_decode($post->text); ?>
+                    <?php echo htmlspecialchars_decode($post->text, ENT_QUOTES); ?>
                 </p>
                 <div class="tags">
                     <h3 class="tag-title">Read more about:</h3>
@@ -102,29 +102,29 @@
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 Delete
                             </button>
-                            <?php } ?>
-                            <div class="author-name">
-                                <?php echo $comment->name; ?>
-                            </div>
-                            <div class="comment-date">
-                                <?php echo date('d-m-Y', $comment->created) . ' At ' . date('h:i A', $comment->created); ?>
-                            </div>
-                            <div class="comment-text">
-                                <?php echo $comment->comment; ?>
-                            </div>
+                        <?php } ?>
+                        <div class="author-name">
+                            <?php echo $comment->name; ?>
+                        </div>
+                        <div class="comment-date">
+                            <?php echo date('d-m-Y', $comment->created) . ' At ' . date('h:i A', $comment->created); ?>
+                        </div>
+                        <div class="comment-text">
+                            <?php echo $comment->comment; ?>
                         </div>
                     </div>
-                <?php } ?>
-            </div>
-            <!--/ Comments -->
-            <!-- Comment Form -->
-            <form action="<?php echo url('/post/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
-                <h3 class="heading">Post Comment</h3>
-                <?php if ($user) { ?>
-                    <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
-                <?php } else { ?>
-                    <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
-                <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
+        <!--/ Comments -->
+        <!-- Comment Form -->
+        <form action="<?php echo url('/post/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
+            <h3 class="heading">Post Comment</h3>
+            <?php if ($user) { ?>
+                <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
+            <?php } else { ?>
+                <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
+            <?php } ?>
             <button class="comment-button">Submit</button>
         </form>
         <!--/ Comment Form -->

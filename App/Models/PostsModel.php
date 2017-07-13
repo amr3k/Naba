@@ -32,7 +32,7 @@ class PostsModel extends Model
                 ->data('title', trim($this->request->post('title')))
                 ->data('text', $this->request->post('text'))
                 ->data('img', $img)
-                ->data('tags', $this->request->post('tags'))
+                ->data('tags', str_replace('  ', ' ', $this->request->post('tags')))
                 ->data('status', $this->request->post('status'))
                 ->data('created', time())
                 ->insert($this->table);
@@ -68,7 +68,7 @@ class PostsModel extends Model
         $this->db
                 ->data('title', $this->request->post('title'))
                 ->data('text', $this->request->post('text'))
-                ->data('tags', $this->request->post('tags'))
+                ->data('tags', str_replace('  ', ' ', $this->request->post('tags')))
                 ->data('status', $this->request->post('status'))
                 ->data('cid', $this->request->post('category'))
                 ->where('id = ?', $id)
