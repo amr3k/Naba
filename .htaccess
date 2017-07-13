@@ -1,10 +1,11 @@
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
 # Prevent Indexing
     Options +FollowSymLinks -Indexes
 
-# Handle Front Controller
+# Handle front controller
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php [QSA,L]
