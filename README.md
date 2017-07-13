@@ -33,12 +33,13 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Implementing Google ReCAPTCHA for signup, login ~~and contacting site admin requests~~.
 - Activating registered accounts via email using tokens.
 - Enhancing performance using caching.
-- Social Login
-- Social sharing
 - Multi language support (Adding Arabic)
 ### Admin Panel :
 - Re-creating Settings section (Lot's of features giving more control power over script).
 - Working on Dashboard page.
+### Front pages:
+- Social Login
+- Social sharing
 ***
 # Wanna study or use it ?
 **Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
