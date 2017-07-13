@@ -29,7 +29,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 ***
 # Coming features :
 ### Under the hood :
-- Enhancing security against spam~~, SQL injection and XSS attacks.~~
+- Enhancing security against spam ~~, SQL injection and XSS attacks.~~
 - Implementing Google ReCAPTCHA for signup, login ~~and contacting site admin requests~~.
 - Activating registered accounts via email using tokens.
 - Enhancing performance using caching.
