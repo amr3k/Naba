@@ -128,8 +128,14 @@ class PostsController extends Controller
      */
     private function isValid($id = NULL)
     {
-        $this->validator->required('title', 'Please choose a title')->min('title', 6, 'Title cannot be less than 6 characters')->max('title', 70, 'Title cannot be more than 70 characters');
-        $this->validator->required('text', 'Please type some text')->min('text', 200, 'Title cannot be less than 200 characters')->max('text', 10000, 'Title cannot be more than 10000 characters');
+        $this->validator
+                ->required('title', 'Please choose a title')
+                ->min('title', 6, 'Title cannot be less than 6 characters')
+                ->max('title', 70, 'Title cannot be more than 70 characters');
+        $this->validator
+                ->required('text', 'Please type some text')
+                ->min('text', 200, 'Title cannot be less than 200 characters')
+                ->max('text', 10000, 'Title cannot be more than 10000 characters');
         $this->validator->required('tags', 'Please choose some tags');
         if (is_null($id)) {
             // If the $id is null,
