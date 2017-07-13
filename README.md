@@ -6,7 +6,7 @@ You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntv
 
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 ***
-
+**Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki)**
 ### Wanna test it ?
 
 [This is a live demo](https://ae-wd.000webhostapp.com/)
