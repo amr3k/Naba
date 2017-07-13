@@ -30,7 +30,13 @@ class LoginController extends Controller
     public function submit()
     {
         if ($this->isValid()) {
-            $loginModel     = $this->load->model('Login');
+            $email      = $this->request->post('email');
+            $pass       = $this->request->post('pass');
+            $loginModel = $this->load->model('Login');
+            if (!$loginModel->isValidLogin($email, $pass)) {
+                $json['errors'] = 'Invalid email or password';
+                return $this->json($json);
+            }
             $logged_in_user = $loginModel->user();
             if ($this->request->post('remember')) {
                 // Save login info in cookie and session
@@ -46,7 +52,7 @@ class LoginController extends Controller
             return $this->json($json);
         } else {
             $json           = [];
-            $json['errors'] = implode('<br>', $this->errors);
+            $json['errors'] = $this->validator->flatMsg();
             return $this->json($json);
         }
     }
@@ -58,23 +64,16 @@ class LoginController extends Controller
      */
     private function isValid()
     {
-        $email = $this->request->post('email');
-        $pass  = $this->request->post('pass');
-        if (!$email) {
-            $this->errors[] = 'Please insert your email address';
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[] = 'Please insert a valid email address';
-        }
-        if (!$pass) {
-            $this->errors[] = 'Please insert your password';
-        }
-        if (!$this->errors) {
-            $loginModel = $this->load->model('Login');
-            if (!$loginModel->isValidLogin($email, $pass)) {
-                $this->errors[] = 'Invalid email or password';
-            }
-        }
-        return empty($this->errors);
+        $this->validator
+                ->required('email')
+                ->email('email')
+                ->min('email', 10)
+                ->max('email', 64);
+        $this->validator
+                ->required('pass')
+                ->max('pass', 128)
+                ->valString('pass');
+        return $this->validator->pass();
     }
 
 }

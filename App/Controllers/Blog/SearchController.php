@@ -14,7 +14,7 @@ class SearchController extends Controller
      */
     public function index()
     {
-        $query = $this->request->get('q');
+        $query = filter_var($this->request->get('q'), FILTER_SANITIZE_STRING);
         $posts = $this->load->model('Posts')->search($query);
         if (!$posts || !$query || strlen($query) > 20) {
             $this->blogLayout->title('No results');
