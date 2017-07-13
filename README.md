@@ -6,7 +6,8 @@ You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntv
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 ***
 ### Wanna test it ?
-[This is a live demo](https://ae-wd.000webhostapp.com/)
+This is a live demo:
+Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)
 
 Use these credentials to login as admin :
 
