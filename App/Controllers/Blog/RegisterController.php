@@ -62,6 +62,7 @@ class RegisterController extends Controller
                 ->required('name', 'Please set the Users name')
                 ->min('name', 3)
                 ->max('name', 32)
+                ->valString('name')
                 ->unique('name', ['u', 'name'], 'This username is already registered, Please choose another one');
         $this->validator
                 ->required('email')
@@ -73,7 +74,8 @@ class RegisterController extends Controller
                 ->required('pass')
                 ->min('pass', 8)
                 ->max('pass', 128)
-                ->match('pass', 're-pass');
+                ->match('pass', 're-pass')
+                ->valString('pass');
         return $this->validator->pass();
     }
 

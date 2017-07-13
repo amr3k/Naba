@@ -95,34 +95,36 @@
                         </a>
                     </div>
                     <div class="comment-container">
-                        <button type="button" class="btn btn-danger delete" style="float: right"
-                                data-target="<?php echo url('/admin/') . '/' . $comment->id . '/comments/delete'; ?>"
-                                >
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            Delete
-                        </button>
-                        <div class="author-name">
-                            <?php echo $comment->name; ?>
-                        </div>
-                        <div class="comment-date">
-                            <?php echo date('d-m-Y', $comment->created) . ' At ' . date('h:i A', $comment->created); ?>
-                        </div>
-                        <div class="comment-text">
-                            <?php echo $comment->comment; ?>
+                        <?php if ($ugid === '1') { ?>
+                            <button type="button" class="btn btn-danger delete" style="float: right"
+                                    data-target="<?php echo url('/admin/') . '/' . $comment->id . '/comments/delete'; ?>"
+                                    >
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                Delete
+                            </button>
+                            <?php } ?>
+                            <div class="author-name">
+                                <?php echo $comment->name; ?>
+                            </div>
+                            <div class="comment-date">
+                                <?php echo date('d-m-Y', $comment->created) . ' At ' . date('h:i A', $comment->created); ?>
+                            </div>
+                            <div class="comment-text">
+                                <?php echo $comment->comment; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
-        </div>
-        <!--/ Comments -->
-        <!-- Comment Form -->
-        <form action="<?php echo url('/post/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
-            <h3 class="heading">Post Comment</h3>
-            <?php if ($user) { ?>
-                <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
-            <?php } else { ?>
-                <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
-            <?php } ?>
+                <?php } ?>
+            </div>
+            <!--/ Comments -->
+            <!-- Comment Form -->
+            <form action="<?php echo url('/post/' . $post->id . '/add-comment'); ?>" method="post" id="comment-form" class="box">
+                <h3 class="heading">Post Comment</h3>
+                <?php if ($user) { ?>
+                    <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
+                <?php } else { ?>
+                    <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
+                <?php } ?>
             <button class="comment-button">Submit</button>
         </form>
         <!--/ Comment Form -->

@@ -119,6 +119,27 @@ class Validation
     }
 
     /**
+     * Determine it the input value string
+     *
+     * @param string $inputName
+     * @param string $customErrMsg
+     * @return $this
+     */
+    public function valString($inputName, $customErrMsg = NULL)
+    {
+        if ($this->hasErr($inputName)) {
+            return $this;
+        }
+        $input = $this->value($inputName);
+        if (!preg_match('~^[A-Za-z0-9\~\!\@\#\$\%\^\&\*\_\-\.]+$~', $input)) {
+//            $msg =   $customErrMsg ? : sprintf('%s is not valid email', ucfirst($inputName));
+            $msg = $customErrMsg ?: 'You can only use letters, digits and special characters';
+            $this->addErr($inputName, $msg);
+        }
+        return $this;
+    }
+
+    /**
      * Determine if the given input has a float value
      *
      * @param string $inputName
