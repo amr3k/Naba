@@ -6,7 +6,6 @@ You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntv
 
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 ***
-**Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki)**
 ### Wanna test it ?
 
 [This is a live demo](https://ae-wd.000webhostapp.com/)
@@ -68,6 +67,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - ~~Adding 'Contact-us' page.~~
 - ~~Implementing tags section, so you can view related posts~~
 ***
-# You can request more features as you want.
-## You can also report bugs ..
-### Just head to [issues](https://github.com/akkk33/AE-AdvBlog/issues) and write whatever you want
+# Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki)
+## You can request more features as you want.
+### You can also report bugs ..
+**Just head to [issues](https://github.com/akkk33/AE-AdvBlog/issues) and write whatever you want
