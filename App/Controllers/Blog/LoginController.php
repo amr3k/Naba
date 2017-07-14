@@ -40,15 +40,10 @@ class LoginController extends Controller
                 $json['errors'] = 'Invalid email or password';
                 return $this->json($json);
             }
-            $logged_in_user = $loginModel->user();
-            if ($this->request->post('remember')) {
-                // save login data in cookie and session
-                $this->cookie->set('login', $logged_in_user->code);
-                $this->session->set('login', $logged_in_user->code);
-            } else {
-                // save login data in session
-                $this->session->set('login', $logged_in_user->code);
-            }
+            $logged_in_user     = $loginModel->user();
+            // save login data in cookie and session
+            $this->cookie->set('login', $logged_in_user->code);
+            $this->session->set('login', $logged_in_user->code);
             $json               = [];
             $json['success']    = 'Welcome Back ' . $logged_in_user->name;
             $json['redirectTo'] = $this->url->link('/');

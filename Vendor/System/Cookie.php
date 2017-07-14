@@ -48,7 +48,7 @@ class Cookie
         // then it means we will remove the key from cookies
         // otherwise, we will just add our normal time
         $expireTime = $durationInDays == -1 ? -1 : time() + $durationInDays * 3600 * 24;
-        setcookie($key, $value, $expireTime, $this->path, '', FALSE, FALSE);
+        setcookie($key, $value, $expireTime, $this->path, '', FALSE, TRUE);
     }
 
     /**
