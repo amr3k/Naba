@@ -55,6 +55,7 @@
                 <p class="details">
                     <?php echo htmlspecialchars_decode($post->text, ENT_QUOTES); ?>
                 </p>
+                <!-- Tags -->
                 <div class="tags">
                     <h3 class="tag-title">Read more about:</h3>
                     <?php
@@ -66,6 +67,7 @@
                     }
                     ?>
                 </div>
+                <!-- / Tags -->
             </div>
             <div id="post-author">
                 <div class="author-image">

@@ -136,7 +136,7 @@ class PostsController extends Controller
                 ->required('text', 'Please type some text')
                 ->min('text', 200, 'Title cannot be less than 200 characters')
                 ->max('text', 10000, 'Title cannot be more than 10000 characters');
-        $this->validator->required('tags', 'Please choose some tags');
+        $this->validator->required('tags', 'Please submit some tags')->min('tags', 3)->max('tags', 33);
         if (is_null($id)) {
             // If the $id is null,
             // This means that image is required for creating a new post
