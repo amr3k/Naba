@@ -199,7 +199,7 @@ class Validation
         }
         $input = $this->value($inputName);
         if (strlen($input) > $length) {
-            $msg = $customErrMsg ?: sprintf('This cannot be more than %d characters', $length);
+            $msg = $customErrMsg ?: sprintf('%s cannot be more than %d characters', $inputName, $length);
             $this->addErr($inputName, $msg);
         }
         return $this;
