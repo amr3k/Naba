@@ -21,18 +21,26 @@ class PostsModel extends Model
     public function create()
     {
         // Getting user ID
-        $uid = $this->load->model('Login')->user()->id;
+        $uid  = $this->load->model('Login')->user()->id;
         // Getting image
-        $img = $this->upImg();
+        $img  = $this->upImg();
         // Changing image file permissions
         chmod($this->app->file->toPostsImg($img), 0777);
+        // Sanitising
+        $tags = preg_replace('~[^a-z0-9,\s]~', '', strtolower($this->request->post('tags')));
+        $tags = preg_replace('~[^a-z0-9,]+\s~', ' ', $tags);
+        $tags = array_filter(explode(',', $tags));
+        foreach ($tags as $key => $value) {
+            $tags[$key] = trim($value);
+        }
+        $tags = implode(',', $tags);
         $this->db
                 ->data('uid', $uid)
                 ->data('cid', $this->request->post('category'))
                 ->data('title', trim($this->request->post('title')))
                 ->data('text', $this->request->post('text'))
                 ->data('img', $img)
-                ->data('tags', str_replace('  ', ' ', $this->request->post('tags')))
+                ->data('tags', $tags)
                 ->data('status', $this->request->post('status'))
                 ->data('created', time())
                 ->insert($this->table);
@@ -65,10 +73,18 @@ class PostsModel extends Model
             // Inserting the image filename in database
             $this->db->data('img', $img);
         }
+        // Sanitising
+        $tags = preg_replace('~[^a-z0-9,\s]~', '', strtolower($this->request->post('tags')));
+        $tags = preg_replace('~[^a-z0-9,]+\s~', ' ', $tags);
+        $tags = array_filter(explode(',', $tags));
+        foreach ($tags as $key => $value) {
+            $tags[$key] = trim($value);
+        }
+        $tags = implode(',', $tags);
         $this->db
                 ->data('title', $this->request->post('title'))
                 ->data('text', $this->request->post('text'))
-                ->data('tags', str_replace('  ', ' ', $this->request->post('tags')))
+                ->data('tags', $tags)
                 ->data('status', $this->request->post('status'))
                 ->data('cid', $this->request->post('category'))
                 ->where('id = ?', $id)
