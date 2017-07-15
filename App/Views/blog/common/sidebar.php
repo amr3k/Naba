@@ -57,7 +57,17 @@
         <h3 class="heading">Popular Posts</h3>
         <div class="content">
             <?php foreach ($posts as $post) { ?>
-                <a href="<?php echo url('/post') . '/' . $post->id; ?>"><?php echo $post->title; ?></a>
+                <a href="<?php echo url('/post') . '/' . $post->id; ?>"><?php echo $post->title; ?>
+                    <div class="post-meta" style="font-weight: normal; text-decoration: none;font-size: x-small;color: #00733e !important;">
+                        <span>
+                            <?php echo date('d-m-Y', $post->created); ?>
+                        </span>
+                        <span style="margin-left: auto !important; ">
+                            <i class="fa fa-fire" style="color: orange;font-size: 1.25em;"></i>
+                            <span style="margin-left: 0px"><?php echo $post->views; ?></span>
+                        </span>
+                    </div>
+                </a>
             <?php } ?>
         </div>
     </section>
