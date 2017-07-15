@@ -18,9 +18,9 @@
         <div class="date-container">
             <span class="fa fa-calendar"></span>
             <span class="date"><?php echo date('d-m-Y', $post->created) . ' At ' . date('h:i A', $post->created); ?></span>
-            <span style="margin-left: 25%">
+            <span style="margin-left: auto; font-weight: bold">
                 <i class="fa fa-fire" style="color: orange;font-size: 1.25em;margin-right: 0px;"></i>
-                <span style="color: black; margin-left: 0px"><?php echo $post->views; ?></span>
+                <span><?php echo $post->views; ?></span>
             </span>
         </div>
         <div class="clearfix"></div>
