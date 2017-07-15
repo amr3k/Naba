@@ -64,7 +64,7 @@
                         </span>
                         <span style="margin-left: auto !important; ">
                             <i class="fa fa-fire" style="color: orange;font-size: 1.25em;"></i>
-                            <span style="margin-left: 0px"><?php echo $post->views; ?></span>
+                            <span style="font-weight: bold;margin-left: 0px"><?php echo $post->views; ?></span>
                         </span>
                     </div>
                 </a>
