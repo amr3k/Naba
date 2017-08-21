@@ -76,6 +76,7 @@ class RegisterController extends Controller
                 ->max('pass', 128)
                 ->match('pass', 're-pass')
                 ->valString('pass');
+        $this->validator->recaptcha();
         return $this->validator->pass();
     }
 
