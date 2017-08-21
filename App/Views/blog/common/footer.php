@@ -39,6 +39,8 @@
 <script src="<?php echo assets('blog/js/wow.min.js'); ?>"></script>
 <!-- Custom JS -->
 <script src="<?php echo assets('blog/js/custom.js'); ?>"></script>
+<!-- Google ReCAPTCHA -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script>
     // Navbar items
     var currentUrl = window.location.href;
