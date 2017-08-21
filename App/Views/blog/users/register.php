@@ -7,13 +7,13 @@
         <form action="<?php echo url('/register/submit'); ?>" class="form">
             <div class="form-group">
                 <label for="first_name" class="col-xs-1">Name</label>
-                <div class="col-sm-12 col-xs-12">
+                <div class="col-xs-12">
                     <input type="text" name="name" id="first_name" placeholder="First Name" class="input placeholder form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-xs-1">Email</label>
-                <div class="col-sm-12 col-xs-12">
+                <div class="col-xs-12">
                     <input type="email" name="email" id="email" placeholder="Email Address" class="input placeholder form-control" />
                 </div>
             </div>
@@ -28,6 +28,10 @@
                 <div class="col-sm-12 col-xs-12">
                     <input type="password" name="re-pass" id="confirm_password" placeholder="Confirm Password" class="input form-control" />
                 </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <div class="g-recaptcha col-xs-12" data-sitekey="6LfpiC0UAAAAAGxN1fu6D5_Z7Kz4HsHCx5VelLeP"></div>
             </div>
             <div class="clearfix"></div>
             <div id="form-results"></div>

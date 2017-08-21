@@ -268,6 +268,30 @@ class Validation
     }
 
     /**
+     * Google ReCAPTCHA
+     *
+     * @return bool
+     */
+    public function recaptcha()
+    {
+        $curl     = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL            => 'https://www.google.com/recaptcha/api/siteverify',
+            CURLOPT_POST           => 1,
+            CURLOPT_POSTFIELDS     => [
+                'secret'   => '6LfpiC0UAAAAABq6fGhoFJK575O4lQuk-23ksVsy',
+                'response' => $this->app->request->post('g-recaptcha-response'),
+            ],
+        ]);
+        $response = json_decode(curl_exec($curl));
+        if (!$response->success) {
+            $this->addErr('ReCAPTCHA', 'Please complete the recaptcha test');
+        }
+        return $this;
+    }
+
+    /**
      * Add custom message
      *
      * @param string $message
