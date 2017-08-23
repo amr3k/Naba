@@ -21,22 +21,28 @@
                     <div class="box-body">
                         <h3>Manage settings (<span style="color: red">Use with caution</span>)</h3>
                         <form action="<?php echo $action; ?>" class="form" method="POST">
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-4">
+                                <label for="icon">Fav Icon</label>
+                                <input type="file" id="icon" name="icon" class="form-control">
+                            </div>
+                            <img src="<?php echo $img . $info[7]->v; ?>" width="50" height="50" style="margin-top: 15px" alt="">
+                            <div class="clearfix"></div>
+                            <div class="form-group col-sm-4">
                                 <label for="name">Site name</label>
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Site name"
-                                       value="<?php echo $site->name; ?>">
+                                       value="<?php echo $info[0]->v; ?>">
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-8">
                                 <label for="email">Site email</label>
                                 <input type="email" name="email" class="form-control" id="email" placeholder="Site email"
-                                       value="<?php echo $site->email; ?>">
+                                       value="<?php echo $info[1]->v; ?>">
                             </div>
-                            <div class="form-group col-sm-3">
-                                <label for="status">Site status</label><span>(Doesn't have an effect)</span>
+                            <div class="form-group col-sm-4">
+                                <label for="status">Site status</label>
                                 <select id="status" class="form-control" name="status">
                                     <option value="on"
                                     <?php
-                                    if ($site->status == 'on') {
+                                    if ($info[2]->v == 'on') {
                                         echo 'selected =""';
                                     }
                                     ?>
@@ -44,16 +50,45 @@
                                         On</option>
                                     <option value="off"
                                     <?php
-                                    if ($site->status == 'off') {
+                                    if ($info[2]->v == 'off') {
                                         echo 'selected =""';
                                     }
                                     ?>
                                             >Off</option>
                                 </select>
                             </div>
-                            <div class="form-group col-sm-9">
-                                <label for="msg">In case status is OFF, Choose an appropriate message that will be visible to visitors</label>
-                                <input type="text" id="msg" name="msg" class="form-control" value="<?php echo $site->msg; ?>">
+                            <div id="status_msg" class="form-group col-sm-12" <?php
+                            if ($info[2]->v == 'on') {
+                                echo 'style="display:none"';
+                            }
+                            ?> >
+                                <label for="msg">Choose an appropriate message that will be visible to visitors</label>
+                                <textarea id="msg" name="msg" class="form-control textarea"><?php echo $info[3]->v; ?></textarea>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="contact">Contact us page</label>
+                                <textarea id="contact" name="contact" class="form-control textarea"><?php echo $info[4]->v; ?></textarea>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="about">About us page</label>
+                                <textarea id="about" name="about" class="form-control textarea"><?php echo $info[5]->v; ?></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                            <h2 style="text-align: center">Social Links</h2>
+                            <div class="form-group col-sm-8">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" name="facebook" class="form-control" id="facebook" placeholder="facebook"
+                                       value="<?php echo $info[6]->v; ?>">
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label for="twitter">Twitter</label>
+                                <input type="text" name="twitter" class="form-control" id="twitter" placeholder="facebook"
+                                       value="<?php echo $info[8]->v; ?>">
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label for="instagram">Instagram</label>
+                                <input type="text" name="instagram" class="form-control" id="instagram" placeholder="facebook"
+                                       value="<?php echo $info[9]->v; ?>">
                             </div>
                             <div class="clearfix"></div>
                             <div id="form-results"></div>

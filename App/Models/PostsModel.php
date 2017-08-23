@@ -377,8 +377,9 @@ class PostsModel extends Model
     public function getPostsByViews($limit = 5)
     {
         return $this->db
-                        ->select('*')
-                        ->where('posts.status=?', 'enabled')
+                        ->select('posts.*')
+                        ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                        ->where('posts.status=? AND categories.status=?', 'enabled', 'enabled')
                         ->orderBy('views', 'DESC')
                         ->limit($limit)
                         ->fetchAll($this->table);

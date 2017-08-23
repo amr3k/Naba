@@ -11,7 +11,12 @@ if (strpos($app->request->url(), '/admin') === 0) {
         $app->load->controller('Admin/Access')->index();
     });
 }
-
+// Checking site status
+if (strpos($app->request->url(), '/admin') !== 0 && strpos($app->request->url(), '/error') !== 0) {
+    $app->route->callFirst(function ($app) {
+        $app->load->controller('Blog/SiteStatus')->index();
+    });
+}
 // Share admin layout
 $app->share('adminLayout', function ($app) {
     return $app->load->controller('Admin/Common/Layout');
@@ -112,3 +117,5 @@ $app->route->add('/search', 'Blog/Search');
 // Not found routes
 $app->route->add('/404', 'NotFound');
 $app->route->notFound('/404');
+// Site down route
+$app->route->add('/error', 'SiteDown');

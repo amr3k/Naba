@@ -9,7 +9,8 @@ class SidebarController extends Controller
 
     public function index()
     {
-        return $this->view->render('admin/common/sidebar');
+        $data['admin'] = $this->load->model('Login')->user()->id;
+        return $this->view->render('admin/common/sidebar', $data);
     }
 
 }

@@ -161,6 +161,26 @@ class Validation
     }
 
     /**
+     * Determine if the given input is a valid URL
+     *
+     * @param string $inputName
+     * @param string $customErrMsg
+     * @return $this
+     */
+    public function url($inputName, $customErrMsg = null)
+    {
+        if ($this->hasErr($inputName)) {
+            return $this;
+        }
+        $input = $this->value($inputName);
+        if (!filter_var($input, FILTER_VALIDATE_URL)) {
+            $msg = $customErrMsg ?: 'Please submit a valid URL';
+            $this->addErr($inputName, $msg);
+        }
+        return $this;
+    }
+
+    /**
      * Determine if the given input is not less in length than the the given value
      *
      * @param string $inputName

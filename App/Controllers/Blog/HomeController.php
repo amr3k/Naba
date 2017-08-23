@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->html->setTitle($this->load->model('Settings')->get(1)->name);
+        $this->html->setTitle($this->load->model('Settings')->get(1)->v);
         $data['posts']      = $this->load->model('Posts')->latest();
         $data['categories'] = $this->load->model('Categories')->getEnabledCategoriesWithNumberOfTotalPosts();
         $data['ads']        = $this->load->model('Ads')->enabled();
