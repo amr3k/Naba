@@ -45,12 +45,18 @@
                     <span>Ads</span>
                 </a>
             </li>
-            <li id="sidebar-settings" class="sidebar-link">
-                <a href="<?php echo url('/admin/settings') ?>">
-                    <i class="fa fa-cogs"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
+            <?php
+            if ($admin == 1) {
+                ?>
+                <li id="sidebar-settings" class="sidebar-link">
+                    <a href="<?php echo url('/admin/settings') ?>">
+                        <i class="fa fa-cogs"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <?php
+            }
+            ?>
         </ul>
     </section>
     <!-- /.sidebar -->

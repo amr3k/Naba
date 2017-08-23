@@ -5,7 +5,7 @@ You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntv
 
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 ***
-~~### Wanna test it ?~~
+### ~~Wanna test it ?~~
 ~~This is a live demo:~~
 ~~Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)~~
 
@@ -29,13 +29,14 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 ***
 # Coming features :
 ### Under the hood :
-- Enhancing security against spam ~~, SQL injection and XSS attacks.~~
+- ~~Enhancing security against spam , SQL injection and XSS attacks.~~
 - ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
 - Activating registered accounts via email using tokens.
 - Enhancing performance using caching.
-- Multi language support (Adding Arabic)
+- Multi language support (Adding Arabic).
+- Setting images upload rules.
 ### Admin Panel :
-- Re-creating Settings section (Lot's of features giving more control power over script).
+- ~~Re-creating Settings section (Lot's of features giving more control power over script)~~.
 - Working on Dashboard page.
 ### Front pages:
 - Social Login

@@ -177,6 +177,10 @@
             return false;
         }
     });
+    // Showing site status message box when setting it to OFF
+    $('#status').change(function () {
+        $('#status_msg').slideToggle(250);
+    });
 </script>
 </body>
 </html>

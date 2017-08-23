@@ -8,25 +8,25 @@
             <div class="form-group">
                 <label for="first_name" class="col-xs-1">Name</label>
                 <div class="col-xs-12">
-                    <input type="text" name="name" id="first_name" placeholder="First Name" class="input placeholder form-control" />
+                    <input type="text" name="name" id="first_name" placeholder="First Name" class="input placeholder form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-xs-1">Email</label>
                 <div class="col-xs-12">
-                    <input type="email" name="email" id="email" placeholder="Email Address" class="input placeholder form-control" />
+                    <input type="email" name="email" id="email" placeholder="Email Address" class="input placeholder form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-xs-1">Password</label>
                 <div class="col-sm-12 col-xs-12">
-                    <input type="password" name="pass" id="password" placeholder="Password" class="input form-control" />
+                    <input type="password" name="pass" id="password" placeholder="Password" class="input form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="confirm_password" class="col-xs-1">Confirm Password</label>
                 <div class="col-sm-12 col-xs-12">
-                    <input type="password" name="re-pass" id="confirm_password" placeholder="Confirm Password" class="input form-control" />
+                    <input type="password" name="re-pass" id="confirm_password" placeholder="Confirm Password" class="input form-control"/>
                 </div>
             </div>
             <div class="clearfix"></div>
