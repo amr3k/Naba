@@ -134,17 +134,13 @@ class Route
     public function getProperRoute()
     {
         foreach ($this->routes as $route) {
-//            pre($route);
             if ($this->isMatching($route['pattern']) && $this->isMatchingRequestMethod($route['method'])) {
                 $arguments          = $this->getArgumentsFrom($route['pattern']);
-//                echo '<h1>Matched</h1>';
-                // Cotroller@method
                 list($controller, $method) = explode('@', $route['action']);
                 $this->currentRoute = $route['url'];
                 return [$controller, $method, $arguments];
             }
         }
-//        die;
         return $this->app->url->redirect($this->notFound);
     }
 

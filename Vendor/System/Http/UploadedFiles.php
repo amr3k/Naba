@@ -182,9 +182,13 @@ class UploadedFiles
      * @param string $newFileName
      * @return string
      */
-    public function move($target)
+    public function move($target, $newFileName = null)
     {
-        $fileName = sha1(time()) . '.' . $this->extension;
+        if ($newFileName) {
+            $fileName = $newFileName . '.' . $this->extension;
+        } else {
+            $fileName = sha1(time() + rand(1, 99)) . '.' . $this->extension;
+        }
         if (!is_dir($target)) {
             return;
         }

@@ -54,7 +54,7 @@ class LayoutController extends Controller
      */
     public function title($title)
     {
-        $this->html->setTitle($title . ' | ' . $this->load->model('Settings')->get(1)->name);
+        $this->html->setTitle($title . ' | ' . $this->load->model('Settings')->get(1)->v);
     }
 
 }
