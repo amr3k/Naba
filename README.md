@@ -5,17 +5,11 @@ You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntv
 
 Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 ***
-### ~~Wanna test it ?~~
-~~This is a live demo:~~
-~~Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)~~
+### Wanna test it ?
+This is a live demo:
+Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)
 
-~~Use these credentials to login as admin :~~
-
-~~Username: `admin@test.account`~~
-
-~~Password: `123456789`~~
-
-You can also register a new account to see it from a different angle.
+You can register a new account to see it from different angle.
 ***
 This script will be continuously updated (currently, It has more than 10K lines of pure PHP code)
 ***
