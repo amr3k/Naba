@@ -108,20 +108,20 @@ class CategoriesModel extends Model
                 ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
                 ->from('posts')
                 ->joins('LEFT JOIN u ON posts.uid = u.id')
-                ->where('posts.cid=? AND posts.status=?', $id, 'enabled')
+                ->where('posts.cid=? AND posts.status=? AND u.status=?', $id, 'enabled', 'enabled')
                 ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll();
         // Get total posts for pagination
-        $totalPosts      = $this->db
-                ->select('COUNT(id) AS `total`')
-                ->from('posts')
-                ->where('cid=? AND status=?', $id, 'enabled')
-                ->orderBy('id', 'DESC')
-                ->fetch();
-
+        $totalPosts      = count($category->posts);
+//        $totalPosts      = $this->db
+//                ->select('COUNT(id) AS `total`')
+//                ->from('posts')
+//                ->where('cid=? AND status=?', $id, 'enabled')
+//                ->orderBy('id', 'DESC')
+//                ->fetch();
         if ($totalPosts) {
-            $this->pagination->setTotalItems($totalPosts->total);
+            $this->pagination->setTotalItems($totalPosts);
         }
         return $category;
     }
