@@ -177,7 +177,7 @@ class PostsModel extends Model
                         ->from('posts')
                         ->joins('LEFT JOIN categories ON posts.cid = categories.id')
                         ->joins('LEFT JOIN u ON posts.uid = u.id')
-                        ->where('posts.status=?', 'enabled')
+                        ->where('posts.status=? AND categories.status=? AND u.status=?', 'enabled', 'enabled', 'enabled')
                         ->orderBy('posts.id', 'DESC')
                         ->fetchAll();
     }
@@ -196,7 +196,7 @@ class PostsModel extends Model
                 ->from('posts')
                 ->joins('LEFT JOIN categories ON posts.cid=categories.id')
                 ->joins('LEFT JOIN u ON posts.uid=u.id')
-                ->where('posts.id=? AND posts.status=?', $id, 'enabled')
+                ->where('posts.id=? AND posts.status=? AND categories.status=? AND u.status=?', $id, 'enabled', 'enabled', 'enabled')
                 ->fetch();
 
         if (!$post) {
@@ -234,7 +234,8 @@ class PostsModel extends Model
                 ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
                 ->from('posts')
                 ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                ->where('posts.uid=? AND posts.status=? AND categories.status = ?', $id, 'enabled', 'enabled')
+                ->joins('LEFT JOIN u ON posts.uid = u.id')
+                ->where('posts.uid=? AND posts.status=? AND categories.status = ? AND u.status=?', $id, 'enabled', 'enabled', 'enabled')
                 ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll($this->table);
@@ -242,13 +243,9 @@ class PostsModel extends Model
             return [];
         }
         // Get total posts for pagination
-        $totalPosts = $this->db
-                ->select('COUNT(id) AS `total`')
-                ->from('posts')
-                ->where('uid=? AND status=?', $id, 'enabled')
-                ->fetch();
+        $totalPosts = count($posts);
         if ($totalPosts) {
-            $this->pagination->setTotalItems($totalPosts->total);
+            $this->pagination->setTotalItems($totalPosts);
         }
         return $posts;
     }
@@ -273,7 +270,7 @@ class PostsModel extends Model
                 ->from('posts')
                 ->joins('LEFT JOIN u ON posts.uid = u.id')
                 ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                ->where('posts.tags LIKE ? AND posts.status=?', "%$tag%", 'enabled')
+                ->where('posts.tags LIKE ? AND posts.status=? AND categories.status=? AND u.status=?', "%$tag%", 'enabled', 'enabled', 'enabled')
                 ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll($this->table);
@@ -281,13 +278,9 @@ class PostsModel extends Model
             return [];
         }
         // Get total posts for pagination
-        $totalPosts = $this->db
-                ->select('COUNT(id) AS `total`')
-                ->from('posts')
-                ->where('tags LIKE ? AND status=?', "%$tag%", 'enabled')
-                ->fetch();
+        $totalPosts = count($posts);
         if ($totalPosts) {
-            $this->pagination->setTotalItems($totalPosts->total);
+            $this->pagination->setTotalItems($totalPosts);
         }
         return $posts;
     }
@@ -310,9 +303,9 @@ class PostsModel extends Model
                 ->select('posts.*', 'u.name AS author', 'categories.name AS category')
                 ->select('(SELECT COUNT(comments.id) FROM `comments` WHERE comments.post_id=posts.id) AS total_comments')
                 ->from('posts')
-                ->joins('LEFT JOIN u ON posts.uid = u.id')
                 ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                ->where('posts.title LIKE ? OR posts.text LIKE ? AND posts.status=?', "%$query%", "%$query%", 'enabled')
+                ->joins('LEFT JOIN u ON posts.uid = u.id')
+                ->where('(posts.title LIKE ? OR posts.text LIKE ?) AND posts.status=? AND categories.status=? AND u.status=?', "%$query%", "%$query%", 'enabled', 'enabled', 'enabled')
                 ->orderBy('posts.id', 'DESC')
                 ->limit($limit, $offset)
                 ->fetchAll($this->table);
@@ -320,13 +313,9 @@ class PostsModel extends Model
             return [];
         }
         // Get total posts for pagination
-        $totalPosts = $this->db
-                ->select('COUNT(id) AS `total`')
-                ->from('posts')
-                ->where('posts.title LIKE ? OR posts.text LIKE ? AND posts.status=?', "%$query%", "%$query%", 'enabled')
-                ->fetch();
+        $totalPosts = count($posts);
         if ($totalPosts) {
-            $this->pagination->setTotalItems($totalPosts->total);
+            $this->pagination->setTotalItems($totalPosts);
         }
         return $posts;
     }
@@ -379,7 +368,8 @@ class PostsModel extends Model
         return $this->db
                         ->select('posts.*')
                         ->joins('LEFT JOIN categories ON posts.cid = categories.id')
-                        ->where('posts.status=? AND categories.status=?', 'enabled', 'enabled')
+                        ->joins('LEFT JOIN u ON posts.uid = u.id')
+                        ->where('posts.status=? AND categories.status=? AND u.status=?', 'enabled', 'enabled', 'enabled')
                         ->orderBy('views', 'DESC')
                         ->limit($limit)
                         ->fetchAll($this->table);

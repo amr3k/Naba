@@ -9,7 +9,7 @@ Many thanks to Mr.Zohdy for his efforts to make this awesome course.
 This is a live demo:
 Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)
 
-You can register a new account to see it from different angle.
+You can register a new account to be able to comment.
 ***
 This script will be continuously updated (currently, It has more than 10K lines of pure PHP code)
 ***
@@ -19,7 +19,7 @@ I'v found myself forced to serve in the military since the middle of July 2017 f
 I'm gonna add more and more features to this script and fix bugs as soon as I get a vacation.
 ***
 # Known issues:
-- Nothing for now .
+- Pagination doesn't work with search
 ***
 # Coming features :
 ### Under the hood :
