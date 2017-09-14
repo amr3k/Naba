@@ -1,19 +1,13 @@
 # Naba :
-**A tiny CMS built with mini custom PHP MVC framework**
+**A micro CMS built with custom PHP MVC framework**
 
-This is my application based on a PHP MVC course.
+This is my application based on this [course](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {Arabic}
 
-You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {Arabic}
-
-Many thanks to Mr.Zohdy for his efforts to make that awesome course.
 ***
 ### Do you want to test it ?
-This is a live demo: 😍
-Click [here](http://bit.ly/2v6C5mA)
+**[Live demo](http://bit.ly/2v6C5mA)**
 ***
 You can register a new account to be able to comment.
-***
-This script will be continuously updated (currently, It has about 10K lines of PHP code)
 ***
 # Known issues:
 - Pagination doesn't work with search.
@@ -33,7 +27,5 @@ This script will be continuously updated (currently, It has about 10K lines of P
 - Social Login
 - ☑ ~~Social sharing~~.
 ***
-# Before you use it..
-**Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first.**
+**Check [the wiki](https://github.com/akkk33/AE-AdvBlog/wiki) for more info.**
 ***
-PLEASE READ [CODE OF CONDUCT](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md) BEFORE SUBMITTING ANY [ISSUE](https://github.com/akkk33/AE-AdvBlog/issues)!
