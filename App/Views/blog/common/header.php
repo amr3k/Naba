@@ -9,6 +9,8 @@
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
         <link href="<?php echo assets('blog/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <!-- Bootstrap social icons -->
+        <link href="<?php echo assets('blog/css/bootstrap-social.css'); ?>" rel="stylesheet">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="<?php echo assets('blog/css/font-awesome.min.css'); ?>" />
         <!-- Animate CSS -->

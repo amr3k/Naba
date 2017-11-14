@@ -2,7 +2,22 @@
 <div id="register-page" class="page box">
     <!-- Centered Content -->
     <div class="centered-content">
-        <h1 class="heading">Create New Account</h1>
+        <!--Social network login-->
+        <!--
+        <h3 class="text-center">Register with:</h3>
+                <div class="text-center">
+                    <a class="btn btn-social-icon btn-facebook btn-lg"><span class="fa fa-facebook"></span></a>
+                    <a class="btn btn-social-icon btn-google btn-lg"><span class="fa fa-google"></span></a>
+                    <a class="btn btn-social-icon btn-twitter btn-lg"><span class="fa fa-twitter"></span></a>
+                </div>
+                <div class="text-center" >
+                    <h2 style="width: 100%; border-bottom: 1px solid #999; line-height: 0.1em;margin: 30px 0 20px; ">
+                        <span style="background-color:#fff;padding:10px 10px;color: #999; font-size: 0.75em">Or</span>
+                    </h2>
+                </div>
+        <h3 class="text-center">Register with email</h3>
+        -->
+        <!--Social network login-->
         <!-- Form -->
         <form action="<?php echo url('/register/submit'); ?>" class="form">
             <div class="form-group">
