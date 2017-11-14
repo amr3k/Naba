@@ -75,7 +75,8 @@
     <!-- Ads Widget -->
     <section id="ads-widget" class="wow fadeInDown" data-wow-duration="2s">
         <h2 style="width: 100%; text-align: center; border-bottom: 1px solid #000; line-height: 0.1em;margin: 10px 0 20px; ">
-            <span style="background-color:#eee; padding:0 10px;">Advertisements</span></h2>
+            <span style="background-color:#eee; padding:0 10px;">Advertisements</span>
+        </h2>
         <?php foreach ($ads AS $ad) { ?>
             <a href="<?php echo $ad->link; ?>" class="ad" target="_blank">
                 <img src="<?php echo assets('uploads/img/ads/' . $ad->img); ?>" alt="" />

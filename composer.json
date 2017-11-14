@@ -1,0 +1,18 @@
+{
+    "name": "vendor/z",
+    "description": "Description of project Z.",
+    "authors": [
+        {
+            "name": "Amr",
+            "email": "akkk33@protonamil.com"
+        }
+    ],
+    "require": {
+        "facebook/graph-sdk": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "Vendor/Api/"
+        }
+    }
+}
