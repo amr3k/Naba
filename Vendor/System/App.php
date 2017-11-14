@@ -67,6 +67,7 @@ class App
         $this->session->start();
         $this->request->prepareUrl();
         $this->file->call('App/index.php');
+        $this->file->call('Vendor/autoload.php');
         list($controller, $method, $arguments) = $this->route->getProperRoute();
         if ($this->route->hasCallsFirst()) {
             $this->route->callFirstCalls();
