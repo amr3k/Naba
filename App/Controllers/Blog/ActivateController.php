@@ -8,25 +8,36 @@ class ActivateController extends Controller
 {
 
     /**
-     * Display Login Form
+     * Display activation code form
      *
+     * @param text $code Activation code
      * @return mixed
      */
-    public function index()
+    public function index($code)
     {
-        $this->blogLayout->title('Login');
         $loginModel = $this->load->model('Login');
-        $this->blogLayout->disable('sidebar');
         if ($loginModel->isLogged()) {
             return $this->url->redirect('/');
         }
-        $data['errors'] = $this->errors;
-        $view           = $this->view->render('blog/users/login', $data);
+        $this->blogLayout->disable('sidebar');
+        $this->blogLayout->title('Account activation');
+        $user = $this->load->model('Users')->fetch($code, 'code');
+        if (!$user) {
+            return $this->url->redirect('/404');
+        }
+        if ((time() - $user->created) <= 86400) { // If the user has opened the activation link whithin 24 hours
+            // Activating user's account
+            $this->load->model('Users')->activate($user->id);
+        } else { // If the user has opened the activation link after 24 hours
+            // Displaying an error and offer to re-activate
+            $data['error'] = 'This link is expired! Please request a new activation code';
+        }
+        $view = $this->view->render('blog/users/login', $data);
         return $this->blogLayout->render($view);
     }
 
     /**
-     * Submit Login form
+     * Submit requiring an activation code
      *
      * @return mixed
      */

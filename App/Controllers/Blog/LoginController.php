@@ -20,8 +20,7 @@ class LoginController extends Controller
         if ($loginModel->isLogged()) {
             return $this->url->redirect('/');
         }
-        $data['errors'] = $this->errors;
-        $view           = $this->view->render('blog/users/login', $data);
+        $view = $this->view->render('blog/users/login', $data);
         return $this->blogLayout->render($view);
     }
 
