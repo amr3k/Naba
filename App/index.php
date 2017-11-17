@@ -22,7 +22,7 @@ $app->share('adminLayout', function ($app) {
     return $app->load->controller('Admin/Common/Layout');
 });
 
-// Share admin layout
+// Share blog layout
 $app->share('blogLayout', function ($app) {
     return $app->load->controller('Blog/Common/Layout');
 });
@@ -106,6 +106,7 @@ $app->route->add('/author/:text', 'Blog/Author');
 $app->route->add('/tag/:text', 'Blog/Tag');
 $app->route->add('/register', 'Blog/Register');
 $app->route->add('/register/submit', 'Blog/Register@submit', 'POST');
+$app->route->add('/activate', 'Blog/activate', 'GET');
 $app->route->add('/login', 'Blog/Login');
 $app->route->add('/login/submit', 'Blog/Login@submit', 'POST');
 $app->route->add('/contact', 'Blog/Contact');

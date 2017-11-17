@@ -16,15 +16,14 @@ class UsersModel extends Model
     /**
      * Create a new Users group record
      *
-     * @return void
+     * @return int Last inserted user ID
      */
     public function create()
     {
-        // Images are not neccessarily while registering
+        // Images are not required while registering
         // So I'm gonna use a default avatar
         $img = $this->defaultImg();
         // Changing image file permissions
-//        chmod($this->app->file->toAvatar($img), 0777);
         $this->db
                 ->data('name', trim(strtolower($this->request->post('name'))))
                 ->data('email', trim($this->request->post('email')))
@@ -36,6 +35,7 @@ class UsersModel extends Model
                 ->data('ip', $this->request->ip())
                 ->data('code', sha1(time()))
                 ->insert($this->table);
+        return parent::lastId();
     }
 
     /**

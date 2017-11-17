@@ -28,7 +28,7 @@ class RegisterController extends Controller
     /**
      * Submit for creating new user
      *
-     * @return string | JSON
+     * @return json A JSON file to deliver it via AJAX request to user's browser
      */
     public function submit()
     {
@@ -38,16 +38,35 @@ class RegisterController extends Controller
             // set the users group id for the registered user
             // to be the id of the "users" group
             $this->request->setPost('ugid', 2);
-            // Set the user status to be disabled untill the admin approves it
-            $this->request->setPost('status', 'enabled');
-            $this->load->model('Users')->create();
-            $json['success']    = 'Your account has been successfully created';
-            $json['redirectTo'] = $this->url->link('/login');
+            // Set the user status to be disabled until user activates his account
+            $this->request->setPost('status', 'disabled');
+            $create = $this->load->model('Users')->create();
+            if ($this->sendMail($create)) {
+                $json['success'] = 'Please confirm your email address by opening the link we\'ve sent to';
+            } else {
+                $json['errors'] = 'We have trouble in our email service! Please try again later.';
+            }
         } else {
             // it means there are errors in form validation
             $json['errors'] = $this->validator->flatMsg();
         }
         return $this->json($json);
+    }
+
+    /**
+     * Send an activation email to user
+     *
+     * @param int $user_id
+     * @return bool In case the message is not sent , this function will return false
+     */
+    private function sendMail($user_id)
+    {
+        $user    = $this->load->model('Users')->get($user_id);
+        $email   = $user->email;
+        $link    = $this->request->baseUrl() . 'activate/' . $user->code;
+        $subject = 'Activate your account';
+        $msg     = 'Hello, Thanks for registeration ;)<br>Please open the link below to activate your account:<br>' . $link;
+        return mail($email, $subject, $msg);
     }
 
     /**
