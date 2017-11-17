@@ -1,7 +1,11 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `blog`;
 
+DROP TABLE IF EXISTS `ads`;
 CREATE TABLE `ads` (
   `id` int(11) NOT NULL,
   `link` text NOT NULL,
@@ -12,6 +16,7 @@ CREATE TABLE `ads` (
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Advertisements' ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `ads`;
 INSERT INTO `ads` (`id`, `link`, `img`, `start`, `end`, `page`, `status`) VALUES
 (4, 'http://www.google.com', '9b3998042cf513576ac445ce3e1a4badc791801f.jpg', 1493589600, 1501538400, '/login', 'enabled'),
 (5, 'http://www.facebook.com', 'de5eecafb7aeb1e61c635c042d864931ce94e023.png', 1493589600, 1498773600, '/', 'disabled'),
@@ -26,6 +31,7 @@ INSERT INTO `ads` (`id`, `link`, `img`, `start`, `end`, `page`, `status`) VALUES
 (14, 'http://muslims-res.com/', '052e804b31cd4fcd13aac5bb5a7900a705a1ae34.png', 1498687200, 1504044000, '/search', 'enabled'),
 (16, 'https://www.youtube.com/c/3Minutes', '35f342aa1ac5ec6a30002b7fc26cfbfcbbbd6b91.png', 1498341600, 1609369200, '/', 'enabled');
 
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `pid` int(11) NOT NULL COMMENT 'Parent ID',
@@ -33,12 +39,14 @@ CREATE TABLE `categories` (
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `categories`;
 INSERT INTO `categories` (`id`, `pid`, `name`, `status`) VALUES
 (1, 0, 'Sports', 'enabled'),
 (15, 0, 'News', 'enabled'),
 (16, 0, 'Economy', 'enabled'),
 (23, 0, 'Health', 'enabled');
 
+DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
@@ -48,6 +56,7 @@ CREATE TABLE `comments` (
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `comments`;
 INSERT INTO `comments` (`id`, `uid`, `post_id`, `comment`, `created`, `status`) VALUES
 (9, 2, 5, 'Awesome', 1499486480, 'enabled'),
 (10, 2, 5, 'Now photos are visible', 1499486496, 'enabled'),
@@ -58,6 +67,7 @@ INSERT INTO `comments` (`id`, `uid`, `post_id`, `comment`, `created`, `status`) 
 (25, 1, 28, '&lt;script&gt;alert(1);&lt;/script&gt;', 1499971867, 'enabled'),
 (26, 1, 27, 'hi', 1503601732, 'enabled');
 
+DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
@@ -72,12 +82,16 @@ CREATE TABLE `contacts` (
   `reply_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE TABLE `contacts`;
+DROP TABLE IF EXISTS `online`;
 CREATE TABLE `online` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `la` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE TABLE `online`;
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
@@ -92,6 +106,7 @@ CREATE TABLE `posts` (
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE TABLE `posts`;
 INSERT INTO `posts` (`id`, `uid`, `cid`, `title`, `text`, `img`, `tags`, `related_posts`, `views`, `created`, `status`) VALUES
 (5, 1, 16, 'First post', '&lt;b&gt;&lt;/b&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt nibh nibh, ac ultricies dui commodo eget. Proin sed volutpat enim. Nunc ac tellus ut nunc auctor laoreet. Donec accumsan ex in egestas fringilla. Nam non ornare mi. Sed sit amet placerat lorem. Ut lacinia consectetur convallis. Morbi ullamcorper a massa eu sagittis. Nunc convallis luctus pretium.\r\n\r\nQuisque tincidunt massa eu nulla consectetur fermentum. Cras imperdiet neque at sem lacinia, et mollis magna faucibus. Donec in ante at elit sodales tempor. Duis consequat eros fermentum, cursus enim a, consectetur nisl. Proin quam sapien, tristique sit amet tempus vitae, vulputate nec mauris. Proin id felis dapibus, porttitor ante a, mattis nisl. Aliquam erat volutpat. Etiam ac erat nec libero semper venenatis. Morbi egestas lectus vitae tortor sodales rutrum. Ut eget mauris sodales, porttitor leo vitae, faucibus augue. Morbi mattis quam vel rhoncus condimentum. Vivamus maximus euismod nisi, ut dignissim elit pulvinar sed. Donec ultrices mattis vulputate.&lt;b&gt;&lt;/b&gt;', '07f41d195eaed1e8b2849480fa6c8933773a3e84.jpg', 'adasdsad', '', 1506, 1498672526, 'enabled'),
 (14, 1, 16, 'dolor sit amet', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt nibh nibh, ac ultricies dui commodo eget. Proin sed volutpat enim. Nunc ac tellus ut nunc auctor laoreet. Donec accumsan ex in egestas fringilla. Nam non ornare mi. Sed sit amet placerat lorem. Ut lacinia consectetur convallis. Morbi ullamcorper a massa eu sagittis. Nunc convallis luctus pretium.\r\n\r\nQuisque tincidunt massa eu nulla consectetur fermentum. Cras imperdiet neque at sem lacinia, et mollis magna faucibus. Donec in ante at elit sodales tempor. Duis consequat eros fermentum, cursus enim a, consectetur nisl. Proin quam sapien, tristique sit amet tempus vitae, vulputate nec mauris. Proin id felis dapibus, porttitor ante a, mattis nisl. Aliquam erat volutpat. Etiam ac erat nec libero semper venenatis. Morbi egestas lectus vitae tortor sodales rutrum. Ut eget mauris sodales, porttitor leo vitae, faucibus augue. Morbi mattis quam vel rhoncus condimentum. Vivamus maximus euismod nisi, ut dignissim elit pulvinar sed. Donec ultrices mattis vulputate.', '37458a19943d6bfb1e71f29c2771d499a6fb3526.jpg', 'abc', '', 18, 1498713138, 'enabled'),
@@ -101,12 +116,14 @@ INSERT INTO `posts` (`id`, `uid`, `cid`, `title`, `text`, `img`, `tags`, `relate
 (28, 1, 1, 'Aenean faucibus', '&lt;p&gt;&lt;/p&gt;&lt;h1&gt;\r\nIn vehicula, lorem vitae vulputate vestibulum, est felis porttitor nisl,\r\n quis volutpat lacus urna et metus.&lt;/h1&gt;&lt;p&gt; Aenean faucibus nibh sed lorem \r\naliquet, in porttitor dolor finibus. Nulla placerat lorem quis molestie \r\n&lt;b&gt;fringilla&lt;/b&gt;. Suspendisse faucibus auctor nibh, vitae pharetra eros tempor \r\nin. Etiam tincidunt lorem in magna sagittis, non tristique elit commodo.\r\n Suspendisse semper tellus eu elit efficitur elementum. In hac habitasse\r\n platea dictumst. Phasellus faucibus dignissim &lt;i&gt;lectus vel lobortis. \r\nNullam&lt;/i&gt; &lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;small&gt;finibus finibus volutpat.&lt;/small&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt; Morbi eget elementum neque. &lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;ol&gt;&lt;li&gt;Nam \r\ndignissim quam ut aliquam egestas. &lt;br&gt;&lt;/li&gt;&lt;/ol&gt;&lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;Quisque congue, mi quis tristique \r\neleifend, &lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;ligula magna sagittis justo,&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt; &lt;/b&gt;&lt;u&gt;&lt;b&gt;malesuada congue enim velit id \r\neros&lt;/b&gt;&lt;/u&gt;&lt;b&gt;.\r\n&lt;/b&gt;&lt;/p&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;alert(0);&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;', '56bc8d775c298d9cfe5995fef673e6135a785b0c.png', 'aenean,nibh,sed', '', 65, 1499731763, 'enabled'),
 (30, 1, 23, 'Aenean eget varius tellus', '&lt;p&gt;&lt;/p&gt;&lt;h1&gt;Lorem&lt;br&gt;&lt;/h1&gt;&lt;p&gt;\r\nMorbi quis orci tempus, placerat urna a, molestie elit. Sed quis justo \r\ntincidunt, eleifend urna nec, convallis nunc. Duis viverra est \r\nfacilisis, viverra augue id, lacinia lacus. Donec ullamcorper, nisi a \r\nornare maximus, arcu orci gravida nibh, at tincidunt tortor ligula sed \r\nvelit. Cras egestas nulla ac blandit aliquam. Interdum et malesuada \r\nfames ac ante ipsum primis in faucibus. Nullam rhoncus libero eu neque \r\ncondimentum, a molestie nibh euismod. Donec ac mauris neque. Curabitur \r\nconsectetur, nunc eu scelerisque auctor, est sem dictum libero, \r\nfringilla consequat quam tellus nec felis.\r\n&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;', 'cf097bffeb725907c5a31e7256180c279bd50b89.jpg', 'libero', '', 0, 1503610131, 'enabled');
 
+DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `k` varchar(255) NOT NULL,
   `v` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `settings`;
 INSERT INTO `settings` (`id`, `k`, `v`) VALUES
 (1, 'name', 'AE-AdvBlog'),
 (2, 'email', 'info@aeadvblog.com'),
@@ -119,6 +136,7 @@ INSERT INTO `settings` (`id`, `k`, `v`) VALUES
 (9, 'twitter', 'https://twitter.com/___A_M_R___'),
 (10, 'instagram', 'https://www.instagram.com/amrelkhenany');
 
+DROP TABLE IF EXISTS `u`;
 CREATE TABLE `u` (
   `id` int(11) NOT NULL,
   `ugid` int(11) NOT NULL,
@@ -133,26 +151,31 @@ CREATE TABLE `u` (
   `bio` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users' ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `u`;
 INSERT INTO `u` (`id`, `ugid`, `name`, `email`, `pass`, `img`, `created`, `status`, `ip`, `code`, `bio`) VALUES
 (1, 1, 'amr', 'akkk33@protonmail.com', '$2y$10$aWTiX/Mg/8gpj8l4KiDkv.mf7JSuvKZhObGswlkOT.xuNgzb4T7C2', 'ec100553f3d96506bace65cd9d0970813692ac65.jpg', 1496552991, 'enabled', '::1', '7e380d3d0c4755a2e37e245a6aacad6f3ee08646', 'Web developer, YouTuber, Project manager, Android and Linux fan'),
 (2, 1, 'admin', 'admin@test.account', '$2y$10$0WSHbKzT6gmUHWBE64FEYuo0kKr5K2DmX/FpFtTcdl2BCBhP9bgCu', 'a7c298f54a05d336f1adcbce9bce1e49c06fa6df.jpg', 1499116526, 'enabled', '::1', 'e65cbad12b0487e271ef175dfe44d2ff05214f4d', 'ligula orci condimentum felis, vel pulvinar purus purus et quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque .'),
 (21, 2, 'abbas', 'abbas@gmail.comd', '$2y$10$/iGl0C2wMhynmHlmzhi6aOKl2wOIUq06M49ADQws94xfnWd2mgDLe', '5e6df7aa4c14d2b1ed8998f5be6d50c0c08773a9.png', 1499555837, 'disabled', '::1', '60f095df54eb82fc7bcfbdc21c9ff8c3dbfdabe2', 'I\'m fucking abbas');
 
+DROP TABLE IF EXISTS `ug`;
 CREATE TABLE `ug` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'User-Group-name'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User Groups' ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `ug`;
 INSERT INTO `ug` (`id`, `name`) VALUES
 (1, 'Admins'),
 (2, 'Users');
 
+DROP TABLE IF EXISTS `ugp`;
 CREATE TABLE `ugp` (
   `id` int(11) NOT NULL,
   `ugid` int(11) NOT NULL,
   `page` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User Group Permissions' ROW_FORMAT=COMPACT;
 
+TRUNCATE TABLE `ugp`;
 INSERT INTO `ugp` (`id`, `ugid`, `page`) VALUES
 (213, 2, '/admin/login'),
 (214, 2, '/admin/login/submit'),
@@ -253,4 +276,4 @@ ALTER TABLE `u`
 ALTER TABLE `ug`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 ALTER TABLE `ugp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=397;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=397;COMMIT;
