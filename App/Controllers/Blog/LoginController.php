@@ -40,7 +40,11 @@ class LoginController extends Controller
                 $json['errors'] = 'Invalid email or password';
                 return $this->json($json);
             }
-            $logged_in_user     = $loginModel->user();
+            $logged_in_user = $loginModel->user();
+            if ($logged_in_user->status === 'disabled') {
+                $json['errors'] = 'Please confirm your email by openeing the link we\'ve sent to';
+                return $this->json($json);
+            }
             // save login data in cookie and session
             $this->cookie->set('login', $logged_in_user->code);
             $this->session->set('login', $logged_in_user->code);
