@@ -97,6 +97,16 @@ abstract class Model
     }
 
     /**
+     * Getting last inserted ID
+     *
+     * @return int Last inserted ID
+     */
+    public function lastId()
+    {
+        return $this->db->lastId();
+    }
+
+    /**
      * Deleting a record
      *
      * @param int $id
