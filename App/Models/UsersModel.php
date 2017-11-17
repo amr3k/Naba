@@ -83,6 +83,7 @@ class UsersModel extends Model
     /**
      * small update for normal admins
      *
+     * @param int $id User's ID
      * @return void
      */
     public function smallUpdate($id)
@@ -90,7 +91,21 @@ class UsersModel extends Model
         $this->db
                 ->data('status', $this->request->post('status'))
                 ->data('ugid', $this->request->post('ugid'))
-                ->where('id = ?', $id)->update($this->table);
+                ->where('id = ?', $id)
+                ->update($this->table);
+    }
+
+    /**
+     * Activating user's account
+     *
+     * @return void
+     */
+    public function activate($id)
+    {
+        $this->db
+                ->data('status', 'on')
+                ->where('id = ?', $id)
+                ->update($this->table);
     }
 
     /**
