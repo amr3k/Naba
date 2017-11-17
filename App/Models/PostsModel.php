@@ -326,7 +326,7 @@ class PostsModel extends Model
      * @param int $postId
      * @param string $comment
      * @param int $userId
-     * @return void
+     * @return int Last comment ID
      */
     public function addNewComment($postId, $comment, $userId)
     {
@@ -337,6 +337,7 @@ class PostsModel extends Model
                 ->data('created', time())
                 ->data('status', 'enabled')
                 ->insert('comments');
+        return parent::lastId();
     }
 
     /**
