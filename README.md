@@ -19,7 +19,8 @@ I'v found myself forced to serve in the military since the middle of July 2017 f
 I'm gonna add more and more features to this script and fix bugs as soon as I get a vacation.
 ***
 # Known issues:
-- Pagination doesn't work with search
+- Pagination doesn't work with search.
+- Images are not being scaled.
 ***
 # Coming features :
 ### Under the hood :
