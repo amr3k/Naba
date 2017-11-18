@@ -103,7 +103,7 @@ class UsersModel extends Model
     public function activate($id)
     {
         $this->db
-                ->data('status', 'on')
+                ->data('status', 'enabled')
                 ->where('id = ?', $id)
                 ->update($this->table);
     }
