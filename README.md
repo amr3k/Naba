@@ -1,5 +1,6 @@
 # AE-AdvBlog :
 **A tiny CMS built with mini custom PHP MVC framework**
+
 This is my application based on a PHP MVC course.
 
 You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {Arabic}
