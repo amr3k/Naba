@@ -1,22 +1,17 @@
 # AE-AdvBlog :
-This is my application on PHP MVC course.
+This is my application based on a PHP MVC course.
 
 You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {in Arabic}
 
-Many thanks to Mr.Zohdy for his efforts to make this awesome course.
+Many thanks to Mr.Zohdy for his efforts to make that awesome course.
 ***
-### Wanna test it ?
+### Do you want to test it ?
 This is a live demo:
-Click [here](http://bit.ly/2vc4ZSf) or [here](http://bit.ly/2v6C5mA)
+Click [here](http://bit.ly/2v6C5mA)
 
 You can register a new account to be able to comment.
 ***
 This script will be continuously updated (currently, It has more than 10K lines of pure PHP code)
-***
-### Current status :
-I'v found myself forced to serve in the military since the middle of July 2017 for one year as part of conscription in my country , So I have no Internet access this year except those little vacations (6~8 days every month).
-
-I'm gonna add more and more features to this script and fix bugs as soon as I get a vacation.
 ***
 # Known issues:
 - Pagination doesn't work with search.
@@ -26,7 +21,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - ~~Enhancing security against spam , SQL injection and XSS attacks~~.
 - ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
 - ~~Activating registered accounts via email using tokens~~.
-- Enhancing performance using caching.
+- Enhancing performance.
 - Multi language support (Adding Arabic).
 - Setting images upload rules.
 ### Admin Panel :
@@ -36,7 +31,7 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 - Social Login
 - Social sharing
 ***
-# Wanna study or use it ?
+# Do you want to study or use it ?
 **Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
 ***
 **You can request as more features as you want.**
