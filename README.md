@@ -20,7 +20,6 @@ I'm gonna add more and more features to this script and fix bugs as soon as I ge
 ***
 # Known issues:
 - Pagination doesn't work with search.
-- Images are not being scaled.
 ***
 # Coming features :
 ### Under the hood :
