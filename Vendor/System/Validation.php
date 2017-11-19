@@ -94,6 +94,10 @@ class Validation
             $msg = $customErrMsg ?: 'Please submit a valid image file';
             $this->addErr($inputName, $msg);
         }
+        if ($file->maxSize(1)) {
+            $msg = $customErrMsg ?: 'Image should be at least 1MB';
+            $this->addErr($inputName, $msg);
+        }
         return $this;
     }
 
