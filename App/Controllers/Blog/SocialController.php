@@ -27,3 +27,5 @@ class SocialController extends Controller
         }
         return $data;
     }
+
+}
