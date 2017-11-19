@@ -165,6 +165,18 @@ class UploadedFiles
     }
 
     /**
+     * Determine whether the file is bigger than the given value
+     *
+     * @param int $max_size Maximum value that the file should be smaller than (in MB)
+     *
+     * @return bool Returns true if the uploaded file is bigger than the given value
+     */
+    public function maxSize($max_size)
+    {
+        return $this->size >= ($max_size * 1024 * 1024);
+    }
+
+    /**
      * Determine whether the uploaded file is image or not
      *
      * @return bool
