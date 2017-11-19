@@ -21,9 +21,9 @@ This script will be continuously updated (currently, It has more than 10K lines 
 - ~~Enhancing security against spam , SQL injection and XSS attacks~~.
 - ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
 - ~~Activating registered accounts via email using tokens~~.
+- ~~Setting images upload rules~~.
 - Enhancing performance.
 - Multi language support (Adding Arabic).
-- Setting images upload rules.
 ### Admin Panel :
 - ~~Re-creating Settings section (Lot's of features giving more control power over script)~~.
 - Working on Dashboard page.
