@@ -1,7 +1,8 @@
 # AE-AdvBlog :
+**A tiny CMS built with mini custom PHP MVC framework**
 This is my application based on a PHP MVC course.
 
-You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {in Arabic}
+You can follow that course [here](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) {Arabic}
 
 Many thanks to Mr.Zohdy for his efforts to make that awesome course.
 ***
@@ -31,7 +32,7 @@ This script will be continuously updated (currently, It has more than 10K lines 
 - Social Login
 - Social sharing
 ***
-# Do you want to study or use it ?
+# Before you use it..
 **Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
 ***
 **You can request as more features as you want.**
