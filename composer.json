@@ -1,6 +1,6 @@
 {
-    "name": "vendor/z",
-    "description": "Description of project Z.",
+    "name": "Vendor/z",
+    "description": "A tiny CMS built with mini custom PHP framework",
     "authors": [
         {
             "name": "Amr",
