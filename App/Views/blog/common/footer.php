@@ -32,7 +32,7 @@
 </footer>
 <!--/ Footer -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src="<?php echo assets('blog/js/jquery-3.1.1.min'); ?>"   crossorigin="anonymous"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo assets('blog/js/bootstrap.min.js'); ?>"></script>
 <!-- WOW JS -->
@@ -50,7 +50,7 @@
     $('.delete').on('click', function (e) {
         e.preventDefault();
         btn = $(this);
-        c = confirm('Are you sure? This action cannot be undone ! Think twice before doing it');
+        c = confirm('Are you sure? This action cannot be undone !');
         if (c === true) {
             $.ajax({
                 url: btn.data('target'),
