@@ -8,7 +8,12 @@ $(function () {
     $(".dropdown").hover(function () {
         $(this).toggleClass('open');
     });
-
+//    if ($("li.open")) {
+//        open = $(this);
+//        if ($(window).click()) {
+//            open.toggleClass('open');
+//        }
+//    }
     $('.placeholder').each(function () {
         var input = $(this),
                 placeholder = input.attr('placeholder');
@@ -106,4 +111,23 @@ function setFixedFooter() {
     } else {
         footer.removeClass('fixed-footer');
     }
+
+//Deleting item
+    $('.delete').on('click', function (e) {
+        e.preventDefault();
+        btn = $(this);
+        c = confirm('Are you sure? This action cannot be undone !');
+        if (c === true) {
+            $.ajax({
+                url: btn.data('target'),
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    window.location.href = r.redirectHome;
+                }
+            });
+        } else {
+            return false;
+        }
+    });
 }

@@ -32,7 +32,7 @@
 </footer>
 <!--/ Footer -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<?php echo assets('blog/js/jquery-3.1.1.min'); ?>"   crossorigin="anonymous"></script>
+<script src="<?php echo assets('blog/js/jquery-2.2.4.min.js'); ?>"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo assets('blog/js/bootstrap.min.js'); ?>"></script>
 <!-- WOW JS -->
@@ -46,24 +46,6 @@
     var currentUrl = window.location.href;
     var segment = currentUrl.split('/').pop();
     $('#nav-' + segment).addClass('active');
-// Deleting item
-    $('.delete').on('click', function (e) {
-        e.preventDefault();
-        btn = $(this);
-        c = confirm('Are you sure? This action cannot be undone !');
-        if (c === true) {
-            $.ajax({
-                url: btn.data('target'),
-                type: 'POST',
-                dataType: 'json',
-                success: function (r) {
-                    window.location.href = r.redirectHome;
-                }
-            });
-        } else {
-            return false;
-        }
-    });
 </script>
 </body>
 </html>
