@@ -13,7 +13,7 @@ Click [here](http://bit.ly/2v6C5mA)
 
 You can register a new account to be able to comment.
 ***
-This script will be continuously updated (currently, It has more than 10K lines of pure PHP code)
+This script will be continuously updated (currently, It has more than 10K lines of PHP code)
 ***
 # Known issues:
 - Pagination doesn't work with search.
