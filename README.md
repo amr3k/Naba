@@ -36,4 +36,5 @@ This script will be continuously updated (currently, It has more than 10K lines 
 # Before you use it..
 **Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
 ***
-### You can ask for new features and report bugs in [issues page](https://github.com/akkk33/AE-AdvBlog/issues) but don't forget to read the [code of conduct](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md)first!
+### You can ask for new features and report bugs in [issues](https://github.com/akkk33/AE-AdvBlog/issues) page ..
+But don't forget to read the [code of conduct](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md) first!
