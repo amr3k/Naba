@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/Vendor/System/App.php';
-require __DIR__ . '/Vendor/System/File.php';
+require __DIR__ . '/vendor/System/App.php';
+require __DIR__ . '/vendor/System/File.php';
 
 use System\File;
 use System\App;
