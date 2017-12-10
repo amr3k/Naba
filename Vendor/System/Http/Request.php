@@ -8,14 +8,14 @@ class Request
 {
 
     /**
-     * URL
+     * Clean URL
      *
      * @var string
      */
     private $url;
 
     /**
-     * Clean URL
+     * Script base URL
      *
      * @var string
      */
@@ -163,6 +163,16 @@ class Request
     public function baseUrl()
     {
         return $this->baseURL;
+    }
+
+    /**
+     * Get current URL
+     *
+     * @return string Current URL
+     */
+    public function currentUrl()
+    {
+        return $this->baseUrl() . ltrim($this->url(), DIRECTORY_SEPARATOR);
     }
 
     /**

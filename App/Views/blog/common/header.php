@@ -5,6 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <!--Facebook sharing data-->
+        <meta property="og:url"                content="<?php echo $baseUrl; ?>" />
+        <meta property="og:type"               content="article" />
+        <meta property="og:title"              content="<?php echo $title; ?>" />
+        <meta id="metaPostDesc" property="og:description"        content="" />
+        <meta id="metaPostImg" property="og:image"              content="" />
+        <meta id="FBappID" property="fb:app_id"              content="<?php echo $FBappID; ?>" />
         <link rel="icon" href="<?php echo $icon; ?>" type="image/x-icon"/>
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
