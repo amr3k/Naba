@@ -17,6 +17,7 @@
         <div class="box post-box wow fadeIn" data-wow-duration="3s">
             <div class="post-content">
                 <div class="social-icons pull-right">
+                <p style="display: inline">Share this topic </p>
                     <div id="fb-root" style="display: none"></div>
                     <div class="fb-share-button"
                          data-href="<?php echo $baseUrl; ?>"
