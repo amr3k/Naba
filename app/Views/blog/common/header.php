@@ -12,6 +12,7 @@
         <meta id="metaPostDesc" property="og:description"        content="" />
         <meta id="metaPostImg" property="og:image"              content="" />
         <meta id="FBappID" property="fb:app_id"              content="<?php echo $FBappID; ?>" />
+        <!--Icon and title-->
         <link rel="icon" href="<?php echo $icon; ?>" type="image/x-icon"/>
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
