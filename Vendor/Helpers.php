@@ -122,7 +122,7 @@ if (!function_exists('read_more')) {
      * Cut the given string and get the given number of words from it
      *
      * @param string $string
-     * @param int $number_of_words
+     * @param int $number
      * @return string
      */
     function read_more($string, $number)
@@ -141,7 +141,7 @@ if (!function_exists('read_more')) {
             return $string;
         }
 
-        return implode(' ', array_slice($words, 0, $number)) . '...';
+        return trim(implode(' ', array_slice($words, 0, $number)), ',') . ' ...';
     }
 
 }
