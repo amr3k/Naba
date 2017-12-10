@@ -7,6 +7,7 @@
         &copy;<?php echo date('Y') . ' <b>' . $title . '</b>'; ?> All Rights Reserved
     </div>
     <div class="social">
+    <b style="display: inline">Follow me </b>
         <a href="<?php echo $facebook; ?>" target="_blank" class="facebook">
             <span class="fa fa-facebook"></span>
         </a>
