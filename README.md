@@ -20,21 +20,20 @@ This script will be continuously updated (currently, It has more than 10K lines 
 ***
 # Coming features :
 ### Under the hood :
-- ~~Enhancing security against spam , SQL injection and XSS attacks~~.
-- ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
-- ~~Activating registered accounts via email using tokens~~.
-- ~~Setting images upload rules~~.
+- ☑ ~~Enhancing security against spam , SQL injection and XSS attacks~~.
+- ☑ ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
+- ☑ ~~Activating registered accounts via email using tokens~~.
+- ☑ ~~Setting images upload rules~~.
 - Enhancing performance.
 - Multi language support (Adding Arabic).
 ### Admin Panel :
-- ~~Re-creating Settings section (Lot's of features giving more control power over script)~~.
+- ☑ ~~Re-creating Settings section (Lot's of features giving more control power over script)~~.
 - Working on Dashboard page.
 ### Front pages:
 - Social Login
-- Social sharing
+- ☑ ~~Social sharing~~.
 ***
 # Before you use it..
 **Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
 ***
-### You can ask for new features and report bugs in [issues](https://github.com/akkk33/AE-AdvBlog/issues) page ..
-But don't forget to read the [code of conduct](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md) first!
+PLEASE READ [CODE OF CONDUCT](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md) BEFORE SUBMITTING ANY [ISSUE](https://github.com/akkk33/AE-AdvBlog/issues)!
