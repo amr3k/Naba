@@ -1,17 +1,6 @@
 <!-- Post Box -->
 <div class="box post-box wow fadeIn" data-wow-duration="3s">
     <div class="post-content">
-        <div class="social-icons pull-right">
-            <a href="#" class="facebook">
-                <span class="fa fa-facebook"></span>
-            </a>
-            <a href="#" class="twitter">
-                <span class="fa fa-twitter"></span>
-            </a>
-            <a href="#" class="google">
-                <span class="fa fa-google-plus"></span>
-            </a>
-        </div>
         <h1 class="heading">
             <a href="<?php echo url('/post/' . $post->id); ?>"><?php echo $post->title; ?></a>
         </h1>

@@ -56,6 +56,10 @@ class SettingsModel extends Model
                 ->data('v', $this->request->post('instagram'))
                 ->where('id = ?', 10)
                 ->update($this->table);
+        $this->db
+                ->data('v', $this->request->post('FBappID'))
+                ->where('id = ?', 11)
+                ->update($this->table);
         // Uploading icon
         $img = $this->upImg();
         if ($img) {
