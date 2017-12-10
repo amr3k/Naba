@@ -10,7 +10,7 @@ Many thanks to Mr.Zohdy for his efforts to make that awesome course.
 ### Do you want to test it ?
 This is a live demo:
 Click [here](http://bit.ly/2v6C5mA)
-
+***
 You can register a new account to be able to comment.
 ***
 This script will be continuously updated (currently, It has more than 10K lines of PHP code)
