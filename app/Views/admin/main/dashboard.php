@@ -7,9 +7,7 @@
             <small>Control panel</small>
         </h1>
         <h1 style="text-align: center; color: white; background-color: black; padding: 20px; margin-left: 25%; margin-right: 25%;margin-bottom: 20px; font-size: 1.5em;border-radius: 20px;">
-            This dashboard page is just a template<br>
-            It's not ready yet ..<br>
-            Select another page from the sidebar
+            This dashboard page is just a template
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo url('/'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
