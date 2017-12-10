@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Api\\": "Vendor/Api/"
+            "Api\\": "vendor/Api/"
         }
     }
 }
