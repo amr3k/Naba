@@ -17,9 +17,12 @@
         <div class="box post-box wow fadeIn" data-wow-duration="3s">
             <div class="post-content">
                 <div class="social-icons pull-right">
-                    <a href="#" class="facebook">
-                        <span class="fa fa-facebook"></span>
-                    </a>
+                    <div id="fb-root" style="display: none"></div>
+                    <div class="fb-share-button"
+                         data-href="<?php echo $baseUrl; ?>"
+                         data-layout="button" style="display: inline">
+                        <a class="fb-xfbml-parse-ignore facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $postUrl; ?>&amp;src=sdkpreparse"><span class="fa fa-facebook"></span></a>
+                    </div>
                     <a href="#" class="twitter">
                         <span class="fa fa-twitter"></span>
                     </a>
@@ -50,11 +53,12 @@
                 <?php } ?>
                 <div class="clearfix"></div>
                 <div class="image-box">
-                    <img src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
+                    <img id="postImg" src="<?php echo assets('uploads/img/posts/' . $post->img); ?>" alt="<?php echo $post->title; ?>" />
                 </div>
                 <p class="details">
                     <?php echo htmlspecialchars_decode($post->text, ENT_QUOTES); ?>
                 </p>
+                <div id="postDesc" style="display: none"><?php echo read_more(trim(strip_tags(htmlspecialchars_decode($post->text))), 10); ?></div>
                 <!-- Tags -->
                 <div class="tags">
                     <h3 class="tag-title">Read more about:</h3>

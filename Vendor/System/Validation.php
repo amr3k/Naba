@@ -122,7 +122,6 @@ class Validation
         return $this;
     }
 
-// $2y$10$RDXYy4vsGqnC/AAJB7tT1u9b4qCIkvjk2voiLvlGKrQXT/KnutSOG
     /**
      * Determine it the input value string
      *
@@ -139,6 +138,27 @@ class Validation
         if (!preg_match('~^[A-Za-z0-9\~\!\@\#\$\%\^\&\*\_\-\.\/\,\=\+\[\]\{\}]+$~', $input)) {
 //            $msg =   $customErrMsg ? : sprintf('%s is not valid email', ucfirst($inputName));
             $msg = $customErrMsg ?: 'You can only use letters, digits and special characters';
+            $this->addErr($inputName, $msg);
+        }
+        return $this;
+    }
+
+    /**
+     * Determine it the input value number
+     *
+     * @param string $inputName
+     * @param string $customErrMsg
+     * @return $this
+     */
+    public function valNumber($inputName, $customErrMsg = NULL)
+    {
+        if ($this->hasErr($inputName)) {
+            return $this;
+        }
+        $input = $this->value($inputName);
+        if (!filter_var($input, FILTER_VALIDATE_INT)) {
+//            $msg =   $customErrMsg ? : sprintf('%s is not valid email', ucfirst($inputName));
+            $msg = $customErrMsg ?: 'You can only use digits';
             $this->addErr($inputName, $msg);
         }
         return $this;

@@ -76,19 +76,27 @@
                             <div class="clearfix"></div>
                             <h2 style="text-align: center">Social Links</h2>
                             <div class="form-group col-sm-8">
-                                <label for="facebook">Facebook</label>
-                                <input type="text" name="facebook" class="form-control" id="facebook" placeholder="facebook"
+                                <label for="facebook">Facebook Link</label>
+                                <input type="text" id="facebook" name="facebook" class="form-control" placeholder="facebook"
                                        value="<?php echo $info[6]->v; ?>">
                             </div>
                             <div class="form-group col-sm-8">
-                                <label for="twitter">Twitter</label>
-                                <input type="text" name="twitter" class="form-control" id="twitter" placeholder="facebook"
+                                <label for="twitter">Twitter Link</label>
+                                <input type="text" id="twitter" name="twitter" class="form-control" placeholder="twitter"
                                        value="<?php echo $info[8]->v; ?>">
                             </div>
                             <div class="form-group col-sm-8">
-                                <label for="instagram">Instagram</label>
-                                <input type="text" name="instagram" class="form-control" id="instagram" placeholder="facebook"
+                                <label for="instagram">Instagram Link</label>
+                                <input type="text" id="instagram" name="instagram" class="form-control" placeholder="instagram"
                                        value="<?php echo $info[9]->v; ?>">
+                            </div>
+                            <div class="clearfix"></div>
+                            <!--Apps info-->
+                            <h2 style="text-align: center">Apps settings</h2>
+                            <div class="form-group col-sm-8">
+                                <label for="FBappID">Facebook App ID</label>
+                                <input type="text" id="FBappID"  name="FBappID" class="form-control" placeholder="Facebook App ID"
+                                       value="<?php echo $info[10]->v; ?>">
                             </div>
                             <div class="clearfix"></div>
                             <div id="form-results"></div>

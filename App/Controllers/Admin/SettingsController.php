@@ -63,6 +63,7 @@ class SettingsController extends Controller
         $this->validator->required('facebook')->url('facebook')->max('facebook', 255);
         $this->validator->required('twitter')->url('twitter')->max('twitter', 255);
         $this->validator->required('instagram')->url('instagram')->max('instagram', 255);
+        $this->validator->required('FBappID')->valNumber('FBappID')->min('FBappID', 10)->max('FBappID', 20);
         if ($this->request->file('icon')->exists()) {
             $this->validator->img('icon');
         }
