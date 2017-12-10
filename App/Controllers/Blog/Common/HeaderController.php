@@ -10,7 +10,7 @@ class HeaderController extends Controller
     public function index()
     {
         $settings           = $this->load->model('Settings')->all();
-        $data['icon']       = $this->url->link('Public/uploads/img/') . '/' . $settings[8]->v;
+        $data['icon']       = $this->url->link('Public/uploads/img/') . '/' . $settings[7]->v;
         $data['baseUrl']    = $this->request->baseUrl();
         $data['title']      = $this->html->getTitle();
         $data['site_name']  = $settings[0]->v;
