@@ -23,12 +23,14 @@
                          data-layout="button" style="display: inline">
                         <a class="fb-xfbml-parse-ignore facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $postUrl; ?>&amp;src=sdkpreparse"><span class="fa fa-facebook"></span></a>
                     </div>
-                    <a href="#" class="twitter">
+                    <a class="twitter-share-button twitter"
+                       href="https://twitter.com/intent/tweet?text=<?php echo read_more(trim(strip_tags(htmlspecialchars_decode($post->text))), 5) . ' Read more at: ' . $postUrl; ?>"
+                       data-size="large" target="_blank">
                         <span class="fa fa-twitter"></span>
                     </a>
-                    <a href="#" class="google">
-                        <span class="fa fa-google-plus"></span>
-                    </a>
+                    <!--                    <a href="#" class="google">
+                                            <span class="fa fa-google-plus"></span>
+                                        </a>-->
                 </div>
                 <h1 class="heading"><a href="<?php echo url('/post/' . $post->id); ?>"><?php echo $post->title; ?></a></h1>
                 <div class="date-container">
