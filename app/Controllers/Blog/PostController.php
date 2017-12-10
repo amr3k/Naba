@@ -48,7 +48,10 @@ class PostController extends Controller
         $postsModel = $this->load->model('Posts');
         $loginModel = $this->load->model('Login');
         $post       = $postsModel->get($id);
-        if (!$post OR $post[0]->status == 'disabled' OR ! $comment OR ! $loginModel->isLogged()) {
+        if (!$loginModel->isLogged()) {
+            return $this->url->redirect('/login');
+        }
+        if (!$post OR $post[0]->status == 'disabled' OR ! $comment) {
             return $this->url->redirect('/404');
         }
         $user = $loginModel->user();

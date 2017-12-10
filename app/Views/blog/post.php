@@ -17,7 +17,7 @@
         <div class="box post-box wow fadeIn" data-wow-duration="3s">
             <div class="post-content">
                 <div class="social-icons pull-right">
-                <p style="display: inline">Share this topic </p>
+                    <p style="display: inline">Share this topic </p>
                     <div id="fb-root" style="display: none"></div>
                     <div class="fb-share-button"
                          data-href="<?php echo $baseUrl; ?>"
@@ -131,10 +131,12 @@
             <h3 class="heading">Post Comment</h3>
             <?php if ($user) { ?>
                 <textarea name="comment" id="comment" class="input" placeholder="Post Your Comment" cols="30" rows="5" required="required"></textarea>
+                <button class="comment-button">Submit</button>
             <?php } else { ?>
                 <textarea class="input" placeholder="Please Login to comment on this" cols="30" rows="5" required="required" disabled=""></textarea>
+                <button class="comment-button">Login</button>
             <?php } ?>
-            <button class="comment-button">Submit</button>
+
         </form>
         <!--/ Comment Form -->
     </div>
