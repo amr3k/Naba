@@ -12,7 +12,7 @@ if (strpos($app->request->url(), '/admin') === 0) {
     });
 }
 // Checking site status
-if (strpos($app->request->url(), '/admin') !== 0 && strpos($app->request->url(), '/error') !== 0) {
+if (strpos($app->request->url(), '/admin') !== 0 && strpos($app->request->url(), '/logout') !== 0 && strpos($app->request->url(), '/error') !== 0) {
     $app->route->callFirst(function ($app) {
         $app->load->controller('Blog/SiteStatus')->index();
     });
