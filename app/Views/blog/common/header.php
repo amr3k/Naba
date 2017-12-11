@@ -76,6 +76,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php if ($user) { ?>
+                                <?php if ($user->ugid === '1') { ?>
+                                    <li><a href="<?php echo url('/admin/posts/add') ?>" target="_blank">Add a new article</a></li>
+                                <?php } ?>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <img src="<?php echo avatar($user->img); ?>" alt="<?php echo $user->name; ?>" title="<?php echo $user->name; ?>" class="user-image" />
