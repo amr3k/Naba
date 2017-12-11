@@ -44,8 +44,9 @@ class PostsController extends Controller
         if ($this->isValid()) {
             $postModel        = $this->load->model('Posts');
             $postModel->create();
+            $postId           = $this->load->model('Posts')->last()->id;
             $json['success']  = 'Your post was Created Successfully';
-            $json['redirect'] = $this->url->link('/admin/posts');
+            $json['redirect'] = $this->url->link('/post/' . $postId);
         } else {
             $json['errors'] = $this->validator->flatMsg();
         }
