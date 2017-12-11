@@ -183,6 +183,25 @@ class PostsModel extends Model
     }
 
     /**
+     * Get Latest Posts
+     *
+     * @return array
+     */
+    public function last()
+    {
+        return $this->db
+                        ->select('posts.*', 'categories.name AS category, u.name AS `author`')
+                        ->select('(SELECT COUNT(comments.id) FROM comments WHERE comments.post_id = posts.id) AS total_comments')
+                        ->select('(SELECT categories.status FROM categories WHERE categories.id = posts.cid) AS category_status')
+                        ->from('posts')
+                        ->joins('LEFT JOIN categories ON posts.cid = categories.id')
+                        ->joins('LEFT JOIN u ON posts.uid = u.id')
+                        ->limit(1)
+                        ->orderBy('posts.id', 'DESC')
+                        ->fetch();
+    }
+
+    /**
      * Get Post With its comments
      *
      * @param int $id
