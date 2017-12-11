@@ -77,7 +77,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <?php if ($user) { ?>
                                 <?php if ($user->ugid === '1') { ?>
-                                    <li><a href="<?php echo url('/admin/posts/add') ?>" target="_blank">Add a new article</a></li>
+                                    <li><a href="<?php echo url('/admin/posts/add') ?>">Add a new article</a></li>
                                 <?php } ?>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
