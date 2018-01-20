@@ -34,6 +34,6 @@ This script will be continuously updated (currently, It has more than 10K lines 
 - ☑ ~~Social sharing~~.
 ***
 # Before you use it..
-**Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first**
+**Check [Wiki](https://github.com/akkk33/AE-AdvBlog/wiki) first.**
 ***
 PLEASE READ [CODE OF CONDUCT](https://github.com/akkk33/AE-AdvBlog/blob/master/CODE_OF_CONDUCT.md) BEFORE SUBMITTING ANY [ISSUE](https://github.com/akkk33/AE-AdvBlog/issues)!
