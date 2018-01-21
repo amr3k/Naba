@@ -1,0 +1,97 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Users-Groups
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="<?php echo url('/'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Users-Groups</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box" id="users-list">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Manage your Users Groups</h3>
+                        <?php if ($admin === '1') { ?>
+                            <button class="btn btn-success pull-right popup" type="button"
+                                    data-modal-target="#add-ug-form"
+                                    data-target="<?php echo url('/admin/users-groups/add'); ?>">
+                                Add New Users group</button>
+                        <?php } ?>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Users group name</th>
+                                    <th>Total users</th>
+                                    <th>Action</th>
+                                </tr>
+                                <?php
+                                $i = 1;
+                                foreach ($ugs as $ug) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $ug->name; ?></td>
+                                        <td><?php echo $ug->total_users; ?></td>
+                                        <td>
+                                            <?php if ($admin === '1') { ?>
+                                                <button type="button" class="btn btn-info edit-form"
+                                                        data-modal-target="#edit-ug-form"
+                                                        data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    Edit</button>
+                                                <?php if ($ug->id === "1" || $ug->id === "2") { ?>
+                                                    <button type="button" class="btn btn-danger disabled" disabled="disabled"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-danger delete"
+                                                            data-target="<?php echo url('/admin/users-groups/delete/') . '/' . $ug->id; ?>"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <!-- <ul class="pagination pagination-sm no-margin pull-right">
+                          <li><a href="#">&laquo;</a></li>
+                          <li><a href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">&raquo;</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
