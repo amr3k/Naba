@@ -28,8 +28,9 @@
 <script src="<?php echo assets('admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'); ?>"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?php echo assets('admin/plugins/knob/jquery.knob.js'); ?>"></script>
-<!-- daterangepicker -->
+<!-- Moment -->
 <script src="<?php echo assets('assets/js/moment.min.js'); ?>"></script>
+<!-- daterangepicker -->
 <script src="<?php echo assets('admin/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
 <!-- datepicker -->
 <script src="<?php echo assets('admin/plugins/datepicker/bootstrap-datepicker.js'); ?>"></script>
