@@ -26,8 +26,8 @@
         <!-- Custom Style -->
         <link rel="stylesheet" href="<?php echo assets('blog/css/style.css'); ?>" />
         <!-- Google Fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+        <link href='<?php echo assets('blog/css/Google_fonts_open-sans.css'); ?>' rel='stylesheet' type='text/css'>
+        <link href="<?php echo assets('blog/css/Google_fonts_lato.css'); ?>" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -102,8 +102,10 @@
                                 <li><a href="<?php echo url('/register'); ?>">Register</a></li>
                             <?php } ?>
                         </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
             </nav>
         </header>
         <!--/ Header -->
