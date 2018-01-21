@@ -46,10 +46,11 @@ class LoginController extends Controller
                 // Save login info in session
                 $this->session->set('login', $logged_in_user->code);
             }
-            $json             = [];
-            $json['success']  = 'Welcome back ' . $logged_in_user->name;
-            $json['redirect'] = $this->url->link('/admin');
-            return $this->json($json);
+            return $this->url->redirect('/admin');
+//            $json             = [];
+//            $json['success']  = 'Welcome back ' . $logged_in_user->name;
+//            $json['redirect'] = $this->url->link('/admin');
+//            return $this->json($json);
         } else {
             $json           = [];
             $json['errors'] = $this->validator->flatMsg();
