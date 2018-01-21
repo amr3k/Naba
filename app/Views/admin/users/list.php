@@ -23,81 +23,83 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>#</th>
-                                <th>Username</th>
-                                <th>Group</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Join date</th>
-                                <th>Posts</th>
-                                <th>Comments</th>
-                                <th>Action</th>
-                            </tr>
-                            <!--Now we gotta get our hands dirty-->
-                            <?php
-                            $i = 1;
-                            foreach ($users as $user) {
-                                $id   = $user->id;
-                                $ugid = $user->ugid;
-                                ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
                                 <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td>
-                                        <?php if ($user->status === 'enabled') { ?>
-                                            <a href="<?php echo url('/author') . '/' . $user->name; ?>" target="_blank"><?php echo $user->name; ?></a>
-                                        <?php } else { ?>
-                                            <?php echo $user->name; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td><?php echo $user->group; ?></td>
-                                    <td><?php echo $user->email; ?></td>
-                                    <td style="<?php echo $user->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($user->status); ?></td>
-                                    <td><?php echo date('Y-m-d', $user->created); ?></td>
-                                    <td><?php echo $user->total_posts; ?></td>
-                                    <td><?php echo $user->total_comments; ?></td>
-                                    <td>
-                                        <?php if ($ugid === '1' && $admin_id !== '1' && $admin_id !== $id) { ?>
-                                            <button type="button" class="btn btn-info disabled" disabled="disabled">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                Edit</button>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-info edit-form"
-                                                    data-modal-target="#edit-user-form"
-                                                    data-target="<?php echo url('/admin/users/edit/') . '/' . $id; ?>" >
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                Edit</button>
-                                        <?php }if ($id === "1") { ?>
-                                            <button type="button" class="btn btn-danger disabled" disabled="disabled"
-                                                    >
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                Delete</button>
-                                            <?php
-                                        } else {
-                                            if ($ugid === '1' && $admin_id !== '1') {
-                                                ?>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Group</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Join date</th>
+                                    <th>Posts</th>
+                                    <th>Comments</th>
+                                    <th>Action</th>
+                                </tr>
+                                <!--Now we gotta get our hands dirty-->
+                                <?php
+                                $i = 1;
+                                foreach ($users as $user) {
+                                    $id   = $user->id;
+                                    $ugid = $user->ugid;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td>
+                                            <?php if ($user->status === 'enabled') { ?>
+                                                <a href="<?php echo url('/author') . '/' . $user->name; ?>" target="_blank"><?php echo $user->name; ?></a>
+                                            <?php } else { ?>
+                                                <?php echo $user->name; ?>
+                                            <?php } ?>
+                                        </td>
+                                        <td><?php echo $user->group; ?></td>
+                                        <td><?php echo $user->email; ?></td>
+                                        <td style="<?php echo $user->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($user->status); ?></td>
+                                        <td><?php echo date('Y-m-d', $user->created); ?></td>
+                                        <td><?php echo $user->total_posts; ?></td>
+                                        <td><?php echo $user->total_comments; ?></td>
+                                        <td>
+                                            <?php if ($ugid === '1' && $admin_id !== '1' && $admin_id !== $id) { ?>
+                                                <button type="button" class="btn btn-info disabled" disabled="disabled">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    Edit</button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-info edit-form"
+                                                        data-modal-target="#edit-user-form"
+                                                        data-target="<?php echo url('/admin/users/edit/') . '/' . $id; ?>" >
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    Edit</button>
+                                            <?php }if ($id === "1") { ?>
                                                 <button type="button" class="btn btn-danger disabled" disabled="disabled"
                                                         >
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     Delete</button>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn btn-danger delete"
-                                                        data-target="<?php echo url('/admin/users/delete/') . '/' . $id; ?>"
-                                                        >
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    Delete</button>
                                                 <?php
+                                            } else {
+                                                if ($ugid === '1' && $admin_id !== '1') {
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger disabled" disabled="disabled"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-danger delete"
+                                                            data-target="<?php echo url('/admin/users/delete/') . '/' . $id; ?>"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                    <?php
+                                                }
                                             }
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <?php
-                                $i++;
-                            }
-                            ?>
-                        </table>
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
