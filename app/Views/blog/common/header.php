@@ -63,20 +63,24 @@
                             <li id="nav-contact" >
                                 <a href="<?php echo url('/contact'); ?>">Contact Us</a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <?php foreach ($categories AS $category) { ?>
-                                        <li>
-                                            <a href="<?php echo url('category/' . seo($category->name) . '/' . $category->id); ?>"><?php echo $category->name; ?></a>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                            </li>
+                            <?php if ($status === 'on') {
+                                ?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <?php foreach ($categories AS $category) { ?>
+                                            <li>
+                                                <a href="<?php echo url('category/' . seo($category->name) . '/' . $category->id); ?>"><?php echo $category->name; ?></a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </li>
+                            <?php }
+                            ?>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <?php if ($user) { ?>
-                                <?php if ($user->ugid === '1') { ?>
+                                <?php if ($user->ugid === '1' && $status === 'on') { ?>
                                     <li><a href="<?php echo url('/admin/posts/add') ?>">Add a new article</a></li>
                                 <?php } ?>
                                 <li class="dropdown">
@@ -90,17 +94,23 @@
                                             <?php if ($user->ugid === '1') { ?>
                                                 <a href="<?php echo url('/admin') ?>">Control Panel</a>
                                             <?php } ?>
-                                            <a href="<?php echo url('/profile') ?>">My Profile</a>
-                                            <a href="<?php echo url('/author') . '/' . $user->name ?>">My posts</a>
+                                            <?php if ($status === 'on') { ?>
+                                                <a href = "<?php echo url('/profile') ?>">My Profile</a>
+                                                <a href = "<?php echo url('/author') . '/' . $user->name ?>">My posts</a>
+                                            <?php } ?>
                                             <a href="<?php echo url('/logout') ?>">Logout</a>
                                         </li>
 
                                     </ul>
                                 </li>
-                            <?php } else { ?>
-                                <li><a href="<?php echo url('/login'); ?>">Login</a></li>
-                                <li><a href="<?php echo url('/register'); ?>">Register</a></li>
-                            <?php } ?>
+                            <?php } else {
+                                if ($status === 'on') {
+                                    ?>
+                                    <li><a href="<?php echo url('/login'); ?>">Login</a></li>
+                                    <li><a href="<?php echo url('/register'); ?>">Register</a></li>
+                                <?php }
+                            }
+                            ?>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
