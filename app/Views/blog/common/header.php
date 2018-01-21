@@ -103,12 +103,17 @@
 
                                     </ul>
                                 </li>
-                            <?php } else {
+                                <?php
+                            } else {
                                 if ($status === 'on') {
                                     ?>
                                     <li><a href="<?php echo url('/login'); ?>">Login</a></li>
                                     <li><a href="<?php echo url('/register'); ?>">Register</a></li>
-                                <?php }
+                                <?php } else {
+                                    ?>
+                                    <li><a href="<?php echo url('/admin/login'); ?>">Login</a></li>
+                                    <?php
+                                }
                             }
                             ?>
                         </ul>
