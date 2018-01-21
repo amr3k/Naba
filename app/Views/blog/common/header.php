@@ -88,7 +88,7 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <?php if ($user->ugid === '1') { ?>
-                                                <a href="<?php echo url('/admin') ?>" target="_blank">Control Panel</a>
+                                                <a href="<?php echo url('/admin') ?>">Control Panel</a>
                                             <?php } ?>
                                             <a href="<?php echo url('/profile') ?>">My Profile</a>
                                             <a href="<?php echo url('/author') . '/' . $user->name ?>">My posts</a>
