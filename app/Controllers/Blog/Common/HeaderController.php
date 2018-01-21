@@ -14,6 +14,7 @@ class HeaderController extends Controller
         $data['baseUrl']    = $this->request->baseUrl();
         $data['title']      = $this->html->getTitle();
         $data['site_name']  = $settings[0]->v;
+        $data['status']     = $settings[2]->v;
         $data['FBappID']    = $settings[10]->v;
         $loginModel         = $this->load->model('Login');
         $data['user']       = $loginModel->isLogged() ? $loginModel->user() : null;
