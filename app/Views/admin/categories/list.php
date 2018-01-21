@@ -27,49 +27,55 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>#</th>
-                                <th>Category name</th>
-                                <th>Total posts</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <?php
-                            $i = 1;
-                            foreach ($categories as $category) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td>
-                                        <?php if ($category->status === 'enabled') { ?>
-                                            <a href="<?php echo url('category') . '/' . $category->name . '/' . $category->id; ?>" target="_blank"><?php echo $category->name; ?></a>
-                                        <?php } else { ?>
-                                            <?php echo $category->name; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $category->total_posts; ?>
-                                    </td>
-                                    <td  style="<?php echo $category->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($category->status); ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-info edit-form"
-                                                data-modal-target="#edit-category-form"
-                                                data-target="<?php echo url('/admin/categories/edit/') . '/' . $category->id; ?>" >
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Edit</button>
-                                        <button type="button" class="btn btn-danger delete"
-                                                data-target="<?php echo url('/admin/categories/delete/') . '/' . $category->id; ?>"
-                                                >
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            Delete</button>
-                                    </td>
-                                </tr>
-                                <?php
-                                $i++;
-                            }
-                            ?>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category name</th>
+                                        <th>Total posts</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($categories as $category) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td>
+                                                <?php if ($category->status === 'enabled') { ?>
+                                                    <a href="<?php echo url('category') . '/' . $category->name . '/' . $category->id; ?>" target="_blank"><?php echo $category->name; ?></a>
+                                                <?php } else { ?>
+                                                    <?php echo $category->name; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $category->total_posts; ?>
+                                            </td>
+                                            <td  style="<?php echo $category->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($category->status); ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-info edit-form"
+                                                        data-modal-target="#edit-category-form"
+                                                        data-target="<?php echo url('/admin/categories/edit/') . '/' . $category->id; ?>" >
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    Edit</button>
+                                                <button type="button" class="btn btn-danger delete"
+                                                        data-target="<?php echo url('/admin/categories/delete/') . '/' . $category->id; ?>"
+                                                        >
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    Delete</button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
