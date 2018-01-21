@@ -25,53 +25,55 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>#</th>
-                                <th>Link</th>
-                                <th>Start</th>
-                                <th>End</th>
-                                <th>Page</th>
-                                <th>Status</th>
-                            </tr>
-                            <?php
-                            $i = 1;
-                            foreach ($ads as $ad) {
-                                ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
                                 <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $ad->link; ?></td>
-                                    <td <?php
-                                    if (time() < $ad->start) {
-                                        echo 'style="color: Blue"';
-                                    }
-                                    ?>>
-                                        <?php echo date('Y-m-d', $ad->start); ?></td>
-                                    <td <?php
-                                    if (time() > $ad->end) {
-                                        echo 'style="color:Red"';
-                                    }
-                                    ?>>
-                                        <?php echo date('Y-m-d', $ad->end); ?></td>
-                                    <td><?php echo $ad->page; ?></td>
-                                    <td style="<?php echo $ad->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($ad->status); ?></td>
-                                    <td>
-                                        <a href="<?php echo url('/admin/ads/edit') . '/' . $ad->id; ?>" class="btn btn-success">
-                                            Edit
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        <button type="button" class="btn btn-danger delete"
-                                                data-target="<?php echo url('/admin/ads/delete/') . '/' . $ad->id; ?>"
-                                                >
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            Delete</button>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Link</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Page</th>
+                                    <th>Status</th>
                                 </tr>
                                 <?php
-                                $i++;
-                            }
-                            ?>
-                        </table>
+                                $i = 1;
+                                foreach ($ads as $ad) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $ad->link; ?></td>
+                                        <td <?php
+                                        if (time() < $ad->start) {
+                                            echo 'style="color: Blue"';
+                                        }
+                                        ?>>
+                                            <?php echo date('Y-m-d', $ad->start); ?></td>
+                                        <td <?php
+                                        if (time() > $ad->end) {
+                                            echo 'style="color:Red"';
+                                        }
+                                        ?>>
+                                            <?php echo date('Y-m-d', $ad->end); ?></td>
+                                        <td><?php echo $ad->page; ?></td>
+                                        <td style="<?php echo $ad->status === 'disabled' ? 'color:red' : NULL; ?>"><?php echo ucfirst($ad->status); ?></td>
+                                        <td>
+                                            <a href="<?php echo url('/admin/ads/edit') . '/' . $ad->id; ?>" class="btn btn-success">
+                                                Edit
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-danger delete"
+                                                    data-target="<?php echo url('/admin/ads/delete/') . '/' . $ad->id; ?>"
+                                                    >
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">

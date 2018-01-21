@@ -29,50 +29,52 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>#</th>
-                                <th>Users group name</th>
-                                <th>Total users</th>
-                                <th>Action</th>
-                            </tr>
-                            <?php
-                            $i = 1;
-                            foreach ($ugs as $ug) {
-                                ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
                                 <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $ug->name; ?></td>
-                                    <td><?php echo $ug->total_users; ?></td>
-                                    <td>
-                                        <?php if ($admin === '1') { ?>
-                                            <button type="button" class="btn btn-info edit-form"
-                                                    data-modal-target="#edit-ug-form"
-                                                    data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                Edit</button>
-                                            <?php if ($ug->id === "1" || $ug->id === "2") { ?>
-                                                <button type="button" class="btn btn-danger disabled" disabled="disabled"
-                                                        >
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    Delete</button>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn btn-danger delete"
-                                                        data-target="<?php echo url('/admin/users-groups/delete/') . '/' . $ug->id; ?>"
-                                                        >
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    Delete</button>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Users group name</th>
+                                    <th>Total users</th>
+                                    <th>Action</th>
                                 </tr>
                                 <?php
-                                $i++;
-                            }
-                            ?>
-                        </table>
+                                $i = 1;
+                                foreach ($ugs as $ug) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $ug->name; ?></td>
+                                        <td><?php echo $ug->total_users; ?></td>
+                                        <td>
+                                            <?php if ($admin === '1') { ?>
+                                                <button type="button" class="btn btn-info edit-form"
+                                                        data-modal-target="#edit-ug-form"
+                                                        data-target="<?php echo url('/admin/users-groups/edit/') . '/' . $ug->id; ?>" >
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    Edit</button>
+                                                <?php if ($ug->id === "1" || $ug->id === "2") { ?>
+                                                    <button type="button" class="btn btn-danger disabled" disabled="disabled"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-danger delete"
+                                                            data-target="<?php echo url('/admin/users-groups/delete/') . '/' . $ug->id; ?>"
+                                                            >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        Delete</button>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $i++;
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
