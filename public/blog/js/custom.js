@@ -7,12 +7,6 @@ $(function () {
     $(".dropdown").hover(function () {
         $(this).toggleClass('open');
     });
-//    if ($("li.open")) {
-//        open = $(this);
-//        if ($(window).click()) {
-//            open.toggleClass('open');
-//        }
-//    }
     $('.placeholder').each(function () {
         var input = $(this),
                 placeholder = input.attr('placeholder');
