@@ -81,9 +81,10 @@ $(function () {
                 } else if (results.success) {
                     formResults.removeClass().addClass('alert alert-success').html(results.success);
                 }
-
                 if (results.redirectTo) {
-                    window.location.href = results.redirectTo;
+                    setTimeout(function () {
+                        window.location.href = results.redirectTo;
+                    }, 1000);
                 }
             },
             cache: false,
