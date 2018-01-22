@@ -11,17 +11,17 @@ CREATE TABLE `ads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Advertisements' ROW_FORMAT=COMPACT;
 
 INSERT INTO `ads` (`id`, `link`, `img`, `start`, `end`, `page`, `status`) VALUES
-(4, 'http://www.google.com', '9b3998042cf513576ac445ce3e1a4badc791801f.jpg', 1493589600, 1501538400, '/login', 'enabled'),
-(5, 'http://www.facebook.com', 'de5eecafb7aeb1e61c635c042d864931ce94e023.png', 1493589600, 1498773600, '/', 'disabled'),
-(6, 'https://duckduckgo.com/?q=spaghitti&amp;t=ffsb&amp;iax=1&amp;ia=images', '3c6bdd88f9e784672aabc3c7cc9cf5a417c268d5.jpg', 1498946400, 1501970400, '/post/:id', 'enabled'),
+(4, 'http://www.google.com', '9b3998042cf513576ac445ce3e1a4badc791801f.jpg', 1493589600, 1525816800, '/login', 'enabled'),
+(5, 'http://www.facebook.com', 'de5eecafb7aeb1e61c635c042d864931ce94e023.png', 1493589600, 1520463600, '/', 'disabled'),
+(6, 'https://duckduckgo.com/?q=spaghitti&amp;t=ffsb&amp;iax=1&amp;ia=images', '3c6bdd88f9e784672aabc3c7cc9cf5a417c268d5.jpg', 1498946400, 1529359200, '/post/:id', 'enabled'),
 (7, 'https://us.coca-cola.com/', '9221ea7062f246b486e9fbb797a9716b28b6fb99.jpg', 1497391200, 1507240800, '/category/:text/:id', 'enabled'),
 (8, 'http://www.android.com', 'fdcc1e0553cb0478b459b656268a80079676f22c.jpg', 1499292000, 1504648800, '/register', 'enabled'),
-(9, 'http://www.linkedin.com', '61b61d35e3b16c2a8c38d69586b452332f5d0ab3.jpg', 1501970400, 1504648800, '/contact', 'enabled'),
-(10, 'http://www.linux.org', 'bc8b98cda0bddce60982a53605028450d40316aa.jpg', 1494021600, 1508968800, '/tag/:text', 'enabled'),
-(11, 'http://www.bugatti.com/home/', 'efc4461f96f53c555124be523a7ae42a19ddc99f.jpg', 1498946400, 1514415600, '/about', 'enabled'),
+(9, 'http://www.linkedin.com', '61b61d35e3b16c2a8c38d69586b452332f5d0ab3.jpg', 1501970400, 1520982000, '/contact', 'enabled'),
+(10, 'http://www.linux.org', 'bc8b98cda0bddce60982a53605028450d40316aa.jpg', 1494021600, 1532556000, '/tag/:text', 'enabled'),
+(11, 'http://www.bugatti.com/home/', 'efc4461f96f53c555124be523a7ae42a19ddc99f.jpg', 1498946400, 1585778400, '/about', 'enabled'),
 (12, 'https://duckduckgo.com', '793139689d9554df2d3a19b58caca2acb2b2aec5.png', 1499378400, 1531087200, '/contact', 'enabled'),
-(13, 'https://www.discuvver.com/', '149f1da7ff7cfb3f849fee769e65c0907396c81f.png', 1496959200, 1502229600, '/login', 'enabled'),
-(14, 'http://muslims-res.com/', '052e804b31cd4fcd13aac5bb5a7900a705a1ae34.png', 1498687200, 1504044000, '/search', 'enabled'),
+(13, 'https://www.discuvver.com/', '149f1da7ff7cfb3f849fee769e65c0907396c81f.png', 1496959200, 1568671200, '/login', 'enabled'),
+(14, 'http://muslims-res.com/', '052e804b31cd4fcd13aac5bb5a7900a705a1ae34.png', 1498687200, 1524002400, '/search', 'enabled'),
 (16, 'https://www.youtube.com/c/3Minutes', '35f342aa1ac5ec6a30002b7fc26cfbfcbbbd6b91.png', 1498341600, 1609369200, '/', 'enabled');
 
 CREATE TABLE `categories` (
