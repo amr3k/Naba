@@ -14,7 +14,7 @@ class SearchController extends Controller
      */
     public function index()
     {
-        $query = filter_var($this->request->get('q'), FILTER_SANITIZE_STRING);
+        $query = filter_var(htmlspecialchars($this->request->get('q')), FILTER_SANITIZE_STRING);
         $posts = $this->load->model('Posts')->search($query);
         if (!$posts || !$query || strlen($query) > 20) {
             $this->blogLayout->title('No results');
@@ -29,10 +29,9 @@ class SearchController extends Controller
             // regardless there is posts or not in that category
             return $this->url->redirect("/search/" . $query);
         }
-        $data['query']  = $query;
-        $data['posts']  = $posts;
-        $postController = $this->load->controller('Blog/Post');
-
+        $data['query']    = $query;
+        $data['posts']    = $posts;
+        $postController   = $this->load->controller('Blog/Post');
         // the idea here as follows:
         // first we will pass the $post variable to $post_box variable
         // in the view file
@@ -44,7 +43,6 @@ class SearchController extends Controller
         $data['post_box'] = function ($post) use ($postController) {
             return $postController->box($post);
         };
-
         $data['url']        = $this->url->link('/search/' . seo($query) . '/' . '?page=');
         $data['pagination'] = $this->pagination->paginate();
         $view               = $this->view->render('blog/search', $data);
