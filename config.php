@@ -4,5 +4,5 @@ return [
     'server' => 'localhost',
     'dbname' => 'blog',
     'user'   => 'root',
-    'pass'   => ''
+    'pass'   => 'root'
 ];
