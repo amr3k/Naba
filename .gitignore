@@ -1,1 +1,5 @@
-/other_files/
+other_files/
+vendor/bin/
+vendor/composer/
+vendor/facebook/
+vendor/autoload.php
