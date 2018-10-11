@@ -1,4 +1,4 @@
-# AE-AdvBlog :
+# Naba :
 **A tiny CMS built with mini custom PHP MVC framework**
 
 This is my application based on a PHP MVC course.
