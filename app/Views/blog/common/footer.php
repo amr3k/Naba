@@ -1,5 +1,5 @@
 <div class="clearfix"></div>
-</div>
+</div> 
 <!--/ Content -->
 <!-- Footer -->
 <footer>
@@ -33,12 +33,11 @@
 </footer>
 <!--/ Footer -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<?php echo assets('blog/js/jquery-2.2.4.min.js'); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="<?php echo assets('blog/js/bootstrap.min.js'); ?>"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- WOW JS -->
-<script src="<?php echo assets('blog/js/wow.min.js'); ?>"></script>
-<!-- Custom JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script><!-- Custom JS -->
 <script src="<?php echo assets('blog/js/custom.js'); ?>"></script>
 <!-- Google ReCAPTCHA -->
 <script src='https://www.google.com/recaptcha/api.js'></script>
