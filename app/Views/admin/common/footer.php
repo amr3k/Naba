@@ -9,43 +9,23 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.0 -->
-<script src="<?php echo assets('admin/plugins/jQuery/jQuery-2.2.0.min.js'); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
 <!-- jQuery UI 1.11.4 -->
-<script src="<?php echo assets('assets/js/jquery-ui.min.js'); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- Bootstrap 3.3.6 -->
-<script src="<?php echo assets('admin/bootstrap/js/bootstrap.min.js'); ?>"></script>
-<!-- Morris.js charts -->
-<script src="<?php echo assets('assets/js/raphael-min.js'); ?>"></script>
-<script src="<?php echo assets('admin/plugins/morris/morris.min.js'); ?>"></script>
-<!-- Sparkline -->
-<script src="<?php echo assets('admin/plugins/sparkline/jquery.sparkline.min.js'); ?>"></script>
-<!-- jvectormap -->
-<script src="<?php echo assets('admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'); ?>"></script>
-<script src="<?php echo assets('admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'); ?>"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?php echo assets('admin/plugins/knob/jquery.knob.js'); ?>"></script>
-<!-- Moment -->
-<script src="<?php echo assets('assets/js/moment.min.js'); ?>"></script>
-<!-- daterangepicker -->
-<script src="<?php echo assets('admin/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- datepicker -->
-<script src="<?php echo assets('admin/plugins/datepicker/bootstrap-datepicker.js'); ?>"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="<?php echo assets('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'); ?>"></script>
-<!-- Slimscroll -->
-<script src="<?php echo assets('admin/plugins/slimScroll/jquery.slimscroll.min.js'); ?>"></script>
-<!-- FastClick -->
-<script src="<?php echo assets('admin/plugins/fastclick/fastclick.js'); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js" integrity="sha256-tW5LzEC7QjhG0CiAvxlseMTs2qJS7u3DRPauDjFJ3zo=" crossorigin="anonymous"></script><!-- Bootstrap WYSIHTML5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.all.min.js"></script><!-- Slimscroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo assets('admin/dist/js/app.min.js'); ?>"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo assets('admin/dist/js/pages/dashboard.js'); ?>"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo assets('admin/dist/js/demo.js'); ?>"></script>
 <!--Custom script-->
 <script src="<?php echo assets('admin/plugins/custom.js'); ?>"></script>
 </body>
