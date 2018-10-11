@@ -1,4 +1,23 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Oct 11, 2018 at 06:17 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.10
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `blog`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ads`
+--
 
 CREATE TABLE `ads` (
   `id` int(11) NOT NULL,
@@ -9,6 +28,10 @@ CREATE TABLE `ads` (
   `page` varchar(24) NOT NULL,
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Advertisements' ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `ads`
+--
 
 INSERT INTO `ads` (`id`, `link`, `img`, `start`, `end`, `page`, `status`) VALUES
 (4, 'http://www.google.com', '9b3998042cf513576ac445ce3e1a4badc791801f.jpg', 1493589600, 1525816800, '/login', 'enabled'),
@@ -24,6 +47,12 @@ INSERT INTO `ads` (`id`, `link`, `img`, `start`, `end`, `page`, `status`) VALUES
 (14, 'http://muslims-res.com/', '052e804b31cd4fcd13aac5bb5a7900a705a1ae34.png', 1498687200, 1524002400, '/search', 'enabled'),
 (16, 'https://www.youtube.com/c/3Minutes', '35f342aa1ac5ec6a30002b7fc26cfbfcbbbd6b91.png', 1498341600, 1609369200, '/', 'enabled');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `pid` int(11) NOT NULL COMMENT 'Parent ID',
@@ -31,11 +60,21 @@ CREATE TABLE `categories` (
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `categories`
+--
+
 INSERT INTO `categories` (`id`, `pid`, `name`, `status`) VALUES
 (1, 0, 'Sports', 'enabled'),
 (15, 0, 'News', 'enabled'),
 (16, 0, 'Economy', 'enabled'),
 (23, 0, 'Health', 'enabled');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
@@ -46,13 +85,22 @@ CREATE TABLE `comments` (
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `comments`
+--
+
 INSERT INTO `comments` (`id`, `uid`, `post_id`, `comment`, `created`, `status`) VALUES
 (9, 2, 5, 'Awesome', 1499486480, 'enabled'),
 (10, 2, 5, 'Now photos are visible', 1499486496, 'enabled'),
-(13, 2, 14, 'convallis luctus pretium. Quisque tincidunt massa eu nulla consectetur fermentum. Cras imperdiet neque at sem lacinia, et mollis magna faucibus. Donec in ante at elit sodales tempor. Duis consequat eros fermentum', 1499585884, 'enabled'),
 (18, 2, 26, 'ante at eros blandit ornare. Vestibulum cursus libero in eros placerat convallis. Integer laoreet, erat eu mattis venenatis, est quam fermentum sem, eget ullamcorper mi purus', 1499690738, 'enabled'),
 (20, 2, 26, 'ante at eros blandit ornare. Vestibulum cursus libero in eros placerat convallis. Integer laoreet, erat eu mattis venenatis, est quam fermentum sem, eget ullamcorper mi purus', 1499690743, 'enabled'),
 (24, 1, 26, 'scelerisque. Proin lobortis massa at pellentesque imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque neque justo, tempus non urna quis, placerat tempus', 1499720020, 'enabled');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
 
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
@@ -68,17 +116,35 @@ CREATE TABLE `contacts` (
   `reply_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lang`
+--
+
 CREATE TABLE `lang` (
   `id` int(11) NOT NULL,
   `en` mediumtext NOT NULL,
   `ar` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `online`
+--
+
 CREATE TABLE `online` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `la` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
@@ -93,6 +159,10 @@ CREATE TABLE `posts` (
   `created` int(11) NOT NULL,
   `status` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `posts`
+--
 
 INSERT INTO `posts` (`id`, `uid`, `cid`, `title`, `text`, `img`, `tags`, `related_posts`, `views`, `created`, `status`) VALUES
 (5, 1, 16, 'First post', '&lt;b&gt;&lt;/b&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt nibh nibh, ac ultricies dui commodo eget. Proin sed volutpat enim. Nunc ac tellus ut nunc auctor laoreet. Donec accumsan ex in egestas fringilla. Nam non ornare mi. Sed sit amet placerat lorem. Ut lacinia consectetur convallis. Morbi ullamcorper a massa eu sagittis. Nunc convallis luctus pretium.\r\n\r\nQuisque tincidunt massa eu nulla consectetur fermentum. Cras imperdiet neque at sem lacinia, et mollis magna faucibus. Donec in ante at elit sodales tempor. Duis consequat eros fermentum, cursus enim a, consectetur nisl. Proin quam sapien, tristique sit amet tempus vitae, vulputate nec mauris. Proin id felis dapibus, porttitor ante a, mattis nisl. Aliquam erat volutpat. Etiam ac erat nec libero semper venenatis. Morbi egestas lectus vitae tortor sodales rutrum. Ut eget mauris sodales, porttitor leo vitae, faucibus augue. Morbi mattis quam vel rhoncus condimentum. Vivamus maximus euismod nisi, ut dignissim elit pulvinar sed. Donec ultrices mattis vulputate.&lt;b&gt;&lt;/b&gt;', '07f41d195eaed1e8b2849480fa6c8933773a3e84.jpg', 'adasdsad', '', 1511, 1498672526, 'enabled'),
@@ -113,11 +183,21 @@ INSERT INTO `posts` (`id`, `uid`, `cid`, `title`, `text`, `img`, `tags`, `relate
 (39, 1, 1, 'consectetur, adipisci velit', '&lt;p&gt; Praesent varius est quis vestibulum lacinia. Praesent bibendum nisi \r\ncondimentum fringilla vulputate. Morbi non ante posuere, rutrum nulla \r\nin, blandit justo. Maecenas porttitor varius nisl, pulvinar imperdiet \r\nnibh semper at. Duis malesuada diam eget neque vestibulum, non euismod \r\nex tempus. Pellentesque habitant morbi tristique senectus et netus et \r\nmalesuada fames ac turpis egestas. In id sagittis lacus. Sed eget \r\ncondimentum purus, non lacinia lacus. Aenean tempor neque in molestie \r\nmollis. Praesent aliquam, quam in consequat bibendum, eros arcu feugiat \r\nelit, nec varius risus arcu volutpat . Nulla sed laoreet dolor.\r\n\r\nSuspendisse sit amet erat in magna luctus pulvinar nec eu nulla. \r\nCurabitur hendrerit nisi lorem, lobortis vehicula nibh fermentum ac. \r\nAenean imperdiet porta efficitur. Morbi ultricies nulla id mauris \r\nviverra sollicitudin. Class aptent taciti sociosqu ad litora torquent \r\nper conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu\r\n ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas\r\n non dolor pellentesque, tincidunt tortor ut, laoreet metus. Nulla id \r\negestas ipsum. Pellentesque sit amet tortor pulvinar, consequat nunc \r\nmaximus, porttitor justo. Aenean et ligula at nunc luctus pharetra quis \r\nnec leo. Pellentesque gravida est vel elit dapibus, vehicula bibendum \r\nelit dapibus. Vivamus cursus feugiat luctus. Maecenas placerat erat ut \r\ntincidunt consectetur. Duis sed ultrices ex, non finibus risus. Sed \r\nullamcorper vestibulum eros in luctus. Aenean laoreet, elit et bibendum \r\nbibendum, dui urna efficitur arcu, eget tempus neque leo vel ex.\r\n\r\nCurabitur malesuada massa et dui pulvinar, at elementum erat viverra. \r\nMaecenas sed libero nec dolor elementum suscipit in faucibus nunc. \r\nPhasellus varius sed orci eu efficitur. Phasellus id eros in nisl \r\nimperdiet cursus eget a augue. Ut tristique finibus euismod. Integer \r\nposuere arcu ipsum, a vulputate ante luctus ac. Vivamus euismod nibh \r\nvitae mauris volutpat aliquet. Donec mattis sit amet risus in iaculis. \r\nUt a ultrices ex. Vivamus elementum posuere pellentesque. Maecenas vel \r\nultrices felis. Phasellus convallis magna ligula, vel rhoncus nulla \r\nsemper ac. Suspendisse sit amet fringilla arcu. Proin ullamcorper \r\naliquam augue, sit amet tempus eros consequat in. Fusce nec placerat \r\nligula. Sed venenatis massa vel sagittis varius.\r\n\r\nEtiam vel risus id lorem dictum congue sit amet vel ex. Duis sed odio \r\nimperdiet, auctor nulla nec, vestibulum nisi. Sed mollis nunc augue, ac \r\nlaoreet nulla gravida a. Fusce turpis lorem, malesuada vel hendrerit \r\nsed, euismod nec magna. Vestibulum in mi at mi sodales efficitur. Aenean\r\n at nunc eget arcu sollicitudin sodales a ultricies metus. Fusce \r\nvenenatis tortor in felis aliquet, vel auctor augue accumsan. In at \r\nrutrum nibh. Cras ac libero vel erat elementum fringilla eu nec urna. \r\nMauris turpis dui, imperdiet rutrum vestibulum vel, efficitur in orci.\r\n\r\nAenean semper, neque id pulvinar interdum, libero nisi feugiat est, non \r\ntincidunt ante erat id lacus. Nulla arcu justo, lacinia sed pretium et, \r\neuismod vel nulla. In vel diam vitae est tempor suscipit. Cras mollis \r\ngravida metus id luctus. Vestibulum efficitur tellus id hendrerit \r\ntincidunt. Aliquam at bibendum nisi. Pellentesque hendrerit ante eget \r\nlectus placerat, et lobortis odio commodo.\r\n\r\nPellentesque tempus a felis eu interdum. Nulla venenatis lorem tortor, \r\neget condimentum orci consequat sed. Morbi commodo posuere ex. Nullam \r\nmetus massa, porttitor sed urna vitae, sollicitudin rutrum augue. \r\nMaecenas sagittis justo ac sem euismod, id maximus turpis placerat. \r\nNulla facilisi. Vestibulum eget turpis vulputate, rutrum sem ac, \r\nefficitur risus. Suspendisse suscipit urna eget velit elementum \r\nconsectetur. In consequat fringilla fermentum. Nullam aliquam eget \r\nmauris non ultricies. Curabitur mollis pulvinar lorem, eu dictum lorem \r\nconsequat a. Nam sagittis dignissim nisl nec fermentum.\r\n\r\nSuspendisse fermentum pulvinar ante, maximus elementum ante aliquet ac. \r\nIn ultrices tortor id leo gravida, nec fermentum lorem pretium. Proin \r\nviverra dignissim pulvinar. Praesent iaculis rutrum enim et facilisis. \r\nAliquam consectetur sem sit amet ultricies porttitor. Donec porta congue\r\n urna, lacinia egestas eros. Fusce blandit eros non lorem rutrum, quis \r\nconsectetur sem egestas. Sed congue lectus tellus, ut consequat diam \r\nluctus sed. Suspendisse potenti. Fusce imperdiet, justo ut sollicitudin \r\ntempor, lorem nisi sodales nisl, sed porttitor risus tellus a tellus. \r\nDonec tristique porta nisl, et cursus risus mattis id. Cras sodales \r\nmauris in ipsum tristique suscipit. Vivamus et sagittis risus. Quisque \r\ntincidunt vitae tortor efficitur porta. Praesent posuere sodales mi, \r\nvitae efficitur elit ultrices nec. &lt;/p&gt;', '8d0429bd599765083467124fd652fa3818a193c3.jpg', 'consectetur,adipisci', '', 2, 1512956420, 'enabled'),
 (40, 1, 16, 'There is no one who loves pain', '&lt;p&gt;\r\nInterdum et malesuada fames ac ante ipsum primis in faucibus. Integer \r\nvitae urna malesuada, condimentum tellus non, eleifend sem. Proin luctus\r\n congue sapien egestas luctus. Vestibulum interdum mi libero, ac \r\nmalesuada quam aliquam in. Aliquam imperdiet ex et risus fermentum, a \r\npretium lectus gravida. Interdum et malesuada fames ac ante ipsum primis\r\n in faucibus. Proin tristique odio id turpis egestas ultricies. In quis \r\ndui suscipit, tincidunt elit non, maximus felis. Nulla facilisi. Nulla \r\nlacinia placerat est. Donec et sem eu dui accumsan tincidunt. Vestibulum\r\n nec placerat metus. Sed condimentum orci dolor, eu convallis magna \r\nfeugiat a. Aliquam ornare vehicula porta.\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\nIn in varius justo. Phasellus sed enim eu nibh iaculis interdum. In \r\ntincidunt ullamcorper egestas. In rhoncus tristique ante nec blandit. \r\nEtiam vulputate iaculis nunc, blandit blandit diam tempus at. Integer \r\nelit eros, sodales sit amet aliquam a, scelerisque vitae ligula. Nullam \r\neu porta sapien, quis lacinia massa. Vestibulum ultrices porttitor \r\npulvinar. Fusce et urna tellus. Suspendisse porta, erat et auctor \r\ncommodo, mi risus condimentum tortor, sodales ullamcorper justo elit \r\neget massa. Sed pharetra finibus sem viverra faucibus. In hac habitasse \r\nplatea dictumst. Nunc nec gravida velit.\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\nPhasellus tristique, neque at malesuada venenatis, tortor dui fermentum \r\nsapien, quis ullamcorper justo tellus eget felis. Etiam lobortis elit at\r\n sollicitudin maximus. Maecenas consectetur felis vitae convallis \r\nporttitor. Etiam malesuada interdum nisi, sit amet varius nisl interdum \r\nnon. Nullam orci ligula, egestas at facilisis a, scelerisque at tellus. \r\nVestibulum volutpat velit sit amet erat ornare placerat. Proin quis \r\nvolutpat urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \r\nCras eu cursus nisi. Cras elit arcu, facilisis ac enim eget, tristique \r\nsemper metus. Aenean consectetur interdum iaculis. Nulla dictum enim sed\r\n lorem posuere, quis mollis ipsum laoreet. Etiam congue lectus id nisl \r\nsemper, ac luctus ipsum pellentesque. Sed gravida enim ac auctor \r\nlobortis. Donec hendrerit, turpis eget finibus aliquam, turpis lacus \r\ndignissim ante, vitae pulvinar lacus augue non lorem. Morbi pharetra dui\r\n in finibus condimentum.\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\nPraesent a posuere arcu. Suspendisse et nisi maximus, malesuada augue \r\net, mollis nisi. Nunc cursus, turpis ut pulvinar facilisis, nulla magna \r\nconvallis ante, vel sodales nunc ex vitae nisi. Phasellus placerat \r\nrutrum hendrerit. Sed fermentum auctor auctor. Quisque et ipsum eget \r\nneque gravida ullamcorper at nec nunc. Donec sagittis elementum magna, \r\nvel euismod augue fermentum in. Phasellus convallis mattis arcu, eget \r\nimperdiet odio blandit sit amet. Maecenas fermentum est eget nisi \r\nmalesuada ultrices. Nulla ornare pharetra felis, eget feugiat mauris \r\nimperdiet ac. Curabitur commodo efficitur mollis. Ut porta erat vel \r\nlectus rutrum tincidunt. Quisque in justo ut velit dictum pellentesque. \r\nUt ac massa mollis, sodales ligula non, ultricies ex. Phasellus feugiat,\r\n nulla quis imperdiet posuere, ex est gravida nulla, vitae eleifend \r\npurus sapien eu justo.\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\nEtiam elementum sem justo, id sollicitudin lacus convallis fringilla. \r\nProin gravida augue sit amet blandit venenatis. Sed mi ex, tempus at \r\nblandit non, faucibus ac nisi. Duis maximus tortor quam, a venenatis \r\nlectus porta eget. Nam laoreet ex lacus, suscipit tincidunt metus \r\nlaoreet vitae. Proin condimentum eu diam quis fermentum. Vivamus \r\nelementum dolor et lorem pharetra, vitae mattis nibh viverra. Proin \r\ndignissim vehicula malesuada. Lorem ipsum dolor sit amet, consectetur \r\nadipiscing elit. Sed pellentesque nulla et tempor fermentum. Donec \r\nmollis nulla dolor, nec porttitor urna lobortis at. Nulla facilisi. \r\nMauris egestas odio dolor, a tempus odio suscipit non. Integer ex lacus,\r\n posuere at lacus quis, iaculis aliquam nibh.\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\nDuis at risus in sem rutrum lacinia vitae et lectus. Ut lectus nulla, \r\ndapibus eu dui sit amet, accumsan mattis lorem. Nullam vel tempor augue.\r\n Nunc ornare pretium erat quis laoreet. Pellentesque luctus turpis sit \r\namet justo porttitor, ut scelerisque lacus pulvinar. Aliquam nec \r\nplacerat nisi. In hac habitasse platea dictumst. Proin euismod tempus \r\ntortor sit amet porta. Aliquam sed aliquam magna, id vulputate nulla. \r\nAliquam ligula neque, pulvinar eget arcu ac, elementum vestibulum quam. \r\nFusce nec efficitur diam, et feugiat dui. Pellentesque sit amet blandit \r\nlibero, et dictum leo. Aenean sagittis dolor ut velit commodo rhoncus.\r\n&lt;/p&gt;', 'bbfbcf7c84b5c597222a7e93764d8207dcc096a9.jpg', 'amet,accumsan,nullam', '', 13, 1512990123, 'enabled');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `k` varchar(255) NOT NULL,
   `v` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `settings`
+--
 
 INSERT INTO `settings` (`id`, `k`, `v`) VALUES
 (1, 'name', 'Naba'),
@@ -131,6 +211,12 @@ INSERT INTO `settings` (`id`, `k`, `v`) VALUES
 (9, 'twitter', 'https://twitter.com/___A_M_R___'),
 (10, 'instagram', 'https://www.instagram.com/amrelkhenany/'),
 (11, 'fb_appID', '126734348075212');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `u`
+--
 
 CREATE TABLE `u` (
   `id` int(11) NOT NULL,
@@ -146,27 +232,50 @@ CREATE TABLE `u` (
   `bio` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users' ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `u`
+--
+
 INSERT INTO `u` (`id`, `ugid`, `name`, `email`, `pass`, `img`, `created`, `status`, `ip`, `code`, `bio`) VALUES
-(1, 1, 'amr', 'akkk33@protonmail.com', '$2y$10$aWTiX/Mg/8gpj8l4KiDkv.mf7JSuvKZhObGswlkOT.xuNgzb4T7C2', '47c1038f87015e97761d5a8c7bead4eac29afbc7.png', 1496552991, 'enabled', '::1', '7e380d3d0c4755a2e37e245a6aacad6f3ee08646', 'Web developer, YouTuber, Project manager, Android and Linux fan'),
+(1, 1, 'amr', 'akkk33@protonmail.com', '$2y$10$aWTiX/Mg/8gpj8l4KiDkv.mf7JSuvKZhObGswlkOT.xuNgzb4T7C2', 'b548244efabffcc3b6186cb76babdab5cb93b984.png', 1496552991, 'enabled', '::1', '7e380d3d0c4755a2e37e245a6aacad6f3ee08646', 'Web developer, YouTuber, Project manager, Android and Linux fan'),
 (2, 1, 'admin', 'admin@test.account', '$2y$10$0WSHbKzT6gmUHWBE64FEYuo0kKr5K2DmX/FpFtTcdl2BCBhP9bgCu', 'a7c298f54a05d336f1adcbce9bce1e49c06fa6df.jpg', 1499116526, 'enabled', '::1', 'e65cbad12b0487e271ef175dfe44d2ff05214f4d', 'ligula orci condimentum felis, vel pulvinar purus purus et quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque .'),
 (21, 2, 'abbas', 'abbas@gmail.comd', '$2y$10$/iGl0C2wMhynmHlmzhi6aOKl2wOIUq06M49ADQws94xfnWd2mgDLe', '5e6df7aa4c14d2b1ed8998f5be6d50c0c08773a9.png', 1499555837, 'disabled', '::1', '60f095df54eb82fc7bcfbdc21c9ff8c3dbfdabe2', 'I\'m fucking abbas'),
-(22, 2, 'sohib2', 'sohib@atef.com', '$2y$10$vUJd4I2FKuih0AeuPY2EueaSWD/6SdIbiuP0UOEtGTHIZs7baknmq', 'default/5.jpg', 1510954401, 'enabled', '::1', 'b17ca79dd0341fb7133b643efce680fdfa69d82b', ''),
 (23, 2, 'test', 'test@test.com', '$2y$10$abUGjHcnmJ6vEhOJlIwvxehChAM1IIaCCQPL/QlARWDeIo8WLIyNy', 'default/5.jpg', 1511021153, 'enabled', '::1', '8ed717b2b9af17254bc21c7720025cdc60b5c9b9', 'test@test.comtest@test.comtest@test.comtest@test.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ug`
+--
 
 CREATE TABLE `ug` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'User-Group-name'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User Groups' ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `ug`
+--
+
 INSERT INTO `ug` (`id`, `name`) VALUES
 (1, 'Admins'),
 (2, 'Users');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ugp`
+--
 
 CREATE TABLE `ugp` (
   `id` int(11) NOT NULL,
   `ugid` int(11) NOT NULL,
   `page` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='User Group Permissions' ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `ugp`
+--
 
 INSERT INTO `ugp` (`id`, `ugid`, `page`) VALUES
 (213, 2, '/admin/login'),
@@ -217,60 +326,142 @@ INSERT INTO `ugp` (`id`, `ugid`, `page`) VALUES
 (395, 1, '/admin/profile/submit/:id'),
 (396, 1, '/admin/logout');
 
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `ads`
+--
 ALTER TABLE `ads`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `categories`
+--
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `comments`
+--
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `contacts`
+--
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `lang`
+--
 ALTER TABLE `lang`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `online`
+--
 ALTER TABLE `online`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `posts`
+--
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `settings`
+--
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `u`
+--
 ALTER TABLE `u`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `ug`
+--
 ALTER TABLE `ug`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `ugp`
+--
 ALTER TABLE `ugp`
   ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
+--
+-- AUTO_INCREMENT for table `ads`
+--
 ALTER TABLE `ads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `lang`
+--
 ALTER TABLE `lang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `online`
+--
 ALTER TABLE `online`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `u`
+--
 ALTER TABLE `u`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `ug`
+--
 ALTER TABLE `ug`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `ugp`
+--
 ALTER TABLE `ugp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=397;
