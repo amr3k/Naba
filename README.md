@@ -13,7 +13,7 @@ Click [here](http://bit.ly/2v6C5mA)
 ***
 You can register a new account to be able to comment.
 ***
-This script will be continuously updated (currently, It has more than 10K lines of PHP code)
+This script will be continuously updated (currently, It has about 10K lines of PHP code)
 ***
 # Known issues:
 - Pagination doesn't work with search.
@@ -24,7 +24,7 @@ This script will be continuously updated (currently, It has more than 10K lines 
 - ☑ ~~Implementing Google ReCAPTCHA for signup, login and contacting site admin requests~~.
 - ☑ ~~Activating registered accounts via email using tokens~~.
 - ☑ ~~Setting images upload rules~~.
-- Enhancing performance.
+- ☑ ~~Enhancing performance.~~
 - Multi language support (Adding Arabic).
 ### Admin Panel :
 - ☑ ~~Re-creating Settings section (Lot's of features giving more control power over script)~~.
