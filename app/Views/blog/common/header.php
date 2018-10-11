@@ -16,18 +16,17 @@
         <link rel="icon" href="<?php echo $icon; ?>" type="image/x-icon"/>
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
-        <link href="<?php echo assets('blog/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Bootstrap social icons -->
-        <link href="<?php echo assets('blog/css/bootstrap-social.css'); ?>" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="<?php echo assets('blog/css/font-awesome.min.css'); ?>" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" />        <!-- Font Awesome -->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- Animate CSS -->
-        <link rel="stylesheet" href="<?php echo assets('blog/css/animate.css'); ?>" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
         <!-- Custom Style -->
         <link rel="stylesheet" href="<?php echo assets('blog/css/style.css'); ?>" />
         <!-- Google Fonts -->
-        <link href='<?php echo assets('blog/css/Google_fonts_open-sans.css'); ?>' rel='stylesheet' type='text/css'>
-        <link href="<?php echo assets('blog/css/Google_fonts_lato.css'); ?>" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
